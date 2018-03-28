@@ -173,7 +173,7 @@ function create_mn_dirs() {
 #
 # /* no parameters, creates a sentinel config for a set of masternodes (one per masternode)  */
 #
-function create_sentinel_setup() {
+function create/sentinel_setup() {
 
 	# if code directory does not exists, we create it clone the src
 	if [ ! -d /usr/share/sentinel ]; then
@@ -194,20 +194,23 @@ function create_sentinel_setup() {
 
     # create one sentinel config file per masternode
 	for NUM in $(seq 1 ${count}); do
-	    if [ ! -f "/usr/share/sentinel/${CODENAME}${NUM}_sentinel.conf" ]; then
+	    if [ ! -f "/usr/share/sentinel/${CODENAME}${NUM}/sentinel.conf" ]; then
 	         echo "* Creating sentinel configuration for ${CODENAME} masternode number ${NUM}" &>> ${SCRIPT_LOGFILE}    
-		     echo "dash_conf=${MNODE_CONF_BASE}/${CODENAME}_n${NUM}.conf"   > /usr/share/sentinel/${CODENAME}${NUM}_sentinel.conf
-             echo "network=mainnet"                                         >> /usr/share/sentinel/${CODENAME}${NUM}_sentinel.conf
-             echo "db_name=database/${CODENAME}_${NUM}_sentinel.db"         >> /usr/share/sentinel/${CODENAME}${NUM}_sentinel.conf
-             echo "db_driver=sqlite"                                        >> /usr/share/sentinel/${CODENAME}${NUM}_sentinel.conf     
+		     echo "dash_conf=${MNODE_CONF_BASE}/${CODENAME}_n${NUM}.conf"   > /usr/share/sentinel/${CODENAME}${NUM}/sentinel.conf
+             echo "network=mainnet"                                         >> /usr/share/sentinel/${CODENAME}${NUM}/sentinel.conf
+             echo "db_name=database/${CODENAME}_${NUM}/sentinel.db"         >> /usr/share/sentinel/${CODENAME}${NUM}/sentinel.conf
+             echo "db_driver=sqlite"                                        >> /usr/share/sentinel/${CODENAME}${NUM}/sentinel.conf     
         fi
+		
 	done 
 
     echo "Generated a Sentinel config for you. To activate Sentinel run"
-    echo "export SENTINEL_CONFIG=${MNODE_CONF_BASE}/${CODENAME}${NUM}_sentinel.conf; /usr/share/sentinelvenv/bin/python /usr/share/sentinel/bin/sentinel.py"
+    echo "export SENTINEL_CONFIG=${MNODE_CONF_BASE}/${CODENAME}${NUM}/sentinel.conf; /usr/share/sentinelvenv/bin/python /usr/share/sentinel/bin/sentinel.py"
     echo ""
     echo "If it works, add the command as cronjob:  "
-    echo "* * * * * export SENTINEL_CONFIG=${MNODE_CONF_BASE}/${CODENAME}${NUM}_sentinel.conf; /usr/share/sentinelvenv/bin/python /usr/share/sentinel/bin/sentinel.py 2>&1 >> /var/log/sentinel/sentinel-cron.log"
+    echo "* * * * * export SENTINEL_CONFIG=${MNODE_CONF_BASE}/${CODENAME}${NUM}/sentinel.conf; /usr/share/sentinelvenv/bin/python /usr/share/sentinel/bin/sentinel.py 2>&1 >> /var/log/sentinel/sentinel-cron.log"
+   echo "* * * * * export SENTINEL_CONFIG=${MNODE_CONF_BASE}/${CODENAME}${NUM}/sentinel.conf; /usr/share/sentinelvenv/bin/python /usr/share/sentinel/bin/sentinel.py 2>&1 >> /var/log/sentinel/sentinel-cron.log" >> prunsent.txt
+	
     	
 }
 
@@ -481,7 +484,7 @@ function source_config() {
 		# sentinel setup 
 		if [ "$sentinel" -eq 1 ]; then
 			echo "* Sentinel setup chosen" &>> ${SCRIPT_LOGFILE}
-			create_sentinel_setup  	 
+			create/sentinel_setup  	 
 		fi		
 		configure_firewall      
 		create_mn_configuration
