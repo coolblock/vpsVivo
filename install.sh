@@ -173,7 +173,7 @@ function create_mn_dirs() {
 #
 # /* no parameters, creates a sentinel config for a set of masternodes (one per masternode)  */
 #
-function create/sentinel_setup() {
+function create_sentinel_setup() {
 
 	# if code directory does not exists, we create it clone the src
 	if [ ! -d /usr/share/sentinel ]; then
@@ -484,7 +484,7 @@ function source_config() {
 		# sentinel setup 
 		if [ "$sentinel" -eq 1 ]; then
 			echo "* Sentinel setup chosen" &>> ${SCRIPT_LOGFILE}
-			create/sentinel_setup  	 
+			create_sentinel_setup  	 
 		fi		
 		configure_firewall      
 		create_mn_configuration
