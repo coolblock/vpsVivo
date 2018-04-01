@@ -203,16 +203,13 @@ function create_sentinel_setup() {
              echo "network=mainnet"                                         >> /usr/share/sentinel/${CODENAME}${NUM}/sentinel.conf
              echo "db_name=/home/masternode/database/${CODENAME}_${NUM}/sentinel.db"         >> /usr/share/sentinel/${CODENAME}${NUM}/sentinel.conf
              echo "db_driver=sqlite"                                        >> /usr/share/sentinel/${CODENAME}${NUM}/sentinel.conf     
-	     echo "* * * * * export SENTINEL_CONFIG=/usr/share/sentinel/${CODENAME}${NUM}/sentinel.conf; /usr/share/sentinelvenv/bin/python /usr/share/sentinel/bin/sentinel.py 2>&1 >> /var/log/sentinel/sentinel-cron.log" >> /root/runmultipleSentinel.sh
+	     echo "/sbin/runuser -l masternode -c 'export SENTINEL_CONFIG=/usr/share/sentinel/${CODENAME}${NUM}/sentinel.conf; /usr/share/sentinelvenv/bin/python /usr/share/sentinel/bin/sentinel.py 2>&1 >> /var/log/sentinel/sentinel-cron.log'" >> /root/runmultipleSentinel.sh
 
         fi
 		
 	done 
 
     echo "Generated a Sentinel config for you. To activate Sentinel run"
-    echo "export SENTINEL_CONFIG=${MNODE_CONF_BASE}/${CODENAME}${NUM}/sentinel.conf; /usr/share/sentinelvenv/bin/python /usr/share/sentinel/bin/sentinel.py"
-    echo ""
-    echo "If it works, add the command as cronjob:  "
     
     echo "/sbin/runuser -l masternode -c 'export SENTINEL_CONFIG=/usr/share/sentinel/${CODENAME}${NUM}/sentinel.conf; /usr/share/sentinelvenv/bin/python /usr/share/sentinel/bin/sentinel.py 2>&1 >> /var/log/sentinel/sentinel-cron.log'"
     echo "/sbin/runuser -l masternode -c 'export SENTINEL_CONFIG=/usr/share/sentinel/${CODENAME}${NUM}/sentinel.conf; /usr/share/sentinelvenv/bin/python /usr/share/sentinel/bin/sentinel.py'" >> ~/runsentinelnolog.sh
