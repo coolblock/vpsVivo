@@ -196,11 +196,14 @@ function create_sentinel_setup() {
 	for NUM in $(seq 1 ${count}); do
 	    if [ ! -f "/usr/share/sentinel/${CODENAME}${NUM}/sentinel.conf" ]; then
 	         echo "* Creating sentinel configuration for ${CODENAME} masternode number ${NUM}" &>> ${SCRIPT_LOGFILE}  
-		 mkdir /usr/share/sentinel/${CODENAME}${NUM}
-		     echo "dash_conf=${MNODE_CONF_BASE}/${CODENAME}_n${NUM}.conf"   > /usr/share/sentinel/${CODENAME}${NUM}/sentinel.conf
+	     mkdir /usr/share/sentinel/${CODENAME}${NUM}
+             mkdir /home/masternode/database/${CODENAME}_${NUM}
+	     echo "vivo_conf=${MNODE_CONF_BASE}/${CODENAME}_n${NUM}.conf"   > /usr/share/sentinel/${CODENAME}${NUM}/sentinel.conf
              echo "network=mainnet"                                         >> /usr/share/sentinel/${CODENAME}${NUM}/sentinel.conf
-             echo "db_name=database/${CODENAME}_${NUM}/sentinel.db"         >> /usr/share/sentinel/${CODENAME}${NUM}/sentinel.conf
+             echo "db_name=/home/masternode/database/${CODENAME}_${NUM}/sentinel.db"         >> /usr/share/sentinel/${CODENAME}${NUM}/sentinel.conf
              echo "db_driver=sqlite"                                        >> /usr/share/sentinel/${CODENAME}${NUM}/sentinel.conf     
+	     echo "* * * * * export SENTINEL_CONFIG=/usr/share/sentinel/${CODENAME}${NUM}/sentinel.conf; /usr/share/sentinelvenv/bin/python /usr/share/sentinel/bin/sentinel.py 2>&1 >> /var/log/sentinel/sentinel-cron.log" >> /root/runmultipleSentinel.sh
+
         fi
 		
 	done 
@@ -209,9 +212,11 @@ function create_sentinel_setup() {
     echo "export SENTINEL_CONFIG=${MNODE_CONF_BASE}/${CODENAME}${NUM}/sentinel.conf; /usr/share/sentinelvenv/bin/python /usr/share/sentinel/bin/sentinel.py"
     echo ""
     echo "If it works, add the command as cronjob:  "
-    echo "* * * * * export SENTINEL_CONFIG=${MNODE_CONF_BASE}/${CODENAME}${NUM}/sentinel.conf; /usr/share/sentinelvenv/bin/python /usr/share/sentinel/bin/sentinel.py 2>&1 >> /var/log/sentinel/sentinel-cron.log"
-   echo "* * * * * export SENTINEL_CONFIG=${MNODE_CONF_BASE}/${CODENAME}${NUM}/sentinel.conf; /usr/share/sentinelvenv/bin/python /usr/share/sentinel/bin/sentinel.py 2>&1 >> /var/log/sentinel/sentinel-cron.log" >> prunsent.txt
-	
+    
+    echo "* * * * * export SENTINEL_CONFIG=/usr/share/sentinel/${CODENAME}${NUM}/sentinel.conf; /usr/share/sentinelvenv/bin/python /usr/share/sentinel/bin/sentinel.py 2>&1 >> /var/log/sentinel/sentinel-cron.log"
+    echo "* * * * * export SENTINEL_CONFIG=/usr/share/sentinel/${CODENAME}${NUM}/sentinel.conf; /usr/share/sentinelvenv/bin/python /usr/share/sentinel/bin/sentinel.py 2>&1 >> /var/log/sentinel/sentinel-cron.log" >> ~/prent.txt
+    chmod +x /root/runmultipleSentinel.sh
+
     	
 }
 
