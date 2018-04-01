@@ -202,8 +202,7 @@ function create_sentinel_setup() {
 	     echo "vivo_conf=${MNODE_CONF_BASE}/${CODENAME}_n${NUM}.conf"   > /usr/share/sentinel/${CODENAME}${NUM}/sentinel.conf
              echo "network=mainnet"                                         >> /usr/share/sentinel/${CODENAME}${NUM}/sentinel.conf
              echo "db_name=/home/masternode/database/${CODENAME}_${NUM}/sentinel.db"         >> /usr/share/sentinel/${CODENAME}${NUM}/sentinel.conf
-             mkdir 
-	     echo "db_driver=sqlite"                                        >> /usr/share/sentinel/${CODENAME}${NUM}/sentinel.conf     
+             echo "db_driver=sqlite"                                        >> /usr/share/sentinel/${CODENAME}${NUM}/sentinel.conf     
 	     echo "* * * * * export SENTINEL_CONFIG=/usr/share/sentinel/${CODENAME}${NUM}/sentinel.conf; /usr/share/sentinelvenv/bin/python /usr/share/sentinel/bin/sentinel.py 2>&1 >> /var/log/sentinel/sentinel-cron.log" >> /root/runmultipleSentinel.sh
 
         fi
