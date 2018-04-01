@@ -214,8 +214,8 @@ function create_sentinel_setup() {
     echo ""
     echo "If it works, add the command as cronjob:  "
     
-    echo "/sbin/runuser -l masternode -c 'export SENTINEL_CONFIG=/usr/share/sentinel/vivo1/sentinel.conf; /usr/share/sentinelvenv/bin/python /usr/share/sentinel/bin/sentinel.py 2>&1 >> /var/log/sentinel/sentinel-cron.log'"
-    echo "/sbin/runuser -l masternode -c 'export SENTINEL_CONFIG=/usr/share/sentinel/vivo1/sentinel.conf; /usr/share/sentinelvenv/bin/python /usr/share/sentinel/bin/sentinel.py'" >> ~/runsentinelnolog.sh
+    echo "/sbin/runuser -l masternode -c 'export SENTINEL_CONFIG=/usr/share/sentinel/${CODENAME}${NUM}/sentinel.conf; /usr/share/sentinelvenv/bin/python /usr/share/sentinel/bin/sentinel.py 2>&1 >> /var/log/sentinel/sentinel-cron.log'"
+    echo "/sbin/runuser -l masternode -c 'export SENTINEL_CONFIG=/usr/share/sentinel/${CODENAME}${NUM}/sentinel.conf; /usr/share/sentinelvenv/bin/python /usr/share/sentinel/bin/sentinel.py'" >> ~/runsentinelnolog.sh
 
     chmod +x /root/runmultipleSentinel.sh
 
