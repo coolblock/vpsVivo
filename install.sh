@@ -292,7 +292,7 @@ function create_mn_configuration() {
 						
 				sed -i 's/masternodeprivkey/\#masternodeprivkey/g'  ${MNODE_CONF_BASE}/${CODENAME}_n${NUM}.conf
 
-				echo " " 
+				echo " " >> ${MNODE_CONF_BASE}/${CODENAME}_n${NUM}.conf
 				cat /root/finalPrivateKey${NUM}.txt >> ${MNODE_CONF_BASE}/${CODENAME}_n${NUM}.conf
 				sed -i 's/bind/\#bind/g'  ${MNODE_CONF_BASE}/${CODENAME}_n${NUM}.conf
 
