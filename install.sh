@@ -285,11 +285,14 @@ function create_mn_configuration() {
 					echo "No ${CODENAME} template found, using the default configuration template"			          &>> ${SCRIPT_LOGFILE}
 					cp ${SCRIPTPATH}/config/default.conf ${MNODE_CONF_BASE}/${CODENAME}_n${NUM}.conf                  &>> ${SCRIPT_LOGFILE}
 				fi
- 				# insert privatekey
-				cat /root/finalPrivateKey${NUM}.txt >> ${MNODE_CONF_BASE}/${CODENAME}_n${NUM}.conf
 				# replace placeholders
 				echo "running sed on file ${MNODE_CONF_BASE}/${CODENAME}_n${NUM}.conf"                                &>> ${SCRIPT_LOGFILE}
 				sed -e "s/XXX_GIT_PROJECT_XXX/${CODENAME}/" -e "s/XXX_NUM_XXY/${NUM}]/" -e "s/XXX_NUM_XXX/${NUM}/" -e "s/XXX_PASS_XXX/${PASS}/" -e "s/XXX_IPV6_INT_BASE_XXX/[${IPV6_INT_BASE}/" -e "s/XXX_NETWORK_BASE_TAG_XXX/${NETWORK_BASE_TAG}/" -e "s/XXX_MNODE_INBOUND_PORT_XXX/${MNODE_INBOUND_PORT}/" -i ${MNODE_CONF_BASE}/${CODENAME}_n${NUM}.conf				   
+ 				# insert privatekey
+				echo " " 
+				cat /root/finalPrivateKey${NUM}.txt >> ${MNODE_CONF_BASE}/${CODENAME}_n${NUM}.conf
+				sed -i 's/bind/\#bind/g'  ${MNODE_CONF_BASE}/${CODENAME}_n${NUM}.conf
+
 			fi        			
         done
         
