@@ -167,7 +167,7 @@ function create_mn_dirs() {
              mkdir -p ${MNODE_DATA_BASE}/${CODENAME}${NUM} &>> ${SCRIPT_LOGFILE}
         fi
 	done    
-	
+
 }
 
 #
@@ -176,17 +176,131 @@ function create_mn_dirs() {
 function create_sentinel_setup() {
 
 	# if code directory does not exists, we create it clone the src
-	if [ ! -d /usr/share/sentinel ]; then
+	#if [ ! -d /usr/share/sentinel ]; then
+
 		cd /usr/share                                               &>> ${SCRIPT_LOGFILE}
-		git clone https://github.com/vivocoin/sentinel.git sentinel  &>> ${SCRIPT_LOGFILE}
+		rm -rf sentinel
+		git clone https://github.com/dashpay/sentinel.git sentinel  &>> ${SCRIPT_LOGFILE}
 		cd sentinel                                                 &>> ${SCRIPT_LOGFILE}
 		rm -f rm sentinel.conf                                      &>> ${SCRIPT_LOGFILE}
-	else
-		echo "* Updating the existing sentinel GIT repo"
-		cd /usr/share/sentinel        &>> ${SCRIPT_LOGFILE}
-		git pull                      &>> ${SCRIPT_LOGFILE}
-		rm -f rm sentinel.conf        &>> ${SCRIPT_LOGFILE}
-	fi
+
+
+echo "dash" | sed -e 's/\(.*\)/\L\1/' > vvvlowerCaseSrc.txt
+echo ${CODENAME} | sed -e 's/\(.*\)/\L\1/' > vvvlowerCaseDst.txt
+
+echo "dash" | sed -e 's/.*/\U&/' > vvvUpperCaseSrc.txt
+echo ${CODENAME} | sed -e 's/.*/\U&/' > vvvUpperCaseDst.txt
+
+
+sed -e "s/\b\(.\)/\u\1/g" vvvlowerCaseSrc.txt > vvvcamelSrc.txt
+sed -e "s/\b\(.\)/\u\1/g" vvvlowerCaseDst.txt > vvvcamelDst.txt
+
+cat vvvcamelSrc.txt
+cat vvvcamelDst.txt
+
+cat vvvlowerCaseSrc.txt
+cat vvvUpperCaseSrc.txt
+
+
+#find ./ -execdir rename 's/vivo/dash/'g '{}' \+
+echo "find ./ -execdir rename 's/" > vvvtestfile.txt
+cat vvvlowerCaseSrc.txt >> vvvtestfile.txt
+echo "/" >> vvvtestfile.txt
+cat vvvlowerCaseDst.txt >> vvvtestfile.txt
+echo "/'g '{}' \+" >> vvvtestfile.txt
+sed -i ':a;$!{N;s/\n//;ba;}' vvvtestfile.txt
+cat vvvtestfile.txt
+mv -f vvvtestfile.txt vvvtestfile1.txt
+
+#find ./ -execdir rename 's/vivo/dash/'g '{}' \+
+echo "find ./ -execdir rename 's/" > vvvtestfile.txt
+cat vvvUpperCaseSrc.txt >> vvvtestfile.txt
+echo "/" >> vvvtestfile.txt
+cat vvvUpperCaseDst.txt >> vvvtestfile.txt
+echo "/'g '{}' \+" >> vvvtestfile.txt
+sed -i ':a;$!{N;s/\n//;ba;}' vvvtestfile.txt
+cat vvvtestfile.txt
+mv -f vvvtestfile.txt vvvtestfile2.txt
+
+#find ./ -execdir rename 's/vivo/dash/'g '{}' \+
+echo "find ./ -execdir rename 's/" > vvvtestfile.txt
+cat vvvcamelSrc.txt >> vvvtestfile.txt
+echo "/" >> vvvtestfile.txt
+cat vvvcamelDst.txt >> vvvtestfile.txt
+echo "/'g '{}' \+" >> vvvtestfile.txt
+sed -i ':a;$!{N;s/\n//;ba;}' vvvtestfile.txt
+cat vvvtestfile.txt
+mv -f vvvtestfile.txt vvvtestfile3.txt
+
+
+#find ./ -type f -exec sed -i 's/vivo/dash/g' '{}' \;
+echo "find ./ -type f -exec sed -i 's/"  > vvvtestfile.txt
+cat vvvlowerCaseSrc.txt >> vvvtestfile.txt
+echo "/" >> vvvtestfile.txt
+cat vvvlowerCaseDst.txt >> vvvtestfile.txt
+echo "/g' '{}' \;" >> vvvtestfile.txt
+sed -i ':a;$!{N;s/\n//;ba;}' vvvtestfile.txt
+cat vvvtestfile.txt
+mv -f vvvtestfile.txt vvvtestfile4.txt
+
+
+
+#find ./ -type f -exec sed -i 's/vivo/dash/g' '{}' \;
+echo "find ./ -type f -exec sed -i 's/"  > vvvtestfile.txt
+cat vvvUpperCaseSrc.txt >> vvvtestfile.txt
+echo "/" >> vvvtestfile.txt
+cat vvvUpperCaseDst.txt >> vvvtestfile.txt
+echo "/g' '{}' \;" >> vvvtestfile.txt
+sed -i ':a;$!{N;s/\n//;ba;}' vvvtestfile.txt
+cat vvvtestfile.txt
+mv -f vvvtestfile.txt vvvtestfile5.txt
+
+
+
+#find ./ -type f -exec sed -i 's/vivo/dash/g' '{}' \;
+echo "find ./ -type f -exec sed -i 's/"  > vvvtestfile.txt
+cat vvvcamelSrc.txt >> vvvtestfile.txt
+echo "/" >> vvvtestfile.txt
+cat vvvcamelDst.txt >> vvvtestfile.txt
+echo "/g' '{}' \;" >> vvvtestfile.txt
+sed -i ':a;$!{N;s/\n//;ba;}' vvvtestfile.txt
+cat vvvtestfile.txt
+mv -f vvvtestfile.txt vvvtestfile6.txt
+
+
+
+cp vvvtestfile1.txt vvvfinal.txt
+cat vvvtestfile2.txt >> vvvfinal.txt
+cat vvvtestfile3.txt >> vvvfinal.txt
+cat vvvtestfile4.txt >> vvvfinal.txt
+cat vvvtestfile5.txt >> vvvfinal.txt
+cat vvvtestfile6.txt >> vvvfinal.txt
+
+echo "here we go ......"
+cat vvvfinal.txt > convertdash.sh
+
+rm -f vvv*
+rm -f *.txt
+
+chmod +x convertdash.sh
+./convertdash.sh
+
+rm -rf convertdash.sh
+
+
+
+
+
+
+
+
+
+	#else
+	#	echo "* Updating the existing sentinel GIT repo"
+	#		cd /usr/share/sentinel        &>> ${SCRIPT_LOGFILE}
+	#		git pull                      &>> ${SCRIPT_LOGFILE}
+	#		rm -f rm sentinel.conf        &>> ${SCRIPT_LOGFILE}
+	#	fi
 	
 	# create a globally accessible venv and install sentinel requirements
 	virtualenv --system-site-packages /usr/share/sentinelvenv      &>> ${SCRIPT_LOGFILE}
