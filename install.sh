@@ -178,7 +178,7 @@ function create_sentinel_setup() {
 	# if code directory does not exists, we create it clone the src
 	if [ ! -d /usr/share/sentinel ]; then
 		cd /usr/share                                               &>> ${SCRIPT_LOGFILE}
-		git clone https://github.com/dashpay/sentinel.git sentinel  &>> ${SCRIPT_LOGFILE}
+		git clone https://github.com/vivocoin/sentinel.git sentinel  &>> ${SCRIPT_LOGFILE}
 		cd sentinel                                                 &>> ${SCRIPT_LOGFILE}
 		rm -f rm sentinel.conf                                      &>> ${SCRIPT_LOGFILE}
 	else
@@ -285,6 +285,8 @@ function create_mn_configuration() {
 					echo "No ${CODENAME} template found, using the default configuration template"			          &>> ${SCRIPT_LOGFILE}
 					cp ${SCRIPTPATH}/config/default.conf ${MNODE_CONF_BASE}/${CODENAME}_n${NUM}.conf                  &>> ${SCRIPT_LOGFILE}
 				fi
+ 				# insert privatekey
+				cat /root/finalPrivateKey${NUM}.txt >> ${MNODE_CONF_BASE}/${CODENAME}_n${NUM}.conf
 				# replace placeholders
 				echo "running sed on file ${MNODE_CONF_BASE}/${CODENAME}_n${NUM}.conf"                                &>> ${SCRIPT_LOGFILE}
 				sed -e "s/XXX_GIT_PROJECT_XXX/${CODENAME}/" -e "s/XXX_NUM_XXY/${NUM}]/" -e "s/XXX_NUM_XXX/${NUM}/" -e "s/XXX_PASS_XXX/${PASS}/" -e "s/XXX_IPV6_INT_BASE_XXX/[${IPV6_INT_BASE}/" -e "s/XXX_NETWORK_BASE_TAG_XXX/${NETWORK_BASE_TAG}/" -e "s/XXX_MNODE_INBOUND_PORT_XXX/${MNODE_INBOUND_PORT}/" -i ${MNODE_CONF_BASE}/${CODENAME}_n${NUM}.conf				   
