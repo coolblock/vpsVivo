@@ -597,7 +597,15 @@ function final_call() {
 #
 # /* no parameters, create the required network configuration. IPv6 is auto.  */
 # 
+
 function prepare_mn_interfaces() {
+
+if [ "${net}" -ne 4 ]; then prepare_mn_interfaces1
+fi
+}
+
+function prepare_mn_interfaces1() {
+
 
     # this allows for more flexibility since every provider uses another default interface
     # current default is:
