@@ -180,7 +180,7 @@ function create_sentinel_setup() {
 
 cd /usr/share                                               &>> ${SCRIPT_LOGFILE}
 rm -rf sentinel
-git clone https://github.com/dashpay/sentinel.git sentinel  &>> ${SCRIPT_LOGFILE}
+git clone https://github.com/vivocoin/sentinel.git sentinel  &>> ${SCRIPT_LOGFILE}
 cd sentinel                                                 &>> ${SCRIPT_LOGFILE}
 rm -f rm sentinel.conf                                      &>> ${SCRIPT_LOGFILE}
 
