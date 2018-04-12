@@ -210,7 +210,7 @@ rm -f rm sentinel.conf                                      &>> ${SCRIPT_LOGFILE
              echo "db_driver=sqlite"                                        >> /usr/share/sentinel/${CODENAME}${NUM}/sentinel.conf     
 	     echo "/sbin/runuser -l masternode -c 'export SENTINEL_CONFIG=/usr/share/sentinel/${CODENAME}${NUM}/sentinel.conf; /usr/share/sentinelvenv/bin/python /usr/share/sentinel/bin/sentinel.py 2>&1 >> /var/log/sentinel/sentinel-cron.log'" >> /root/runmultipleSentinel.sh
 	     echo "/sbin/runuser -l masternode -c 'export SENTINEL_CONFIG=/usr/share/sentinel/${CODENAME}${NUM}/sentinel.conf; /usr/share/sentinelvenv/bin/python /usr/share/sentinel/bin/sentinel.py'" > ~/runsentinelnolog${NUM}.sh
-
+             chmod +x ~/runsentinelnolog${NUM}.sh
 
         fi
 		
