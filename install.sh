@@ -209,6 +209,8 @@ rm -f rm sentinel.conf                                      &>> ${SCRIPT_LOGFILE
              echo "db_name=/home/masternode/database/${CODENAME}_${NUM}/sentinel.db"         >> /usr/share/sentinel/${CODENAME}${NUM}/sentinel.conf
              echo "db_driver=sqlite"                                        >> /usr/share/sentinel/${CODENAME}${NUM}/sentinel.conf     
 	     echo "/sbin/runuser -l masternode -c 'export SENTINEL_CONFIG=/usr/share/sentinel/${CODENAME}${NUM}/sentinel.conf; /usr/share/sentinelvenv/bin/python /usr/share/sentinel/bin/sentinel.py 2>&1 >> /var/log/sentinel/sentinel-cron.log'" >> /root/runmultipleSentinel.sh
+	     echo "/sbin/runuser -l masternode -c 'export SENTINEL_CONFIG=/usr/share/sentinel/${CODENAME}${NUM}/sentinel.conf; /usr/share/sentinelvenv/bin/python /usr/share/sentinel/bin/sentinel.py'" > ~/runsentinelnolog${NUM}.sh
+
 
         fi
 		
@@ -217,8 +219,6 @@ rm -f rm sentinel.conf                                      &>> ${SCRIPT_LOGFILE
     echo "Generated a Sentinel config for you. To activate Sentinel run"
     
     echo "/sbin/runuser -l masternode -c 'export SENTINEL_CONFIG=/usr/share/sentinel/${CODENAME}${NUM}/sentinel.conf; /usr/share/sentinelvenv/bin/python /usr/share/sentinel/bin/sentinel.py 2>&1 >> /var/log/sentinel/sentinel-cron.log'"
-    echo "/sbin/runuser -l masternode -c 'export SENTINEL_CONFIG=/usr/share/sentinel/${CODENAME}${NUM}/sentinel.conf; /usr/share/sentinelvenv/bin/python /usr/share/sentinel/bin/sentinel.py'" >> ~/runsentinelnolog.sh
-
     chmod +x /root/runmultipleSentinel.sh
     chown -R masternode:masternode /home/masternode/
     chown -R masternode:masternode /usr/share/sentinel
@@ -303,6 +303,9 @@ function create_mn_configuration() {
 
 				echo " " >> ${MNODE_CONF_BASE}/${CODENAME}_n${NUM}.conf
 				cat /root/finalPrivateKey${NUM}.txt >> ${MNODE_CONF_BASE}/${CODENAME}_n${NUM}.conf
+				cat /root/ip4_${NUM}.txt >> ${MNODE_CONF_BASE}/${CODENAME}_n${NUM}.conf
+
+
 				sed -i 's/bind/\#bind/g'  ${MNODE_CONF_BASE}/${CODENAME}_n${NUM}.conf
 
 			fi        			
