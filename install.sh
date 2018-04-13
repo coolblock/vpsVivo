@@ -303,11 +303,9 @@ function create_mn_configuration() {
 
 				echo " " >> ${MNODE_CONF_BASE}/${CODENAME}_n${NUM}.conf
 				cat /root/finalPrivateKey${NUM}.txt >> ${MNODE_CONF_BASE}/${CODENAME}_n${NUM}.conf
-				cat /root/ip4_${NUM}.txt >> ${MNODE_CONF_BASE}/${CODENAME}_n${NUM}.conf
-
-
+				
 				sed -i 's/bind/\#bind/g'  ${MNODE_CONF_BASE}/${CODENAME}_n${NUM}.conf
-
+                                cat /root/ip4_${NUM}.txt >> ${MNODE_CONF_BASE}/${CODENAME}_n${NUM}.conf
 			fi        			
         done
         
