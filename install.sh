@@ -562,6 +562,7 @@ function build_mn_from_source() {
         
 		# if it's not available after compilation, theres something wrong
         if [ ! -f ${MNODE_DAEMON} ]; then
+		echo ${MNODE_DAEMON}
                 echo "COMPILATION FAILED! Please open an issue at https://github.com/masternodes/vps/issues. Thank you!"
                 exit 1        
         fi       

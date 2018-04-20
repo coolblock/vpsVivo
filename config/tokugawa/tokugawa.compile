@@ -1,0 +1,13 @@
+#!/bin/bash
+sudo apt-get -y remove qt3-dev-tools libqt3-mt-dev
+sudo apt-get -y install libqt4-dev libminiupnpc-dev
+pwd 
+cd src  
+chmod +x secp256k1/autogen.sh
+chmod +x leveldb/build_detect_platform
+#./autogen.sh
+#./configure --disable-dependency-tracking --enable-tests=no --without-gui --without-miniupnpc --with-incompatible-bdb CFLAGS="-march=native" LIBS="-lcurl -lssl -lcrypto -lz"
+make -f makefile.unix
+cp Tokugawad /usr/local/bin/tokugawad
+chmod +x /usr/local/bin/tokugawad
+echo 'DONE WITH COMPILE'
