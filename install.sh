@@ -196,6 +196,7 @@ rm -f rm sentinel.conf                                      &>> ${SCRIPT_LOGFILE
     cd /usr/share/sentinel
     virtualenv --system-site-packages /usr/share/sentinelvenv      &>> ${SCRIPT_LOGFILE}
     /usr/share/sentinelvenv/bin/pip install -r requirements.txt    &>> ${SCRIPT_LOGFILE}
+    rm -f /root/runmultipleSentinel.sh
 
     # create one sentinel config file per masternode
 	for NUM in $(seq 1 ${count}); do
