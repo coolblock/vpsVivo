@@ -217,8 +217,8 @@ rm -f rm sentinel.conf                                      &>> ${SCRIPT_LOGFILE
 
 	echo "export SENTINEL_CONFIG=/usr/share/sentinel/${CODENAME}${NUM}_sentinel.conf; /usr/share/sentinelvenv/bin/python /usr/share/sentinel/bin/sentinel.py" > /root/mnTroubleshoot/${CODENAME}${NUM}_runSentinelToSeeOutput.sh					
 
-	echo "cd /usr/share/sentinel/" > /root/mnTroubleshoot/${CODENAME}${NUM}_goToWhereSentinelConfsAre.sh
-	echo "cd /var/lib/masternodes/${CODENAME}${NUM}" > /root/mnTroubleshoot/${CODENAME}${NUM}_goToWhereDataFilesAre.sh
+	echo "cd /usr/share/sentinel/;exec bash" > /root/mnTroubleshoot/${CODENAME}${NUM}_goToWhereSentinelConfsAre.sh
+	echo "cd /var/lib/masternodes/${CODENAME}${NUM};exec bash" > /root/mnTroubleshoot/${CODENAME}${NUM}_goToWhereDataFilesAre.sh
 	echo "nano /usr/share/sentinel/${CODENAME}${NUM}_sentinel.conf" > /root/mnTroubleshoot/${CODENAME}${NUM}_editSentinelConf.sh
 
         fi
@@ -329,9 +329,9 @@ function create_mn_configuration() {
 		echo "service ${CODENAME}_n${NUM} stop" > /root/mnTroubleshoot/${CODENAME}${NUM}_stopService.sh			
 		echo "service ${CODENAME}_n${NUM} start" > /root/mnTroubleshoot/${CODENAME}${NUM}_startService.sh			
 
-		echo "cd /usr/local/bin/" > /root/mnTroubleshoot/${CODENAME}${NUM}_goToWhereMasternodeExecutablesAre.sh
-		echo "cd /var/lib/masternodes/${CODENAME}${NUM}" > /root/mnTroubleshoot/${CODENAME}${NUM}_goToWhereDataFilesAre.sh
-		echo "cd /etc/masternodes/" > /root/mnTroubleshoot/${CODENAME}${NUM}_goToWhereMasternodeConfFilesAre.sh
+		echo "cd /usr/local/bin/;exec bash" > /root/mnTroubleshoot/${CODENAME}${NUM}_goToWhereMasternodeExecutablesAre.sh
+		echo "cd /var/lib/masternodes/${CODENAME}${NUM};exec bash" > /root/mnTroubleshoot/${CODENAME}${NUM}_goToWhereDataFilesAre.sh
+		echo "cd /etc/masternodes/;exec bash" > /root/mnTroubleshoot/${CODENAME}${NUM}_goToWhereMasternodeConfFilesAre.sh
 	
 		echo "nano /etc/masternodes/${CODENAME}_n${NUM}.conf" > /root/mnTroubleshoot/${CODENAME}${NUM}_editMasternodeConfFile.sh
 
