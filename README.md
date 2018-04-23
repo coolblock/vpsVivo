@@ -1,49 +1,6 @@
 # Nodemaster
 
-The **Nodemaster** scripts is a collection of utilities to manage, setup and update masternode instances. 
-
-I am quite confident this is the single best and almost effortless way to setup different crypto masternodes, without bothering too much about the setup part.
-
-If this script helped you in any way, please contribute some feedback. BTC donations also welcome and never forget:
-
-**Have fun, this is crypto after all!**
-```
-BTC  33ENWZ9RCYBG7nv6ac8KxBUSuQX64Hx3x3
-```
-
-Feel free to use my reflink to signup and receive a bonus w/ vultr:
-<a href="https://www.vultr.com/?ref=6903922"><img src="https://www.vultr.com/media/banner_2.png" width="468" height="60"></a>
-
----
-**NOTE on the VPS choice for starters**
-
-**Vultr** is highly recommended for this kind of setup. I created an [easy step-by-step guide for the VPS provider vultr](/docs/masternode_vps.md) that will guide you through the hardest parts. 
-
----
-
-## About / Background
-
-Many masternode crypto currencies only have incomplete or even non-existing instructions available how to setup a masternode from source. 
-
-This project started as handy bash script to setup my $PIVX masternodes in 2016 when there was almost zero documentation and anything that existed was either $DASH specific, sucked and in most cases both. For that reason, i started to work on a not-so-sucking way to install a lot of different masternodes with next to none manual intervention.
-
-If you are not already aware, visit the project site and join the slack. The website at [https://pivx.org/](https://pivx.org/) is also well worth a visit. 
-
-Many people use binaries, end of with an insecure configuration or fail completely. This is obviously bad for the stability of the individual network.
-
-After doing hundreds of masternode installations in the past two years, i decided to share some of my existing auto-install and management scripts with the community to work on a generalised & reliable setup for all masternode coins.
-
-Comparing with building from source manually, you will benefit from using this script in the following way(s):
-
-* 100% auto-compilation and 99% of configuration on the masternode side of things. It is currently only tested on a vultr VPS but should work almost anywhere where IPv6 addresses are available
-* Developed with recent Ubuntu versions in mind, currently only 16.04 is supported
-* Installs 1-100 (or more!) masternodes in parallel on one machine, with individual config and data
-* Compilation is currently from source for the desired git repo tag (configurable via config files)
-Some security hardening is done, including firewalling and a separate user
-* Automatic startup for all masternode daemons
-* This script needs to run as root, the masternodes will and should not!
-* It's ipv6 enabled, tor/onion will follow
-
+Based on the **Nodemaster** scripts is a collection of utilities to manage, setup and update masternode instances. 
 
 ## Installation
 
@@ -221,9 +178,3 @@ The management script release will follow within the next couple of days.
 # Errors
 * currently not fully idempotent
 
-Ping me at contact@marsmenschen.com for questions and send some crypto my way if you are happy.
-
-**Have fun, this is crypto after all!**
-```
-BTC  33ENWZ9RCYBG7nv6ac8KxBUSuQX64Hx3x3
-```
