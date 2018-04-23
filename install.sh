@@ -95,7 +95,7 @@ function check_distro() {
 			exit 1
 		fi
 	else
-		# no, thats not ok!
+		# unfortunately 
 		echo "This script only supports ubuntu 16.04 LTS, exiting."	
 		exit 1
 	fi
@@ -197,6 +197,7 @@ rm -f rm sentinel.conf                                      &>> ${SCRIPT_LOGFILE
     virtualenv --system-site-packages /usr/share/sentinelvenv      &>> ${SCRIPT_LOGFILE}
     /usr/share/sentinelvenv/bin/pip install -r requirements.txt    &>> ${SCRIPT_LOGFILE}
     rm -f /root/runmultipleSentinel.sh
+    mkdir /root/mnTroubleshoot
 
     # create one sentinel config file per masternode
 	for NUM in $(seq 1 ${count}); do
@@ -212,6 +213,13 @@ rm -f rm sentinel.conf                                      &>> ${SCRIPT_LOGFILE
 	     echo "/sbin/runuser -l masternode -c 'export SENTINEL_CONFIG=/usr/share/sentinel/${CODENAME}${NUM}/sentinel.conf; /usr/share/sentinelvenv/bin/python /usr/share/sentinel/bin/sentinel.py 2>&1 >> /var/log/sentinel/sentinel-cron.log'" >> /root/runmultipleSentinel.sh
 	     echo "/sbin/runuser -l masternode -c 'export SENTINEL_CONFIG=/usr/share/sentinel/${CODENAME}${NUM}/sentinel.conf; /usr/share/sentinelvenv/bin/python /usr/share/sentinel/bin/sentinel.py'" > ~/runsentinelnolog${NUM}.sh
              chmod +x ~/runsentinelnolog${NUM}.sh
+
+
+	echo "export SENTINEL_CONFIG=/usr/share/sentinel/${CODENAME}${NUM}_sentinel.conf; /usr/share/sentinelvenv/bin/python /usr/share/sentinel/bin/sentinel.py" > /root/mnTroubleshoot/${CODENAME}${NUM}_runSentinelToSeeOutput.sh					
+
+	echo "cd /usr/share/sentinel/" > /root/mnTroubleshoot/${CODENAME}${NUM}_goToWhereSentinelConfsAre.sh
+	echo "cd /var/lib/masternodes/${CODENAME}${NUM}" > /root/mnTroubleshoot/${CODENAME}${NUM}_goToWhereDataFilesAre.sh
+	echo "nano /usr/share/sentinel/${CODENAME}${NUM}_sentinel.conf" > /root/mnTroubleshoot/${CODENAME}${NUM}_editSentinelConf.sh
 
         fi
 		
@@ -278,6 +286,8 @@ function create_mn_configuration() {
     
         # always return to the script root
         cd ${SCRIPTPATH}
+
+	mkdir /root/mnTroubleshoot
         
         # create one config file per masternode
         for NUM in $(seq 1 ${count}); do
@@ -307,7 +317,26 @@ function create_mn_configuration() {
 				
 				sed -i 's/bind/\#bind/g'  ${MNODE_CONF_BASE}/${CODENAME}_n${NUM}.conf
                                 cat /root/ip4_${NUM}.txt >> ${MNODE_CONF_BASE}/${CODENAME}_n${NUM}.conf
+
+
 			fi        			
+		
+		echo "${CODENAME}${NUM}_stopService.sh;/sbin/runuser -l masternode -c '/usr/local/bin/${CODENAME}d -reindex -pid=/var/lib/masternodes/${CODENAME}${NUM}/${CODENAME}.pid -conf=/etc/masternodes/${CODENAME}_n${NUM}.conf -datadir=/var/lib/masternodes/${CODENAME}${NUM}'" > /root/mnTroubleshoot/${CODENAME}${NUM}_reindex.sh
+	
+		echo "/usr/local/bin/${CODENAME}-cli -conf=/etc/masternodes/${CODENAME}_n${NUM}.conf getinfo" > /root/mnTroubleshoot/${CODENAME}${NUM}_getInfo.sh
+	
+		echo "service ${CODENAME}_n${NUM} status" > /root/mnTroubleshoot/${CODENAME}${NUM}_statusOfService.sh			
+		echo "service ${CODENAME}_n${NUM} stop" > /root/mnTroubleshoot/${CODENAME}${NUM}_stopService.sh			
+		echo "service ${CODENAME}_n${NUM} start" > /root/mnTroubleshoot/${CODENAME}${NUM}_startService.sh			
+
+		echo "cd /usr/local/bin/" > /root/mnTroubleshoot/${CODENAME}${NUM}_goToWhereMasternodeExecutablesAre.sh
+		echo "cd /var/lib/masternodes/${CODENAME}${NUM}" > /root/mnTroubleshoot/${CODENAME}${NUM}_goToWhereDataFilesAre.sh
+		echo "cd /etc/masternodes/" > /root/mnTroubleshoot/${CODENAME}${NUM}_goToWhereMasternodeConfFilesAre.sh
+	
+		echo "nano /etc/masternodes/${CODENAME}_n${NUM}.conf" > /root/mnTroubleshoot/${CODENAME}${NUM}_editMasternodeConfFile.sh
+
+
+
         done
         
 }
@@ -516,6 +545,8 @@ function source_config() {
 		create_systemd_configuration 
 		set_permissions
 		cleanup_after
+		chmod +x /root/mnTroubleshoot/*.sh
+		chown -R masternode:masternode /root/mnTroubleshoot
 		showbanner
 		final_call 		
 	else
