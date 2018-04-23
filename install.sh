@@ -321,7 +321,7 @@ function create_mn_configuration() {
 
 			fi        			
 		
-		echo "${CODENAME}${NUM}_stopService.sh;/sbin/runuser -l masternode -c '/usr/local/bin/${CODENAME}d -reindex -pid=/var/lib/masternodes/${CODENAME}${NUM}/${CODENAME}.pid -conf=/etc/masternodes/${CODENAME}_n${NUM}.conf -datadir=/var/lib/masternodes/${CODENAME}${NUM}'" > /root/mnTroubleshoot/${CODENAME}${NUM}_reindex.sh
+		echo "/root/mnTroubleshoot/${CODENAME}${NUM}_stopService.sh;/sbin/runuser -l masternode -c '/usr/local/bin/${CODENAME}d -reindex -pid=/var/lib/masternodes/${CODENAME}${NUM}/${CODENAME}.pid -conf=/etc/masternodes/${CODENAME}_n${NUM}.conf -datadir=/var/lib/masternodes/${CODENAME}${NUM}'" > /root/mnTroubleshoot/${CODENAME}${NUM}_reindex.sh
 	
 		echo "/usr/local/bin/${CODENAME}-cli -conf=/etc/masternodes/${CODENAME}_n${NUM}.conf getinfo" > /root/mnTroubleshoot/${CODENAME}${NUM}_getInfo.sh
 	
