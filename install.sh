@@ -180,7 +180,7 @@ function create_sentinel_setup() {
 
 cd /usr/share                                               &>> ${SCRIPT_LOGFILE}
 rm -rf sentinel
-git clone https://github.com/vivocoin/sentinel.git sentinel  &>> ${SCRIPT_LOGFILE}
+git clone ${SENTINEL_URL} sentinel &>> ${SCRIPT_LOGFILE}
 cd sentinel                                                 &>> ${SCRIPT_LOGFILE}
 rm -f rm sentinel.conf                                      &>> ${SCRIPT_LOGFILE}
 
@@ -457,6 +457,7 @@ function cleanup_after() {
 function source_config() {
 
     SETUP_CONF_FILE="${SCRIPTPATH}/config/${project}/${project}.env" 
+    SENTINEL_URL=https://github.com/vivocoin/sentinel.git
 
     # first things first, to break early if things are missing or weird
     check_distro
