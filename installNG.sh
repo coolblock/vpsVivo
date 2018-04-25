@@ -194,6 +194,10 @@ rm -f rm sentinel.conf                                      &>> ${SCRIPT_LOGFILE
 	#	fi
 	
     # create a globally accessible venv and install sentinel requirements
+	
+	
+	
+	
     cd /usr/share/sentinel_${CODENAME}
     virtualenv --system-site-packages /usr/share/sentinelvenv_${CODENAME}      &>> ${SCRIPT_LOGFILE}
     /usr/share/sentinelvenv_${CODENAME}/bin/pip install -r requirements.txt    &>> ${SCRIPT_LOGFILE}
@@ -218,7 +222,10 @@ rm -f rm sentinel.conf                                      &>> ${SCRIPT_LOGFILE
              echo "db_driver=sqlite"                                        >> /usr/share/sentinel_${CODENAME}/${CODENAME}${NUM}/sentinel.conf     
 	     echo "/sbin/runuser -l masternode -c 'export SENTINEL_CONFIG=/usr/share/sentinel_${CODENAME}//${CODENAME}${NUM}/sentinel.conf; /usr/share/sentinelvenv_${CODENAME}//bin/python /usr/share/sentinel_${CODENAME}/bin/sentinel.py 2>&1 >> /var/log/sentinel_${CODENAME}/sentinel-cron.log'" >> /root/runmultipleSentinel${CODENAME}.sh
 	     echo "/sbin/runuser -l masternode -c 'export SENTINEL_CONFIG=/usr/share/sentinel_${CODENAME}/${CODENAME}${NUM}/sentinel.conf; /usr/share/sentinelvenv_${CODENAME}/bin/python /usr/share/sentinel_${CODENAME}/bin/sentinel.py'" > ~/runsentinelnolog${CODENAME}${NUM}.sh
-             chmod +x ~/runsentinelnolog${CODENAME}${NUM}.sh
+         chmod +x ~/runsentinelnolog${CODENAME}${NUM}.sh
+		if ! cat /root/runmultipleSentinel.sh | grep "runsentinelnolog${CODENAME}${NUM}.sh"; then
+			echo "runsentinelnolog${CODENAME}${NUM}.sh" >> /root/runmultipleSentinel.sh
+		fi
 
 
 	echo "/sbin/runuser -l masternode -c 'export SENTINEL_CONFIG=/usr/share/sentinel_${CODENAME}/${CODENAME}${NUM}/sentinel.conf; /usr/share/sentinelvenv_${CODENAME}/bin/python /usr/share/sentinel/bin/sentinel.py'" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_runSentinelToSeeOutput.sh					
@@ -238,8 +245,9 @@ rm -f rm sentinel.conf                                      &>> ${SCRIPT_LOGFILE
     chown -R masternode:masternode /home/masternode/
     chown -R masternode:masternode /usr/share/sentinel
     chown -R masternode:masternode /usr/share/sentinelvenv
-
-
+	if ! crontab -l | grep "/root/runmultipleSentinel.sh"; then
+		(crontab -l 2>/dev/null; echo "* * * * * /root/runmultipleSentinel.sh") | crontab -
+	fi
     	
 }
 
