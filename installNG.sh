@@ -555,7 +555,7 @@ function source_config() {
 		create_systemd_configuration 
 		set_permissions
 		cleanup_after
-		chmod -R +x /root/mnTroubleshoot/*.sh
+		chmod -R +x /root/mnTroubleshoot
 		chown -R masternode:masternode /root/mnTroubleshoot
 		showbanner
 		final_call 		
