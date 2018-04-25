@@ -126,7 +126,7 @@ if [ $(free | awk '/^Swap:/ {exit !$2}') ] || [ ! -f "/var/mnode_swap.img" ];the
 	echo "* No proper swap, creating it" 
 	# needed because ant servers are ants
 	rm -f /var/mnode_swap.img
-	dd if=/dev/zero of=/var/mnode_swap.img bs=1024k count=${MNODE_SWAPSIZE} &>> ${SCRIPT_LOGFILE}
+	dd if=/dev/zero of=/var/mnode_swap.img bs=2048k count=${MNODE_SWAPSIZE} &>> ${SCRIPT_LOGFILE}
 	chmod 0600 /var/mnode_swap.img 
 	mkswap /var/mnode_swap.img &>> ${SCRIPT_LOGFILE}
 	swapon /var/mnode_swap.img &>> ${SCRIPT_LOGFILE} 
