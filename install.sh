@@ -206,7 +206,7 @@ rm -f rm sentinel.conf                                      &>> ${SCRIPT_LOGFILE
 	     mkdir /usr/share/sentinel/${CODENAME}${NUM}
 	     mkdir /home/masternode/database/
              mkdir /home/masternode/database/${CODENAME}_${NUM}
-	     echo "vivo_conf=${MNODE_CONF_BASE}/${CODENAME}_n${NUM}.conf"   > /usr/share/sentinel/${CODENAME}${NUM}/sentinel.conf
+	     echo "${CODENAME}_conf=${MNODE_CONF_BASE}/${CODENAME}_n${NUM}.conf"   > /usr/share/sentinel/${CODENAME}${NUM}/sentinel.conf
              echo "network=mainnet"                                         >> /usr/share/sentinel/${CODENAME}${NUM}/sentinel.conf
              echo "db_name=/home/masternode/database/${CODENAME}_${NUM}/sentinel.db"         >> /usr/share/sentinel/${CODENAME}${NUM}/sentinel.conf
              echo "db_driver=sqlite"                                        >> /usr/share/sentinel/${CODENAME}${NUM}/sentinel.conf     
