@@ -325,6 +325,7 @@ function create_mn_configuration() {
 				
 				sed -i 's/bind/\#bind/g'  ${MNODE_CONF_BASE}/${CODENAME}_n${NUM}.conf
                                 cat /root/ip4_${NUM}.txt >> ${MNODE_CONF_BASE}/${CODENAME}_n${NUM}.conf
+								echo ":${MNODE_INBOUND_PORT}"  >> ${MNODE_CONF_BASE}/${CODENAME}_n${NUM}.conf
 
 
 			fi        			
@@ -519,12 +520,15 @@ function source_config() {
 		# show a hint for MANUAL IPv4 configuration
 		if [ "${net}" -eq 4 ]; then
 			NETWORK_TYPE=4
-			echo "WARNING:"
-			echo "You selected IPv4 for networking but there is no automatic workflow for this part."
-			echo "This means you will have some mamual work to do to after this configuration run."
-			echo ""
+			
 			echo "See the following link for instructions how to add multiple ipv4 addresses on vultr:"
 			echo "${IPV4_DOC_LINK}"
+			if [ ! -f /root/ip4_1.txt ]; then
+				ipvariable=$(wget http://ipecho.net/plain -O - -q);
+				echo "bind={$ipvariable}" > /root/ip4_1.txt
+				echo "Will be using {$ipvariable} as your IP. If you want to change them you will have to go to etc/masternodes and change the conf file."
+			fi
+
 		fi        
 		# sentinel setup 
 		if [ "$sentinel" -eq 1 ]; then
