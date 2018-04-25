@@ -332,7 +332,7 @@ function create_mn_configuration() {
 				cat /root/pk_${CODENAME}_${NUM}.txt >> ${MNODE_CONF_BASE}/${CODENAME}_n${NUM}.conf
 				
 				sed -i 's/bind/\#bind/g'  ${MNODE_CONF_BASE}/${CODENAME}_n${NUM}.conf
-                                cat /root/ip4_${NUM}.txt >> ${MNODE_CONF_BASE}/${CODENAME}_n${NUM}.conf
+                                cat /root/ip4_${NUM}.txt|tr -d "\n" >> ${MNODE_CONF_BASE}/${CODENAME}_n${NUM}.conf
 								echo ":${MNODE_INBOUND_PORT}"  >> ${MNODE_CONF_BASE}/${CODENAME}_n${NUM}.conf
 
 
