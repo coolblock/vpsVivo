@@ -233,7 +233,7 @@ rm -f rm sentinel.conf                                      &>> ${SCRIPT_LOGFILE
 
 
 
-	echo "/sbin/runuser -l masternode -c 'export SENTINEL_CONFIG=/usr/share/sentinel_${CODENAME}/${CODENAME}${NUM}/sentinel.conf; /usr/share/sentinelvenv_${CODENAME}/bin/python /usr/share/sentinel/bin/sentinel.py'" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_runSentinelToSeeOutput.sh					
+	echo "/sbin/runuser -l masternode -c 'export SENTINEL_CONFIG=/usr/share/sentinel_${CODENAME}/${CODENAME}${NUM}/sentinel.conf; /usr/share/sentinelvenv_${CODENAME}/bin/python /usr/share/sentinel_${CODENAME}/bin/sentinel.py'" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_runSentinelToSeeOutput.sh					
 
 	echo "cd /usr/share/sentinel_${CODENAME}/;exec bash" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_goToWhereSentinelConfsAre.sh
 	echo "cd /var/lib/masternodes/${CODENAME}${NUM};exec bash" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_goToWhereDataFilesAre.sh
