@@ -224,7 +224,7 @@ rm -f rm sentinel.conf                                      &>> ${SCRIPT_LOGFILE
 	     echo "/sbin/runuser -l masternode -c 'export SENTINEL_CONFIG=/usr/share/sentinel_${CODENAME}/${CODENAME}${NUM}/sentinel.conf; /usr/share/sentinelvenv_${CODENAME}/bin/python /usr/share/sentinel_${CODENAME}/bin/sentinel.py'" > ~/runsentinelnolog${CODENAME}${NUM}.sh
          chmod +x ~/runsentinelnolog${CODENAME}${NUM}.sh
 		 
-		if [! cat /root/runmultipleSentinel.sh | grep "root/runmultipleSentinel${CODENAME}.sh"]; then
+		if [! cat /root/runmultipleSentinel.sh | grep root/runmultipleSentinel${CODENAME}.sh]; then
 			echo "root/runmultipleSentinel${CODENAME}.sh" >> /root/runmultipleSentinel.sh
 		fi
 
