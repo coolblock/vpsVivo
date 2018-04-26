@@ -343,7 +343,7 @@ function create_mn_configuration() {
 				sed -i 's/bind/\#bind/g'  ${MNODE_CONF_BASE}/${CODENAME}_n${NUM}.conf
 				
 				if [ ! -f /root/lastRpcPort ]; then
-					echo "5555"
+					echo "5566" > /root/lastRpcPort
 				fi
 
 				typeset -i RPC_PORT=$(cat /root/lastRpcPort)
