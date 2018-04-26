@@ -346,7 +346,7 @@ function create_mn_configuration() {
 				echo $RPC_PORT
 				RPC_PORT=$RPC_PORT+1
 				echo $RPC_PORT > /root/lastRpcPort
-				echo -e "rpcport=${RPC_PORT}\n"
+				echo -e "rpcport=${RPC_PORT}\n"  >> ${MNODE_CONF_BASE}/${CODENAME}_n${NUM}.conf
 				
                 cat /root/ip4_${NUM}.txt|tr -d "\n" >> ${MNODE_CONF_BASE}/${CODENAME}_n${NUM}.conf
 				echo ":${MNODE_INBOUND_PORT}"  >> ${MNODE_CONF_BASE}/${CODENAME}_n${NUM}.conf
