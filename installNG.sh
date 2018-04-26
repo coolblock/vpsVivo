@@ -335,10 +335,21 @@ function create_mn_configuration() {
 				cat /root/pk_${CODENAME}_${NUM}.txt >> ${MNODE_CONF_BASE}/${CODENAME}_n${NUM}.conf
 				echo -e "\r\n" >> ${MNODE_CONF_BASE}/${CODENAME}_n${NUM}.conf
 				
+				sed -i 's/rpcport/\#rpcport/g'  ${MNODE_CONF_BASE}/${CODENAME}_n${NUM}.conf				
 				sed -i 's/bind/\#bind/g'  ${MNODE_CONF_BASE}/${CODENAME}_n${NUM}.conf
-                                cat /root/ip4_${NUM}.txt|tr -d "\n" >> ${MNODE_CONF_BASE}/${CODENAME}_n${NUM}.conf
-								echo ":${MNODE_INBOUND_PORT}"  >> ${MNODE_CONF_BASE}/${CODENAME}_n${NUM}.conf
+				
+				if [ ! -f /root/lastRpcPort ]; then
+					echo "5555"
+				fi
 
+				typeset -i RPC_PORT=$(cat /root/lastRpcPort)
+				echo $RPC_PORT
+				RPC_PORT=$RPC_PORT+1
+				echo $RPC_PORT > /root/lastRpcPort
+				echo -e "rpcport=${RPC_PORT}\n"
+				
+                cat /root/ip4_${NUM}.txt|tr -d "\n" >> ${MNODE_CONF_BASE}/${CODENAME}_n${NUM}.conf
+				echo ":${MNODE_INBOUND_PORT}"  >> ${MNODE_CONF_BASE}/${CODENAME}_n${NUM}.conf
 
 			fi        			
 		
