@@ -497,7 +497,7 @@ function cleanup_after() {
 function source_config() {
 
     SETUP_CONF_FILE="${SCRIPTPATH}/config/${project}/${project}.env" 
-    SENTINEL_URL=https://github.com/vivocoin/sentinel.git
+    #SENTINEL_URL=https://github.com/vivocoin/sentinel.git
 
     # first things first, to break early if things are missing or weird
     check_distro
@@ -579,9 +579,10 @@ function source_config() {
 		build_mn_from_source
 		create_mn_user
 		create_mn_dirs
+		echo "The sentine url is: ${SENTINEL_URL}"
 		# sentinel setup 
 		if [ "$sentinel" -eq 1 ]; then
-			if [[ -z $SENTINEL_URL ]]; then
+			if [[ -z ${SENTINEL_URL} ]]; then
 				echo "* Sentinel setup chosen" &>> ${SCRIPT_LOGFILE}
 				echo "FOUND SENTINEL GIT URL FOR THIS COIN - installing for ${CODENAME}" >> /root/sentinelInstalledOrNot.txt								
 				create_sentinel_setup  	 
