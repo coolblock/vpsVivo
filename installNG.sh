@@ -358,7 +358,10 @@ function create_mn_configuration() {
 			fi        			
 		
 		echo "/root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_stopService.sh;/sbin/runuser -l masternode -c '/usr/local/bin/${CODENAME}d -reindex -pid=/var/lib/masternodes/${CODENAME}${NUM}/${CODENAME}.pid -conf=/etc/masternodes/${CODENAME}_n${NUM}.conf -datadir=/var/lib/masternodes/${CODENAME}${NUM}'" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_reindex.sh
-	
+
+		echo "/root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_stopService.sh;/sbin/runuser -l masternode -c '/usr/local/bin/${CODENAME}d -deamon -pid=/var/lib/masternodes/${CODENAME}${NUM}/${CODENAME}.pid -conf=/etc/masternodes/${CODENAME}_n${NUM}.conf -datadir=/var/lib/masternodes/${CODENAME}${NUM}'" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_restartWithoutService.sh
+
+		
 		echo "/usr/local/bin/${CODENAME}-cli -conf=/etc/masternodes/${CODENAME}_n${NUM}.conf getinfo" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_getInfo.sh
 	
 		echo "service ${CODENAME}_n${NUM} status" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_statusOfService.sh			
@@ -419,7 +422,7 @@ function create_systemd_configuration() {
 			-conf=${MNODE_CONF_BASE}/${CODENAME}_n${NUM}.conf -datadir=${MNODE_DATA_BASE}/${CODENAME}${NUM}
        		 
 			Restart=always
-			RestartSec=5
+			RestartSec=70
 			PrivateTmp=true
 			TimeoutStopSec=60s
 			TimeoutStartSec=5s
