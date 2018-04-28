@@ -180,7 +180,10 @@ function remove_sentinel_setup_for_coin() {
 	rm -rf /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_goToWhereSentinelConfsAre.sh
 	rm -rf /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_goToWhereDataFilesAre.sh
 	rm -rf /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_editSentinelConf.sh
-	
+	rm /root/runsentinelnolog${CODENAME}${NUM}.sh	
+	for NUM in $(seq 1 ${count}); do
+		sed -i "s_${CODENAME}${NUM}/sentinel.conf_d" root/runmultipleSentinel${CODENAME}.sh
+	done	
 }
 #
 # /* no parameters, creates a sentinel config for a set of masternodes (one per masternode)  */
@@ -598,6 +601,7 @@ function source_config() {
 			if [[ -z ${SENTINEL_URL} ]]; then
 				echo "DID NOT FIND SENTINEL GIT URL FOR THIS COIN"
 				echo "DID NOT FIND SENTINEL GIT URL FOR THIS COIN for ${CODENAME}" >> /root/sentinelInstalledOrNot.txt				
+				remove_sentinel_setup_for_coin
 			else
 				echo "* Sentinel setup chosen" &>> ${SCRIPT_LOGFILE}
 				echo "FOUND SENTINEL GIT URL FOR THIS COIN - installing for ${CODENAME}" >> /root/sentinelInstalledOrNot.txt								
