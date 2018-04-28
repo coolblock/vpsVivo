@@ -622,7 +622,9 @@ function source_config() {
 			echo "cli will be used"
 		else
 			echo "cli will be replaced with ${CODENAME}d" &>> ${SCRIPT_LOGFILE}
-			find /root/mnTroubleshoot -type f | xargs sed -i 's_${CODENAME}-cli_${COIN_CLI}_g'
+			find /root/mnTroubleshoot -type f | xargs sed -i "s_${CODENAME}-cli_${COIN_CLI}_g"
+			echo "/root/mnTroubleshoot -type f | xargs sed -i \"s_${CODENAME}-cli_${COIN_CLI}_g\"" > replaceCli.sh
+			
 		fi	
 				
 		
