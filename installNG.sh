@@ -579,8 +579,8 @@ function source_config() {
 		build_mn_from_source
 		create_mn_user
 		create_mn_dirs
-		echo "--- What to do about sentinel ..."
-		echo "The sentine url is: ${SENTINEL_URL}"
+		echo "--- What to do about sentinel ..." >> /root/sentinelInstalledOrNot.txt				
+		echo "The sentine url is: ${SENTINEL_URL}" >> /root/sentinelInstalledOrNot.txt				
 		# sentinel setup 
 		if [ "$sentinel" -eq 1 ]; then
 			if [[ -z ${SENTINEL_URL} ]]; then
