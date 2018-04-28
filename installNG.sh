@@ -618,6 +618,14 @@ function source_config() {
 		chmod -R +x /root/mnTroubleshoot
 		chown -R masternode:masternode /root/mnTroubleshoot
 		showbanner
+		if [[ -z ${COIN_CLI} ]]; then
+			echo "cli will be used"
+		else
+			echo "cli will be replaced with ${CODENAME}d" &>> ${SCRIPT_LOGFILE}
+			find /root/mnTroubleshoot -type f | xargs sed -i 's_${CODENAME}-cli_${COIN_CLI}_g'
+		fi	
+				
+		
 		final_call 		
 	else
 		echo "required file ${SETUP_CONF_FILE} does not exist, abort!"
