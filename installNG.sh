@@ -583,9 +583,11 @@ function source_config() {
 		if [ "$sentinel" -eq 1 ]; then
 			if [[ -z $SENTINEL_URL ]]; then
 				echo "* Sentinel setup chosen" &>> ${SCRIPT_LOGFILE}
+				echo "FOUND SENTINEL GIT URL FOR THIS COIN - installing for ${CODENAME}" >> /root/sentinelInstalledOrNot.txt								
 				create_sentinel_setup  	 
 			else
 				echo "DID NOT FIND SENTINEL GIT URL FOR THIS COIN"
+				echo "DID NOT FIND SENTINEL GIT URL FOR THIS COIN for ${CODENAME}" >> /root/sentinelInstalledOrNot.txt				
 			fi	
 				
 		fi		
