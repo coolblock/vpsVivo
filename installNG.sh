@@ -562,6 +562,7 @@ function source_config() {
 		fi        
 		# sentinel setup 
 		if [ "$sentinel" -eq 1 ]; then
+			
 			echo "I will also generate a Sentinel configuration for you." 	 
 		fi	
 		echo ""
@@ -580,8 +581,13 @@ function source_config() {
 		create_mn_dirs
 		# sentinel setup 
 		if [ "$sentinel" -eq 1 ]; then
-			echo "* Sentinel setup chosen" &>> ${SCRIPT_LOGFILE}
-			create_sentinel_setup  	 
+			if [[ -z $SENTINEL_URL ]]; then
+				echo "* Sentinel setup chosen" &>> ${SCRIPT_LOGFILE}
+				create_sentinel_setup  	 
+			else
+				echo "DID NOT FIND SENTINEL GIT URL FOR THIS COIN"
+			fi	
+				
 		fi		
 		configure_firewall      
 		create_mn_configuration
