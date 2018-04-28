@@ -169,7 +169,19 @@ function create_mn_dirs() {
 	done    
 
 }
+function remove_sentinel_setup_for_coin() {
 
+	cd /usr/share                                               &>> ${SCRIPT_LOGFILE}
+	rm -rf sentinel_${CODENAME}
+	rm -rf /usr/share/sentinelvenv_${CODENAME}
+
+    #rm -f /root/runmultipleSentinel${CODENAME}.sh
+	rm -rf /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_runSentinelToSeeOutput.sh					
+	rm -rf /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_goToWhereSentinelConfsAre.sh
+	rm -rf /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_goToWhereDataFilesAre.sh
+	rm -rf /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_editSentinelConf.sh
+	
+}
 #
 # /* no parameters, creates a sentinel config for a set of masternodes (one per masternode)  */
 #
@@ -179,7 +191,7 @@ function create_sentinel_setup() {
 	#if [ ! -d /usr/share/sentinel ]; then
 
 cd /usr/share                                               &>> ${SCRIPT_LOGFILE}
-rm -rf sentinel
+#rm -rf sentinel
 rm -rf sentinel_${CODENAME}
 git clone ${SENTINEL_URL} sentinel_${CODENAME} &>> ${SCRIPT_LOGFILE}
 cd sentinel_${CODENAME}                                                 &>> ${SCRIPT_LOGFILE}
