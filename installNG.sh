@@ -375,10 +375,16 @@ function create_mn_configuration() {
 		echo "/root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_stopService.sh;/sbin/runuser -l masternode -c '/usr/local/bin/${CODENAME}d -reindex -pid=/var/lib/masternodes/${CODENAME}${NUM}/${CODENAME}.pid -conf=/etc/masternodes/${CODENAME}_n${NUM}.conf -datadir=/var/lib/masternodes/${CODENAME}${NUM}'" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_reindex.sh
 
 		echo "/root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_stopService.sh;/sbin/runuser -l masternode -c '/usr/local/bin/${CODENAME}d -deamon -pid=/var/lib/masternodes/${CODENAME}${NUM}/${CODENAME}.pid -conf=/etc/masternodes/${CODENAME}_n${NUM}.conf -datadir=/var/lib/masternodes/${CODENAME}${NUM}'" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_restartWithoutService.sh
-
 		
 		echo "/usr/local/bin/${CODENAME}-cli -conf=/etc/masternodes/${CODENAME}_n${NUM}.conf getinfo" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_getInfo.sh
-	
+		echo "/usr/local/bin/${CODENAME}-cli -conf=/etc/masternodes/${CODENAME}_n${NUM}.conf masternode status" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_masternode_status.sh		
+
+		echo "/usr/local/bin/${CODENAME}-cli -conf=/etc/masternodes/${CODENAME}_n${NUM}.conf mnsync status" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_masternode_sync_status.sh		
+		echo "/usr/local/bin/${CODENAME}-cli -conf=/etc/masternodes/${CODENAME}_n${NUM}.conf masternode debug" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_masternode_debug.sh		
+
+		
+		  
+ 	
 		echo "service ${CODENAME}_n${NUM} status" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_statusOfService.sh			
 		echo "service ${CODENAME}_n${NUM} stop" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_stopService.sh			
 		echo "service ${CODENAME}_n${NUM} start" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_startService.sh			
@@ -389,9 +395,14 @@ function create_mn_configuration() {
 	
 		echo "nano /etc/masternodes/${CODENAME}_n${NUM}.conf" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_editMasternodeConfFile.sh
 		echo "nano ${SYSTEMD_CONF}/${CODENAME}_n${NUM}.service" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_editMasternodeConfFile.sh
+		
+		echo "service ${CODENAME}_n${NUM} stop;cd /var/lib/masternodes/${CODENAME}${NUM};rm -rf chainstate;rm -rf blocks;rm netfulfilled.dat;rm banlist.dat;rm fee_estimates.dat;rm mncache.dat;rm peers.dat;rm governance.dat;rm mnpayments.dat;service ${CODENAME}_n${NUM} start" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_clear_out_data_restart_with_blank_data.sh
 
+		echo "journalctl -u ${CODENAME}_n${NUM}.service -b" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_print_logs_of_service_of_current_boot.sh
+		echo "journalctl -u ${CODENAME}_n${NUM}.service" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_print_logs_of_service_of_current_boot.sh		
 
-
+		echo "netstat -plnt | grep "Program name"; netstat -plnt | grep ${CODENAME}" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_listening_on_what_ports.sh
+		
         done
         
 }
