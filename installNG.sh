@@ -245,7 +245,8 @@ rm -f rm sentinel.conf                                      &>> ${SCRIPT_LOGFILE
 			echo "NO NO IT DOES NO EXIST"
 			echo "/root/runmultipleSentinel${CODENAME}.sh" >> /root/runmultipleSentinel.sh			
 		fi  
-
+	
+	mkdir /var/log/sentinel_${CODENAME}
 
 
 	echo "/sbin/runuser -l masternode -c 'export SENTINEL_CONFIG=/usr/share/sentinel_${CODENAME}/${CODENAME}${NUM}/sentinel.conf; /usr/share/sentinelvenv_${CODENAME}/bin/python /usr/share/sentinel_${CODENAME}/bin/sentinel.py'" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_runSentinelToSeeOutput.sh					
@@ -468,7 +469,7 @@ function create_systemd_configuration() {
 function set_permissions() {
 
 	# maybe add a sudoers entry later
-	chown -R ${MNODE_USER}:${MNODE_USER} ${MNODE_CONF_BASE} ${MNODE_DATA_BASE} /var/log/sentinel &>> ${SCRIPT_LOGFILE}	
+	chown -R ${MNODE_USER}:${MNODE_USER} ${MNODE_CONF_BASE} ${MNODE_DATA_BASE} /var/log/sentinel* &>> ${SCRIPT_LOGFILE}	
 
 }
 
