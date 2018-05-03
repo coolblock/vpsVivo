@@ -247,7 +247,7 @@ rm -f rm sentinel.conf                                      &>> ${SCRIPT_LOGFILE
 		fi  
 	
 	mkdir /var/log/sentinel_${CODENAME}
-
+	echo "rm -rf /var/log/sentinel_${CODENAME}" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_remove_sentinel_files.sh		
 
 	echo "/sbin/runuser -l masternode -c 'export SENTINEL_CONFIG=/usr/share/sentinel_${CODENAME}/${CODENAME}${NUM}/sentinel.conf; /usr/share/sentinelvenv_${CODENAME}/bin/python /usr/share/sentinel_${CODENAME}/bin/sentinel.py'" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_runSentinelToSeeOutput.sh					
 
@@ -399,7 +399,11 @@ function create_mn_configuration() {
 		echo "cd /var/lib/masternodes/${CODENAME}${NUM};exec bash" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_goToWhereDataFilesAre.sh
 		echo "cd /etc/masternodes/;exec bash" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_goToWhereMasternodeConfFilesAre.sh
 	
-		echo "rm -f /usr/local/bin/${CODENAME}d" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_remove_${CODENAME}_executable.sh	
+		echo "rm -f /usr/local/bin/${CODENAME}d" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_remove_executable.sh	
+		echo "rm -rf /var/lib/masternodes/${CODENAME}${NUM}" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_remove_data_files.sh		
+		echo "rm -f /etc/masternodes/${CODENAME}_n${NUM}.conf" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_remove_conf.sh		
+	
+	
 	
 		echo "rm -f /etc/masternodes/${CODENAME}_n${NUM}.conf" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_removeMasternodeConfFile.sh	
 		echo "nano /etc/masternodes/${CODENAME}_n${NUM}.conf" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_editMasternodeConfFile.sh
