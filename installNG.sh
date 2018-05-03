@@ -388,6 +388,7 @@ function create_mn_configuration() {
 		echo "tail -f /var/lib/masternodes/${CODENAME}${NUM}/db.log" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_tail_the_debug_log_file.sh				
 		
 
+		echo "tail -f /var/lib/masternodes/${CODENAME}${NUM}/db.log" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_tail_the_debug_log_file.sh				
 		  
  	
 		echo "service ${CODENAME}_n${NUM} status" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_statusOfService.sh			
@@ -398,8 +399,11 @@ function create_mn_configuration() {
 		echo "cd /var/lib/masternodes/${CODENAME}${NUM};exec bash" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_goToWhereDataFilesAre.sh
 		echo "cd /etc/masternodes/;exec bash" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_goToWhereMasternodeConfFilesAre.sh
 	
+		echo "rm -f /usr/local/bin/${CODENAME}d" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_remove_${CODENAME}_executable.sh	
+	
+		echo "rm -f /etc/masternodes/${CODENAME}_n${NUM}.conf" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_removeMasternodeConfFile.sh	
 		echo "nano /etc/masternodes/${CODENAME}_n${NUM}.conf" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_editMasternodeConfFile.sh
-		echo "nano ${SYSTEMD_CONF}/${CODENAME}_n${NUM}.service" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_editMasternodeConfFile.sh
+		echo "nano ${SYSTEMD_CONF}/${CODENAME}_n${NUM}.service" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_editMasternodeServiceFile.sh
 		
 		echo "service ${CODENAME}_n${NUM} stop;cd /var/lib/masternodes/${CODENAME}${NUM};rm -rf chainstate;rm -rf blocks;rm netfulfilled.dat;rm banlist.dat;rm fee_estimates.dat;rm mncache.dat;rm peers.dat;rm governance.dat;rm mnpayments.dat;service ${CODENAME}_n${NUM} start" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_clear_out_data_restart_with_blank_data.sh
 
