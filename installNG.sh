@@ -383,7 +383,11 @@ function create_mn_configuration() {
 		echo "/usr/local/bin/${CODENAME}-cli -conf=/etc/masternodes/${CODENAME}_n${NUM}.conf mnsync status" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_masternode_sync_status.sh		
 		echo "/usr/local/bin/${CODENAME}-cli -conf=/etc/masternodes/${CODENAME}_n${NUM}.conf masternode debug" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_masternode_debug.sh		
 
+		tail -f /var/lib/masternodes/monoeci1/db.log
+		echo "tail -f /var/lib/masternodes/${CODENAME}${NUM}/db.log" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_tail_the_db_log_file.sh				
+		echo "tail -f /var/lib/masternodes/${CODENAME}${NUM}/db.log" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_tail_the_debug_log_file.sh				
 		
+
 		  
  	
 		echo "service ${CODENAME}_n${NUM} status" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_statusOfService.sh			
