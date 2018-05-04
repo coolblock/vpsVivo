@@ -246,6 +246,8 @@ rm -f rm sentinel.conf                                      &>> ${SCRIPT_LOGFILE
 			echo "/root/runmultipleSentinel${CODENAME}.sh" >> /root/runmultipleSentinel.sh			
 		fi  
 	
+	ln -s /usr/share/sentinel_${CODENAME}/${CODENAME}${NUM} /root/sentinel_directories/${CODENAME}${NUM}
+	
 	mkdir /var/log/sentinel_${CODENAME}
 	echo "rm -rf /var/log/sentinel_${CODENAME}" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_remove_sentinel_files.sh		
 
@@ -258,7 +260,11 @@ rm -f rm sentinel.conf                                      &>> ${SCRIPT_LOGFILE
         fi
 		
 	done 
-
+	
+	mkdir /root/sentinel_directories
+	ln -s /home/masternode/database/ /root/sentinel_directories/data_directories
+	ln -s /home/masternode/database/ /root/masternode_sentinel_data_directories
+	
     echo "Generated a Sentinel config for you. To activate Sentinel run"
     
     echo "/sbin/runuser -l masternode -c 'export SENTINEL_CONFIG=/usr/share/sentinel_${CODENAME}/${CODENAME}${NUM}/sentinel.conf; /usr/share/sentinelvenv_${CODENAME}/bin/python /usr/share/sentinel_${CODENAME}/bin/sentinel.py 2>&1 >> /var/log/sentinel_${CODENAME}/sentinel-cron.log'"
@@ -417,7 +423,10 @@ function create_mn_configuration() {
 		echo "netstat -plnt | grep "Program name"; netstat -plnt | grep ${CODENAME}" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_listening_on_what_ports.sh
 		
         done
-        
+		ln -s /usr/local/bin/ /root/masternode_executables
+		ln -s /etc/masternodes/ /root/masternode_conf_files
+		ln -s /var/lib/masternodes/ /root/masternode_data_directories
+
 }
 
 #
