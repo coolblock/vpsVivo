@@ -423,6 +423,19 @@ function create_mn_configuration() {
 		echo "netstat -plnt | grep "Program name"; netstat -plnt | grep ${CODENAME}" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_listening_on_what_ports.sh
 		
         done
+
+		echo "netstat -plnt | grep "Program name"; netstat -plnt | grep ${CODENAME}" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_listening_on_what_ports.sh
+		
+		echo "chown -R masternode:masternode /home/masternode/" >> /root/mnTroubleshoot/fix_ownership_on_all.sh
+		echo "chown -R masternode:masternode /usr/share/sentinel*" >> /root/mnTroubleshoot/fix_ownership_on_all.sh
+		echo "chown -R masternode:masternode /usr/share/sentinelvenv*" >> /root/mnTroubleshoot/fix_ownership_on_all.sh
+		echo "chown -R masternode:masternode /usr/local/bin/" >> /root/mnTroubleshoot/fix_ownership_on_all.sh
+		echo "chown -R masternode:masternode /var/lib/masternodes/" >> /root/mnTroubleshoot/fix_ownership_on_all.sh
+		echo "chown -R masternode:masternode /etc/masternodes/" >> /root/mnTroubleshoot/fix_ownership_on_all.sh
+				
+		chmod +x /root/mnTroubleshoot/fix_ownership_on_all.sh
+		/root/mnTroubleshoot/fix_ownership_on_all.sh
+		
 		ln -s /usr/local/bin/ /root/masternode_executables
 		ln -s /etc/masternodes/ /root/masternode_conf_files
 		ln -s /var/lib/masternodes/ /root/masternode_data_directories
