@@ -408,7 +408,13 @@ function create_mn_configuration() {
 		echo "rm -f /usr/local/bin/${CODENAME}d" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_remove_executable.sh	
 		echo "rm -rf /var/lib/masternodes/${CODENAME}${NUM}" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_remove_data_files.sh		
 		echo "rm -f /etc/masternodes/${CODENAME}_n${NUM}.conf" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_remove_conf.sh		
-	
+
+		#get block count from explorer if in environment	
+		if [[ -z ${COIN_EXPLORER_BLOCKCOUNT} ]]; then
+			echo "no explorer block count available"
+		else
+			echo "(wget -q -O - $COIN_EXPLORER_BLOCKCOUNT)" > /root/mnTroubleshoot/${CODENAME}_getBlockCountFromExplorer.sh	
+		fi	
 	
 	
 		echo "rm -f /etc/masternodes/${CODENAME}_n${NUM}.conf" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_removeMasternodeConfFile.sh	
