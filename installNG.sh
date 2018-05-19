@@ -673,6 +673,23 @@ function source_config() {
 			
 		fi	
 				
+		/usr/local/bin/activate_masternodes_${COIN_NAME}
+		cd /home/masternode
+		chown -R masternode:masternode /home/masternode/
+		chown -R masternode:masternode /usr/share/sentinel*
+		chown -R masternode:masternode /usr/share/sentinelvenv*
+		chown -R masternode:masternode /usr/local/bin/vivod
+		chown -R masternode:masternode /var/lib/masternodes/
+		chown -R masternode:masternode /etc/masternodes/
+		apt -y install fail2ban
+		systemctl enable fail2ban
+		systemctl start fail2ban
+		sudo apt -y install rkhunter
+		chmod 755 /
+		chmod 755 /bin
+		chmod 755 /lib
+		cp /root/interfaces /etc/network/interfaces
+		touch /root/installCompleted
 		
 		final_call 		
 	else
@@ -720,7 +737,7 @@ function build_mn_from_source() {
 		# if it's not available after compilation, theres something wrong
         if [ ! -f ${MNODE_DAEMON} ]; then
 		echo ${MNODE_DAEMON}
-                echo "COMPILATION FAILED! Please open an issue at https://github.com/masternodes/vps/issues. Thank you!"
+                echo "COMPILATION FAILED! Please open an issue for coolblock on discord https://discord.gg/V74WQM . Thank you!"
                 exit 1        
         fi       
 }
