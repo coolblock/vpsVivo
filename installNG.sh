@@ -703,7 +703,7 @@ function source_config() {
 		chown -R masternode:masternode /home/masternode/
 		chown -R masternode:masternode /usr/share/sentinel*
 		chown -R masternode:masternode /usr/share/sentinelvenv*
-		chown -R masternode:masternode /usr/local/bin/vivod
+		chown -R masternode:masternode /usr/local/bin/
 		chown -R masternode:masternode /var/lib/masternodes/
 		chown -R masternode:masternode /etc/masternodes/
 		apt -y install fail2ban
