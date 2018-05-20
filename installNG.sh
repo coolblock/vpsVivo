@@ -691,7 +691,7 @@ function source_config() {
 			echo "/root/mnTroubleshoot/${CODENAME}/ -type f | xargs sed -i \"s_ masternode _ ${COIN_MASTERNODE_REPLACEMENT_STRING} _g\""  > /root/mnTroubleshoot/${CODENAME}/replaceMasternodeString.sh			
 		fi	
 				
-		/usr/local/bin/activate_masternodes_${COIN_NAME}
+		/usr/local/bin/activate_masternodes_${CODENAME}
 		cd /home/masternode
 		chown -R masternode:masternode /home/masternode/
 		chown -R masternode:masternode /usr/share/sentinel*
