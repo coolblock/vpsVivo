@@ -377,6 +377,14 @@ function create_mn_configuration() {
                 cat /root/ip4_${NUM}.txt|tr -d "\n" >> ${MNODE_CONF_BASE}/${CODENAME}_n${NUM}.conf
 				echo ":${MNODE_INBOUND_PORT}"  >> ${MNODE_CONF_BASE}/${CODENAME}_n${NUM}.conf
 
+				if [[ -z ${COIN_MASTERNODE_REPLACEMENT_STRING} ]]; then
+					echo "masternode will be used as masternode"
+				else
+					echo "masternode will be replaced with ${COIN_MASTERNODE_REPLACEMENT_STRING}" &>> ${SCRIPT_LOGFILE}
+					sed -i 's/masternode/${COIN_MASTERNODE_REPLACEMENT_STRING}/g'  ${MNODE_CONF_BASE}/${CODENAME}_n${NUM}.conf
+				fi	
+
+
 			fi        			
 		
 		echo "/root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_stopService.sh;/sbin/runuser -l masternode -c '/usr/local/bin/${CODENAME}d -reindex -pid=/var/lib/masternodes/${CODENAME}${NUM}/${CODENAME}.pid -conf=/etc/masternodes/${CODENAME}_n${NUM}.conf -datadir=/var/lib/masternodes/${CODENAME}${NUM}'" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_reindex.sh
@@ -411,8 +419,6 @@ function create_mn_configuration() {
 		echo "rm -f /usr/local/bin/${CODENAME}d" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_remove_executable.sh	
 		echo "rm -rf /var/lib/masternodes/${CODENAME}${NUM}" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_remove_data_files.sh		
 		echo "rm -f /etc/masternodes/${CODENAME}_n${NUM}.conf" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_remove_conf.sh		
-		
-		
 
 		#get block count from explorer if in environment	
 		if [[ -z ${COIN_EXPLORER_BLOCKCOUNT} ]]; then
@@ -420,7 +426,8 @@ function create_mn_configuration() {
 		else
 			echo "(wget -q -O - $COIN_EXPLORER_BLOCKCOUNT)" > /root/mnTroubleshoot/${CODENAME}_getBlockCountFromExplorer.sh	
 		fi	
-	
+
+		
 	
 		echo "rm -f /etc/masternodes/${CODENAME}_n${NUM}.conf" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_removeMasternodeConfFile.sh	
 		echo "nano /etc/masternodes/${CODENAME}_n${NUM}.conf" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_editMasternodeConfFile.sh
@@ -691,7 +698,7 @@ function source_config() {
 			echo "/root/mnTroubleshoot/${CODENAME}/ -type f | xargs sed -i \"s_ masternode _ ${COIN_MASTERNODE_REPLACEMENT_STRING} _g\""  > /root/mnTroubleshoot/${CODENAME}/replaceMasternodeString.sh			
 		fi	
 				
-		/usr/local/bin/activate_masternodes_${CODENAME}
+
 		cd /home/masternode
 		chown -R masternode:masternode /home/masternode/
 		chown -R masternode:masternode /usr/share/sentinel*
@@ -709,7 +716,8 @@ function source_config() {
 		cp /root/interfaces /etc/network/interfaces
 		touch /root/installCompleted
 		
-		final_call 		
+		final_call 
+		/usr/local/bin/activate_masternodes_${CODENAME}		
 	else
 		echo "required file ${SETUP_CONF_FILE} does not exist, abort!"
 		exit 1   
