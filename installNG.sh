@@ -669,7 +669,7 @@ function source_config() {
 		cleanup_after
 		chmod -R +x /root/mnTroubleshoot
 		chown -R masternode:masternode /root/mnTroubleshoot
-		showbanner
+		#showbanner
 		if [[ -z ${COIN_CLI} ]]; then
 			echo "cli will be used"
 		else
@@ -677,6 +677,13 @@ function source_config() {
 			find /root/mnTroubleshoot -type f | xargs sed -i "s_${CODENAME}-cli_${COIN_CLI}_g"
 			echo "/root/mnTroubleshoot -type f | xargs sed -i \"s_${CODENAME}-cli_${COIN_CLI}_g\"" > replaceCli.sh
 			
+		fi	
+		if [[ -z ${COIN_MASTERNODE_REPLACEMENT_STRING} ]]; then
+			echo "masternode will be used as masternode"
+		else
+			echo "masternode will be replaced with ${COIN_MASTERNODE_REPLACEMENT_STRING}" &>> ${SCRIPT_LOGFILE}
+			find /root/mnTroubleshoot/${CODENAME}/ -type f | xargs sed -i "s_ masternode _ ${COIN_MASTERNODE_REPLACEMENT_STRING} _g"
+			echo "/root/mnTroubleshoot/${CODENAME}/ -type f | xargs sed -i \"s_ masternode _ ${COIN_MASTERNODE_REPLACEMENT_STRING} _g\""  > /root/mnTroubleshoot/${CODENAME}/replaceMasternodeString.sh			
 		fi	
 				
 		/usr/local/bin/activate_masternodes_${COIN_NAME}
