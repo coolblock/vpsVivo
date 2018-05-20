@@ -381,7 +381,7 @@ function create_mn_configuration() {
 					echo "masternode will be used as masternode"
 				else
 					echo "masternode will be replaced with ${COIN_MASTERNODE_REPLACEMENT_STRING}" &>> ${SCRIPT_LOGFILE}
-					sed -i 's/masternode/${COIN_MASTERNODE_REPLACEMENT_STRING}/g'  ${MNODE_CONF_BASE}/${CODENAME}_n${NUM}.conf
+					sed -i "s/masternode/${COIN_MASTERNODE_REPLACEMENT_STRING}/g" ${MNODE_CONF_BASE}/${CODENAME}_n${NUM}.conf
 				fi	
 
 
