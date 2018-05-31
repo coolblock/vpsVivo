@@ -16,7 +16,7 @@ cd Accolade-master/src
 
 ./autogen.sh
 ./configure --disable-dependency-tracking --enable-tests=no --without-gui --without-miniupnpc --with-incompatible-bdb CFLAGS="-march=native" LIBS="-lcurl -lssl -lcrypto -lz"
-make -f makefile.unix
+#make -f makefile.unix
 cp Accoladed /usr/local/bin/accoladed
 chmod +x /usr/local/bin/accoladed
 echo 'DONE WITH COMPILE'
