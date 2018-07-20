@@ -115,6 +115,8 @@ function install_packages() {
     make autoconf automake libtool git apt-utils libprotobuf-dev pkg-config \
     libcurl3-dev libudev-dev libqrencode-dev bsdmainutils pkg-config libssl-dev \
     libgmp3-dev libevent-dev jp2a pv virtualenv	&>> ${SCRIPT_LOGFILE}
+	
+	sudo apt install speedtest-cli -y
 }
 
 #
