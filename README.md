@@ -9,10 +9,17 @@ Ideally you will have at least a 1 gig ram machine. A 512 will work but will tak
 One way is to use this entire single line:
 
 cd;apt install -y git screen;echo 'masternodeprivkey=xxxxxxxxxxxxxxxxxxxxxxxxxxxx'>pk_vivo_1.txt;git clone https://github.com/coolblock/vpsVIVO.git;screen -dmS new_screen bash;screen -S new_screen -p 0 -X exec /root/vpsVIVO/coinMnInstall.sh vivo 1
+
 # Option 2
 Another way is to grab this file and modify and then run it. You grab it by typeing
-wget https://raw.githubusercontent.com/coolblock/vpsVIVO/master/utils/vivo/1vivo.sh
-chmod +x 1vivo.sh
+
+wget https://raw.githubusercontent.com/coolblock/vpsVIVO/master/utils/vivo/1vivo.sh;
+apt-get install nano
+#edit the file
+apt-get install -y nano
+nano 1vivo.sh;
+#controlx to exit nano
+chmod +x 1vivo.sh; 
 ./1vivo.sh
 # Option 3
 If you have trouble or you want to use multiple commands you can:
