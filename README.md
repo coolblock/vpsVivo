@@ -1,180 +1,70 @@
-# Nodemaster
 
-Based on the **Nodemaster** scripts is a collection of utilities to manage, setup and update masternode instances. 
+Newest Technique to install ONE vivo masternode (there are other instructions to install multiple):
+First time installation as root on ubuntu 16 or above.
 
-## Installation
+All in one line BUT replace the XXXXX with your private key
 
-SSH to your VPS and clone the Github repository:
+cd;apt install -y git screen;echo 'masternodeprivkey=xxxxxxxxxxxxxxxxxxxxxxxxxxxx'>pk_vivo_1.txt;git clone https://github.com/coolblock/vpsVIVO.git;screen -dmS new_screen bash;screen -S new_screen -p 0 -X exec /root/vpsVIVO/coinMnInstall.sh vivo 1
 
-```bash
-git clone https://github.com/masternodes/vps.git && cd vps
-```
+Installs a vivo masternode using an ip4. It will build the masternode from source. It will run as a service and will be restarted if the vps is restarted.
 
-Install & configure your desired master node with options:
+Copy the line below into notepad and after modyfying it, run the entire line as root.
+As root, you can run the following command in one line but replace the xxx s with your private key.
 
-```bash
-./install.sh -p pivx
-```
+The vps script will run for 15 minutes and disconnect your ssh session. Putty will show a disconnect error. That means the machine is rebooting. You can restart another session if you want to check the vps.
 
+# Set up Cold Wallet and start masternode after VPS has rebooted
 
-## Examples for typical script invocation 
+Meanwhile set up your cold wallet, the masternode.conf file on your windows machine (if that is where your cold wallet is at).
 
-These are only a couple of examples for typical setups. Check my [easy step-by-step guide for [vultr](/docs/masternode_vps.md) that will guide you through the hardest parts. 
-
-**Install & configure 4 PIVX masternodes:**
-
-```bash
-./install.sh -p pivx -c 4
-```
-
-**Install 4 PIVX masternodes, update daemon:**
-
-```bash
-./install.sh -p pivx -c 4 -u
-```
-
-**Install 6 PIVX masternodes with the git release tag "tags/v3.0.5.1"**
-
-```bash
-./install.sh -p pivx -c 6 -r "tags/v3.0.5.1"
-```
-
-**Wipe all PIVX masternode data:**
-
-```bash
-./install.sh -p pivx -w
-```
-
-**Install 2 PIVX masternodes and configure sentinel monitoring:**
-
-```bash
-./install.sh -p pivx -c 2 -s
-```
-
-## Options
-
-The *install.sh* script support the following parameters: 
-
-| Long Option | Short Option | Values | description |
-| :--- | :--- | --- | --- |
-|  --project             | -p | project, e.g. "pix" | shortname for the project |
-| --net                | -n | "4" / "6"  | ip type for masternode. (ipv)6 is default |
-| --release                | -r | e.g. "tags/v3.0.4"  | a specific git tag/branch, defaults to latest tested  |
-| --count              | -c | number | amount of masternodes to be configured |
-| --update               | -u    | --    | update specified masternode daemon, combine with -p flag |
-| --sentinel               | -s    | --    | install and configure sentinel for node monitoring |
-| --wipe               | -w    | --    | uninstall & wipe all related master node data, combine with -p flag |
-| --help               | -h    | --    | print help info |
-
-## Troubleshooting the masternode on the VPS
-
-If you want to check the status of your masternode, the best way is currently running the cli e.g. for $MUE via
-
-```
-/usr/local/bin/mue-cli -conf=/etc/masternodes/mue_n1.conf getinfo
-
-{
-  "version": 1000302,
-  "protocolversion": 70701,
-  "walletversion": 61000,
-  "balance": 0.00000000,
-  "privatesend_balance": 0.00000000,
-  "blocks": 209481,
-  "timeoffset": 0,
-  "connections": 5,
-  "proxy": "",
-  "difficulty": 42882.54964804553,
-  "testnet": false,
-  "keypoololdest": 1511380627,
-  "keypoolsize": 1001,
-  "paytxfee": 0.00000000,
-  "relayfee": 0.00010000,
-  "errors": ""
-}
-```
-
-# Help, Issues and Questions
-
-I activated the "[issues](https://github.com/masternodes/vps/issues)" option on github to give you a way to document defects and feature wishes. Feel free top [open issues](https://github.com/masternodes/vps/issues) for problems / features you are missing here: [https://github.com/masternodes/vps/issues](https://github.com/masternodes/vps/issues).
-
-I might not be able to reply immediately, but i do usually within a couple of days at worst. I will also happily take any pull requests that make masternode installations easier for everyone ;-)
-
-If this script helped you in any way, please contribute some feedback. BTC donations also welcome and never forget:
-
-**Have fun, this is crypto after all!**
-
-```
-BTC  33ENWZ9RCYBG7nv6ac8KxBUSuQX64Hx3x3
-```
-
-## Management script (not yet implemented)
-
-The management script release will follow within the next couple of days. 
-
-| command | description |
-| :--- | --- |
-| nodemaster start pivx (all\|number) | start all or a specific pivx masternode(s) |
-| nodemaster restart pivx (all\|number) | stop all or a specific pivx masternode(s) |
-| nodemaster stop pivx (all\|number) | restart all or a specific pivx masternode(s) |
-| nodemaster cleanup pivx (all\|number) | delete chain data for all pivx masternodes |
-| nodemaster status pivx (all\|number) | systemd process status for a pivx masternode |
-| nodemaster tail pivx (all\|number) | tail debug logs for a pivx masternode |
-
-# Supported cryptos
-
-| CRYPTO  | Logo | Url |
-|--------|--------------|-----|
-| PIVX |  ![PIVX](/assets/pivx.jpg)  |  https://pivx.org/ |
-| DASH |  ![DASH](/assets/dash.jpg)  | https://www.dash.org/ |
-| DESIRE |  ![DESIRE](/assets/desire.jpg)  | https://github.com/lazyboozer/Desire  |
-| PURE |  ![PURE](/assets/pure.jpg)  | https://github.com/puredev321/pure    |
-| ENT  |  ![ENT](/assets/ent.jpg)  | http://ent.eternity-group.org/    |
-| SYNX |  ![SYNX](/assets/synx.jpg)  | http://syndicatelabs.io/  |
-| CHC |  ![CHAIN](/assets/chain.jpg)  | https://www.chaincoin.org/  |
-| ZEN |  ![ZEN](/assets/zen.jpg)  | https://zensystem.io/  |
-| DP |  ![DPRICE](/assets/dprice.jpg)  | http://digitalprice.org/  |
-| VIVO |  ![VIVO](/assets/vivo.jpg)  | https://www.vivocrypto.com/  |
-| ITZ |  ![ITZ](/assets/itz.jpg)  | https://interzone.space/  |
-| MEME |  ![MEME](/assets/meme.jpg)  | http://www.memetic.ai/  |
-| ARC |  ![ARC](/assets/arc.jpg)  | https://arcticcoin.org/  |
-| CRAVE |  ![CRAVE](/assets/crave.jpg)  | https://www.craveproject.com/  |
-| PIE |  ![PIE](/assets/pie.jpg)  | https://github.com/flintsoft/PIE  |
-| XCXT |  ![XCXT](/assets/xcxt.jpg)  | http://coinonatx.com/  |
-| SCORE |  ![SCORE](/assets/score.jpg)  | http://scorecoin.site/ |
-| BITSEND |  ![BITSEND](/assets/bitsend.jpg)  | https://bitsend.info/ |
-| XZC |  ![ZCOIN](/assets/zcoin.jpg)  | https://zcoin.io/ |
-| INSANE |  ![INSN](/assets/insane.jpg)  | https://insanecoin.com/ |
-| XIOS | ![XIOS](/assets/xios.jpg)  | https://bitcointalk.org/index.php?topic=2251159.0/ |
-| HAV | ![HAV](/assets/have.jpg)  | https://bitcointalk.org/index.php?topic=2336026.0 |
-| NTRN | ![NTRN](/assets/ntrn.jpg)  | https://www.neutroncoin.com/ |
-| RNS | ![RNS](/assets/rns.jpg)  | https://bitcointalk.org/index.php?topic=1809933.msg18029683#msg18029683/ |
-| SOLARIS | ![SOLARIS](/assets/solaris.jpg)  | http://www.solariscoin.com/ |
-| BTDX | ![BTDX](/assets/btdx.jpg)  | https://bit-cloud.info/ |
-| INNOVA | ![INNOVA](/assets/innova.jpg)  | http://innovacoin.info/ |
-| FORCE | ![FORCE](/assets/force.jpg)  | https://bitcointalk.org/index.php?topic=2359378 |
-| BITRADIO | ![BITRADIO](/assets/bitradio.jpg)  | https://bitrad.io/ |
-| MONA | ![MONA](/assets/mona.jpg) | https://monacocoin.net/ |
-| ALQO | ![ALQO](/assets/alqo.jpg) | https://alqo.org |
-| YUP | ![YUP](/assets/yup.jpg) | http://yupcrypto.com/ |
-| MTNC | ![MTNC](/assets/mtnc.jpg) | http://www.masternodecoin.org/ |
-| CROWN | ![CROWN](/assets/crown.jpg) | https://crown.tech/ |
-| BLOCKNET | ![BLOCK](/assets/block.jpg) | https://blocknet.co/ |
-| DTMI | ![DTMI](/assets/dtmi.jpg) | https://bitcointalk.org/index.php?topic=2325196.0 |
-| MAGNA | ![MAGNA](/assets/magna.jpg) | https://www.magnacoin.org/ |
-| CROWD | ![CROWD](/assets/crowd.jpg) | http://crowdcoin.site/ |
-| NUMUS | ![NUMUS](/assets/numus.jpg) | http://numus.cash/ |
-| NODE | ![NODE](/assets/node.jpg) | https://bitnodes.co/ |
-| SUB1X | ![SUB1X](/assets/sub1x.jpg) | https://bitcointalk.org/index.php?topic=2282282.0 |
-| SEND | ![SEND](/assets/send.jpg) | https://socialsend.io/ |
-| CREAM | ![CREAM](/assets/cream.jpg) | http://cream.technology/ |
+After the server has rebooted, you will need to start the alias on the cold wallet.
 
 
-# Todo
-* provide my Dockerfile & Vagrantfile
-* write more test cases
-* implement a binary option (?) 
-* output all supported cryptos as list within help
+# Looking at the VPS information
 
-# Errors
-* currently not fully idempotent
+The conf file is located at:
+/etc/masternodes/vivo_n1.conf
+
+Executables like vivod are in:
+/usr/local/bin
+
+Data directory is in:
+/var/lib/masternodes/vivo1
+
+To do an individual run of sentinel:
+/root/runsentinelnolog1.sh
+
+To do a getinfo:
+/usr/local/bin/vivo-cli -conf=/etc/masternodes/vivo_n1.conf getinfo
+
+# Troubleshooting
+
+99 percent of the time, a problem is because of invalid private key or a mistake on the the cold wallet (the controlling wallet).
+
+To see if the deamon is running: 
+service vivo_n1 status
+
+Or you can look at top and see if vivod exists in the list
+
+To start the deamon: 
+service vivo_n1 start
+
+If it does not start, to trouble shoot the "starting":
+
+/sbin/runuser -l masternode -c '/usr/local/bin/vivod -daemon -pid=/var/lib/masternodes/vivo1/vivo.pid -conf=/etc/masternodes/vivo_n1.conf -datadir=/var/lib/masternodes/vivo1'
+
+Look at the output
+
+If you have made a mistake with your privatekey, 
+nano conf=/etc/masternodes/vivo_n1.conf
+Go the the bottom and fix it
+control x to save
+and then type in
+reboot
+That will restart everything.
+
+TO REINDEX:
+(one single line below)
+
+service vivo_n1 stop;/sbin/runuser -l masternode -c '/usr/local/bin/vivod -reindex -pid=/var/lib/masternodes/vivo1/vivo.pid -conf=/etc/masternodes/vivo_n1.conf -datadir=/var/lib/masternodes/vivo1'
 
