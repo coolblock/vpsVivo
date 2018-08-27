@@ -4,6 +4,8 @@ First time installation as root on ubuntu 16 or above.
 
 All in one line BUT replace the XXXXX with your private key
 
+Ideally you will have at least a 1 gig ram machine. A 512 will work but will take half a day to build.
+
 cd;apt install -y git screen;echo 'masternodeprivkey=xxxxxxxxxxxxxxxxxxxxxxxxxxxx'>pk_vivo_1.txt;git clone https://github.com/coolblock/vpsVIVO.git;screen -dmS new_screen bash;screen -S new_screen -p 0 -X exec /root/vpsVIVO/coinMnInstall.sh vivo 1
 
 Installs a vivo masternode using an ip4. It will build the masternode from source. It will run as a service and will be restarted if the vps is restarted.
