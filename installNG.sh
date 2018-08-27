@@ -389,8 +389,8 @@ function create_mn_configuration() {
 
 			fi        			
 		
-			echo -n "/usr/local/bin/innova-cli -conf=/etc/masternodes/innova_n1.conf masternodelist full " > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_masternode_status.sh 
-			cut -d'=' -f2 /root/ip4_1.txt |tr -d "\n" >> /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_masternode_status.sh 
+			echo -n "/usr/local/bin/innova-cli -conf=/etc/masternodes/innova_n1.conf masternodelist full " > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_masternode_status_node.sh 
+			cut -d'=' -f2 /root/ip4_1.txt |tr -d "\n" >> /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_masternode_status_node.sh 
 		
 		echo "/root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_stopService.sh;/sbin/runuser -l masternode -c '/usr/local/bin/${CODENAME}d -reindex -pid=/var/lib/masternodes/${CODENAME}${NUM}/${CODENAME}.pid -conf=/etc/masternodes/${CODENAME}_n${NUM}.conf -datadir=/var/lib/masternodes/${CODENAME}${NUM}'" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_reindex.sh
 
