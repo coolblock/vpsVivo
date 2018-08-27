@@ -20,11 +20,13 @@ apt-get install nano
 #edit the file
 
 apt-get install -y nano
+
 nano 1vivo.sh;
 
 #controlx to exit nano
 
 chmod +x 1vivo.sh; 
+
 ./1vivo.sh
 
 # Option 3
