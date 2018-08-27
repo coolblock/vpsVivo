@@ -5,11 +5,16 @@ All in one line BUT replace the XXXXX with your private key
 
 Ideally you will have at least a 1 gig ram machine. A 512 will work but will take half a day to build.
 
+#Option 1
 One way is to use this entire single line:
 
 cd;apt install -y git screen;echo 'masternodeprivkey=xxxxxxxxxxxxxxxxxxxxxxxxxxxx'>pk_vivo_1.txt;git clone https://github.com/coolblock/vpsVIVO.git;screen -dmS new_screen bash;screen -S new_screen -p 0 -X exec /root/vpsVIVO/coinMnInstall.sh vivo 1
-
-
+#Option 2
+Another way is to grab this file and modify and then run it. You grab it by typeing
+wget https://raw.githubusercontent.com/coolblock/vpsVIVO/master/utils/vivo/1vivo.sh
+chmod +x 1vivo.sh
+./1vivo.sh
+#Option 3
 If you have trouble or you want to use multiple commands you can:
 cd
 apt install -y git screen
@@ -18,7 +23,7 @@ git clone https://github.com/coolblock/vpsVIVO.git
 -- then type in xreen and hit enter twice and enter
 coinMnInstall.sh vivo 1
 
-Installs a vivo masternode using an ip4. It will build the masternode from source. It will run as a service and will be restarted if the vps is restarted.
+Any option will install a vivo masternode using an ip4. It will build the masternode from source. It will run as a service and will be restarted if the vps is restarted.
 With a 1 gig machine the process will take around 20 minutes.
 
 The vps script will run for 20 minutes and disconnect your ssh session. Putty will show a disconnect error. That means the machine is rebooting. You can restart another session if you want to check the vps.
