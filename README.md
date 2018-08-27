@@ -14,20 +14,31 @@ cd;apt install -y git screen;echo 'masternodeprivkey=xxxxxxxxxxxxxxxxxxxxxxxxxxx
 Another way is to grab this file and modify and then run it. You grab it by typeing
 
 wget https://raw.githubusercontent.com/coolblock/vpsVIVO/master/utils/vivo/1vivo.sh;
+
 apt-get install nano
+
 #edit the file
+
 apt-get install -y nano
 nano 1vivo.sh;
+
 #controlx to exit nano
+
 chmod +x 1vivo.sh; 
 ./1vivo.sh
+
 # Option 3
 If you have trouble or you want to use multiple commands you can:
 cd
+
 apt install -y git screen
+
 echo 'masternodeprivkey=xxxxxxxxxxxxxxxxxxxxxxxxxxxx'>pk_vivo_1.txt
+
 git clone https://github.com/coolblock/vpsVIVO.git
+
 -- then type in xreen and hit enter twice and enter
+
 coinMnInstall.sh vivo 1
 
 Any option will install a vivo masternode using an ip4. It will build the masternode from source. It will run as a service and will be restarted if the vps is restarted.
