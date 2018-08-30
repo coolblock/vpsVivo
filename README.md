@@ -1,5 +1,6 @@
 Newest Technique to install ONE vivo masternode (there are other instructions to install multiple):
 First time installation as root on ubuntu 16 or above.
+This will work if there are no other masternodes installed. Otherwise unknown conflicts can occur.
 
 All in one line BUT replace the XXXXX with your private key
 
