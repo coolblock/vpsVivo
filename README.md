@@ -57,6 +57,16 @@ After the server has rebooted, you will need to start the alias on the cold wall
 
 # To update
 
+## option 1 update
+
+wget https://raw.githubusercontent.com/coolblock/vpsVIVO/master/coinMnUpdate.sh
+
+chmod +x coinMnUpdate.sh
+
+./coinMnUpdate.sh
+
+## option 2 update
+
 cd
 
 rm -rf vpsVIVO
