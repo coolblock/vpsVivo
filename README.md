@@ -63,7 +63,9 @@ wget https://raw.githubusercontent.com/coolblock/vpsVIVO/master/coinMnUpdate.sh
 
 chmod +x coinMnUpdate.sh
 
-./coinMnUpdate.sh
+./coinMnUpdate.sh vivo 1
+
+This will rebuild vivo
 
 ## option 2 update
 
