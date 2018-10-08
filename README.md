@@ -58,8 +58,11 @@ After the server has rebooted, you will need to start the alias on the cold wall
 # To update
 
 cd
+
 rm -rf vpsVIVO
+
 git clone https://github.com/coolblock/vpsVIVO.git
+
 /root/vpsVIVO/coinMnUpdate.sh vivo 1
 
 This will rebuild vivo
