@@ -40,9 +40,9 @@ echo 'masternodeprivkey=xxxxxxxxxxxxxxxxxxxxxxxxxxxx'>pk_vivo_1.txt
 
 git clone https://github.com/coolblock/vpsVIVO.git
 
--- then type in xreen and hit enter twice and enter
+-- then type in sreen and hit enter twice and enter
 
-coinMnInstall.sh vivo 1
+/root/vpsVIVO/coinMnInstall.sh vivo 1
 
 Any option will install a vivo masternode using an ip4. It will build the masternode from source. It will run as a service and will be restarted if the vps is restarted.
 With a 1 gig machine the process will take around 20 minutes.
@@ -55,6 +55,14 @@ Meanwhile set up your cold wallet, the masternode.conf file on your windows mach
 
 After the server has rebooted, you will need to start the alias on the cold wallet.
 
+# To update
+
+cd
+rm -rf vpsVIVO
+git clone https://github.com/coolblock/vpsVIVO.git
+/root/vpsVIVO/coinMnUpdate.sh vivo 1
+
+This will rebuild vivo
 
 # Looking at the VPS information
 
