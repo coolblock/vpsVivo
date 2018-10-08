@@ -10,7 +10,7 @@ COIN_NAME=$1
 cd
 mkdir /var/log/sentinel
 rm -rf /root/vpsVIVO/
-git clone https://github.com/coolblock/vpsVIVO.git
+git clone https://github.com/vivocoin/vivo.git 
 cd vpsVIVO/
 #git checkout v1.0 
 chmod +x installNG.sh
