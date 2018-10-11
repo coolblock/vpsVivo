@@ -144,6 +144,10 @@ Or
 
 service vivo_n1 stop;/sbin/runuser -l masternode -c '/usr/local/bin/vivod -reindex -pid=/var/lib/masternodes/vivo1/vivo.pid -conf=/etc/masternodes/vivo_n1.conf -datadir=/var/lib/masternodes/vivo1'
 
+## To resync with cleared/empty data
+
+/root/mnTroubleshoot/vivo/vivo1_clear_out_data_restart_with_blank_data.sh
+
 # Multiple Masternodes
 
 For those who want to install multiple masternodes, each masternode has to have its own private key and its own ip to bind to.
