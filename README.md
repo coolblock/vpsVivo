@@ -96,7 +96,33 @@ To do a getinfo:
 
 # Troubleshooting
 
-99 percent of the time, a problem is because of invalid private key or a mistake on the the cold wallet (the controlling wallet).
+99 percent of the time, if it does not start, the problem is because of invalid private key or a mistake on the the cold wallet (the controlling wallet).
+
+If you have made a mistake with your privatekey,
+ 
+nano conf=/etc/masternodes/vivo_n1.conf
+
+Go the the bottom and fix it
+control x to save
+and then type in
+
+reboot
+
+That will restart everything.
+
+
+Remember you can type in 
+
+reboot
+
+to restart the system.
+
+
+The first troubleshooting script to run is
+
+/root/vpsVIVO/overAllMnStat.sh
+
+It will tell you what it ran and what the result was.
 
 To see if the deamon is running: 
 service vivo_n1 status
@@ -112,13 +138,6 @@ If it does not start, to trouble shoot the "starting":
 
 Look at the output
 
-If you have made a mistake with your privatekey, 
-nano conf=/etc/masternodes/vivo_n1.conf
-Go the the bottom and fix it
-control x to save
-and then type in
-reboot
-That will restart everything.
 
 # Troubleshooting files
 
