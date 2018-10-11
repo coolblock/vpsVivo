@@ -120,8 +120,60 @@ and then type in
 reboot
 That will restart everything.
 
-TO REINDEX:
+# Troubleshooting files
+
+Many commands are in: /root/mnTroubleshoot/vivo/
+
+As in:
+
+/root/mnTroubleshoot/vivo/vivo1_reindex.sh
+
+/root/mnTroubleshoot/vivo/vivo1_stopService.sh
+
+/root/mnTroubleshoot/vivo/vivo1_getInfo.sh
+
+
+## TO REINDEX:
+
+
+/root/mnTroubleshoot/vivo/vivo1_reindex.sh
+
+Or
+
 (one single line below)
 
 service vivo_n1 stop;/sbin/runuser -l masternode -c '/usr/local/bin/vivod -reindex -pid=/var/lib/masternodes/vivo1/vivo.pid -conf=/etc/masternodes/vivo_n1.conf -datadir=/var/lib/masternodes/vivo1'
+
+# Multiple Masternodes
+
+For those who want to install multiple masternodes, each masternode has to have its own private key and its own ip to bind to.
+
+The ip of the first masternode was in 
+
+/root/ip4_1.txt
+
+The ip of the second masternode should go in 
+
+/root/ip4_2.txt
+
+The private key of the first masternode will be in: 
+
+/root/pk_vivo_1.txt
+
+The private key of the second masternode should go in: 
+
+/root/pk_vivo_2.txt
+
+Now for a total of two masternodes you must run 
+
+/root/vpsVIVO/coinMnInstall.sh vivo 2
+
+The 2 at the end means install a total of 2 masternodes. It will use the /root/ip4_1.txt, /root/ip4_2.txt, and /root/pk_vivo_1.txt, /root/pk_vivo_2.txt files.
+
+These each will have their separate sentinel installs.
+
+
+
+
+
 
