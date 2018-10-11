@@ -16,8 +16,6 @@ Another way is to grab this file and modify and then run it. You grab it by type
 
 wget https://raw.githubusercontent.com/coolblock/vpsVIVO/master/utils/vivo/1vivo.sh;
 
-apt-get install nano
-
 #edit the file
 
 apt-get install -y nano
