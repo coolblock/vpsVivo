@@ -170,6 +170,16 @@ Now for a total of two masternodes you must run
 
 The 2 at the end means install a total of 2 masternodes. It will use the /root/ip4_1.txt, /root/ip4_2.txt, and /root/pk_vivo_1.txt, /root/pk_vivo_2.txt files.
 
+If you have more files you can run
+
+/root/vpsVIVO/coinMnInstall.sh vivo 3
+
+or
+
+/root/vpsVIVO/coinMnInstall.sh vivo 4
+
+as many as your system can handle. Remember each has its own database and will take space. Also you will need enough cpu power to run multiple masternodes.
+
 These each will have their separate sentinel installs.
 
 
