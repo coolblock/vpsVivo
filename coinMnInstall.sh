@@ -15,6 +15,7 @@ cd vpsVIVO/
 #git checkout v1.0 
 chmod +x installNG.sh
 ./installNG.sh -p ${COIN_NAME} -n 4 -s -c "$2"
+
 if [ "$3" == "noreboot" ]; then  
 	echo "===== DONE ====== ${COIN_NAME} === "
 else
