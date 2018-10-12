@@ -100,7 +100,7 @@ To do a getinfo:
 
 If you have made a mistake with your privatekey,
  
-nano conf=/etc/masternodes/vivo_n1.conf
+nano /etc/masternodes/vivo_n1.conf
 
 Go the the bottom and fix it
 control x to save
