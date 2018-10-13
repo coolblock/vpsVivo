@@ -404,11 +404,8 @@ function create_mn_configuration() {
 
 		
 		echo "tail -f /var/lib/masternodes/${CODENAME}${NUM}/db.log" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_tail_the_db_log_file.sh				
-		echo "tail -f /var/lib/masternodes/${CODENAME}${NUM}/db.log" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_tail_the_debug_log_file.sh				
-		
-
-		echo "tail -f /var/lib/masternodes/${CODENAME}${NUM}/db.log" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_tail_the_debug_log_file.sh				
-		  
+		echo "tail -f /var/lib/masternodes/${CODENAME}${NUM}/debug.log" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_tail_the_debug_log_file.sh				
+  
  	
 		echo "service ${CODENAME}_n${NUM} status" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_statusOfService.sh			
 		echo "service ${CODENAME}_n${NUM} stop" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_stopService.sh			
