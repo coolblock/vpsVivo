@@ -622,9 +622,6 @@ function source_config() {
 		echo "I am going to install and configure "
         echo "=> ${count} ${project} masternode(s) in version ${SCVERSION} "
         echo "for you now."
-        echo ""
-		echo "You have to add your masternode private key to the individual config files afterwards"
-		echo ""
 		echo "Stay tuned!"
         echo ""
 		# show a hint for MANUAL IPv4 configuration
@@ -783,8 +780,9 @@ function final_call() {
     echo "=> All configuration files are in: ${MNODE_CONF_BASE}"
     echo "=> All Data directories are in: ${MNODE_DATA_BASE}"
 	echo ""
-	echo "last but not least, run /usr/local/bin/activate_masternodes_${CODENAME} as root to activate your nodes."	
-
+    	
+	toilet -f bigmono9 -F gay Finishing
+	
     # place future helper script accordingly
     cp ${SCRIPTPATH}/scripts/activate_masternodes.sh ${MNODE_HELPER}_${CODENAME}
 	echo "">> ${MNODE_HELPER}_${CODENAME}
