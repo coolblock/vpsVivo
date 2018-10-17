@@ -623,6 +623,11 @@ function source_config() {
 		echo "I am going to install and configure "
         echo "=> ${count} ${project} masternode(s) in version ${SCVERSION} "
         echo "for you now."
+		if [ "$binary" -eq 1 ]; then
+			echo "I will get binaries install them." 	 
+		fi	
+
+
 		echo "Stay tuned!"
         echo ""
 		# show a hint for MANUAL IPv4 configuration
