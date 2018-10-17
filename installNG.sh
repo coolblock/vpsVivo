@@ -71,6 +71,7 @@ function show_help(){
     echo "-c or --count: Number of masternodes to be installed.";
     echo "-r or --release: Release version to be installed.";
     echo "-s or --sentinel: Add sentinel monitoring for a node type. Combine with the -p option";    
+    echo "-b or --binary: install binaries instead of building source";    
     echo "-w or --wipe: Wipe ALL local data for a node type. Combine with the -p option";
     echo "-u or --update: Update a specific masternode daemon. Combine with the -p option";
     echo "-r or --release: Release version to be installed.";    
@@ -652,9 +653,19 @@ function source_config() {
 		# main routine
         prepare_mn_interfaces
         swaphack
-        install_packages	
-		build_mn_from_source
 		create_mn_user
+        install_packages	
+
+		if [ "$binary" -eq 1 ]; then
+			echo "Will grab binaries." 	 
+			build_mn_with_binary
+		fi	
+		
+		if [ "$binary" -eq 0 ]; then
+			echo "Will build source." 	 
+			build_mn_from_source
+		fi	
+		
 		create_mn_dirs
 		echo "--- What to do about sentinel ..." >> /root/sentinelInstalledOrNot.txt				
 		echo "The sentine url is: ${SENTINEL_URL}" >> /root/sentinelInstalledOrNot.txt				
@@ -689,7 +700,7 @@ function source_config() {
 			
 		fi	
 		if [[ -z ${COIN_MASTERNODE_REPLACEMENT_STRING} ]]; then
-			echo "masternode will be used as masternode"
+			echo "user masternode will be used as masternode"
 		else
 			echo "masternode will be replaced with ${COIN_MASTERNODE_REPLACEMENT_STRING}" &>> ${SCRIPT_LOGFILE}
 			find /root/mnTroubleshoot/${CODENAME}/ -type f | xargs sed -i "s_ masternode _ ${COIN_MASTERNODE_REPLACEMENT_STRING} _g"
@@ -722,6 +733,28 @@ function source_config() {
 	fi
 	
 }
+
+#instead of building from source just installing binary - for ubuntu 16 only
+function build_mn_with_binary() {
+	figlet Binaries
+	cd
+	rm -rf vtemp	
+	mkdir vtemp
+	cd vtemp
+	mkdir /usr/local
+	mkdir /usr/local/bin
+	chown masternode:masternode /usr/local/bin
+	wget https://github.com/vivocoin/vivo/releases/download/v0.12.1.8/Vivo-0.12.1.8-ubuntu16.04.tar.gz
+	tar -xvf Vivo-0.12.1.8-ubuntu16.04.tar.gz 
+	cd vivo
+	cp * /usr/local/bin/
+	chown masternode:masternode /usr/local/bin
+	chmod +x /usr/local/bin/*
+	chown masternode:masternode /usr/local/bin
+	cd
+	rm -rf vtemp
+}
+
 
 #
 # /* no parameters, builds the required masternode binary from sources. Exits if already exists and "update" not given  */
@@ -889,6 +922,7 @@ wipe=0;
 debug=0;
 update=0;
 sentinel=0;
+binary=0;
 
 # Execute getopt
 ARGS=$(getopt -o "hp:n:c:r:wsud" -l "help,project:,net:,count:,release:,wipe,sentinel,update,debug" -n "install.sh" -- "$@");
@@ -943,6 +977,10 @@ while true; do
             shift;
                     wipe="1";
             ;;
+        -b|--binary)
+            shift;
+                    binary="1";
+            ;;            
         -s|--sentinel)
             shift;
                     sentinel="1";
