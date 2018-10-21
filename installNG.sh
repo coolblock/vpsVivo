@@ -736,12 +736,14 @@ function source_config() {
 		echo "required file ${SETUP_CONF_FILE} does not exist, abort!"
 		exit 1   
 	fi
-	
+		toilet -f bigmono9 -F gay Finishing
 }
 
 #instead of building from source just installing binary - for ubuntu 16 only
 function build_mn_with_binary() {
 	figlet Binaries
+	apt-get install libzmq3-dev -y
+	
 	cd
 	rm -rf vtemp	
 	mkdir vtemp
@@ -818,8 +820,7 @@ function final_call() {
     echo "=> All configuration files are in: ${MNODE_CONF_BASE}"
     echo "=> All Data directories are in: ${MNODE_DATA_BASE}"
 	echo ""
-    	
-	toilet -f bigmono9 -F gay Finishing
+
 	
     # place future helper script accordingly
     cp ${SCRIPTPATH}/scripts/activate_masternodes.sh ${MNODE_HELPER}_${CODENAME}
