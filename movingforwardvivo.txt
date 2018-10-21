@@ -1,0 +1,209 @@
+mongo
+> use explorerdb
+> db.createUser( { user: "iquidus", pwd: "3xp!0reR", roles: [ "readWrite" ] } )
+> db.addUser( { user: "username", pwd: "password", roles: [ "readWrite"] })
+git clone https://github.com/SigwoTechnologies/explorer
+cd explorer && npm install --production
+cp ./settings.json.template ./settings.json
+npm start
+
+node --stack-size=10000 bin/instance
+#To stop the cluster you can use
+#npm stop
+
+
+/home/explorer
+*/1 * * * * cd /home/explorer && /usr/bin/node scripts/sync.js index update > /dev/null 2>&1
+@reboot /usr/local/bin/forever start /home/explorer/bin/cluster
+
+
+A credit cart    10dollars                     for 10 vivo.                 B seller credit card
+buyer vivo address      <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<      seller vivo address
+
+
+credit cart    10dollars                     for 10 vivo.                 C seller credit card
+A buyer vivo address   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>    seller vivo address
+
+
+Anonymous triangle
+
+
+Not only am I paying for this but I have a responsability to the people. If we want to go to bittrex, I have to be squeeky clean. That is why I would rather stay anonymous until everything falls into place properly.
+
+
+
+Announcement
+
+As of Today, I am now fully in charge of VIVO. Jimmy has transfered VIVO operations.
+
+Currently we see a price decrease that had made some think that the coin was abandoned This delayed annoncement did not help. 
+
+Moving forward, several issues need to be dealt with:
+
+1.Blcok times
+2.High speed delivery of new projects
+	web wallet
+	multi sig functionality
+3.Marketing Plan
+4.Whitepaper
+
+In order to improve the coin, an upgraded network of nodes is what is needed. To do that, developers upgrade the software and hodlers upgrade thier wallets and the network is upgraded.
+Currently there is no way to have hodler update and many have done nothing with their wallets.
+
+Currently there are 900 masternodes that require a new start. That means the people are not paying attantion to wallets and upgrades. Based on that, changing the code was not an option because many would not upgrade and we would have new code conflicting with old code constantly.
+
+A coin upgrade through forking was planned but due to its cost being more than the available funds, it could not be implemented. Now, private funds (mine) are being loaned to be able to upgrade the coin through an exchange of coins/swap. The forking was not only very expensive, but also time consuming with multiple split chains and it would have been far more frustrating to the community causing dramatic proce drops. By going through this methode of upgrade VIVO will improve exponentially.
+
+Specs on the upgraded coin.
+
+Auto update capability for self hosted masternodes
+Wallets that can control masternode creation
+
+Proof of Stake 
+	no more energy consuming hardware mining necessay. 
+	Uniform Block times	
+	You will not need to have a masternode to earn rewards, you can stake
+ipv6 capable
+	bringing down the cost of vps hosting
+Inter market trading
+	blocknet
+	fiat exchange system for vivo (bisq)
+
+Things we may or may not lose are (unless there is funding):
+cripto bridge
+coinomi	
+
+
+
+
+
+
+
+
+
+I will assume a worst case that the new pivx based on goes down to 1 cent a piece.
+
+
+
+
+	
+1. To be ipv6 capable right away, so that vps costs are affordable to people.
+2. Bisque code has to be set up.
+3. Electrum server and wallet
+4. Insight and its web wallet.
+5. Functioning gitian build system and release system
+
+Masternodes will require double, and the reward is double.
+A dev fund will be available.
+Unlike PIVX, it will not be never ending, there must be a cap. 21 million i assume.
+A percentage will go to dev.
+
+There are issues to deal with. One is to be sure that cryptopia will not cause other problems, other requiements and payments or delisting.
+
+
+One choice would have been crowdfunding, but right now, I don't think anyone will fund anything.
+I will be doing this as a loan to VIVO and hope to be paid back.
+
+So, I need more education on how does the mining happen, who handles the coins, the accounting. etc.
+What is the schedule of payments to people.
+Whe gets what when, and security issues.
+
+The possibility is that it will fail right a way.
+To mitigate the possiblity it has to hit the ground running.
+I will help with dev, so that should lighten some of the load.
+For it to prevent a freefall, I believe we have to have these MINIMUM capabilities
+
+-From a PR standpoint, this is a coin upgrade, not a coin swap.
+
+1. To be ipv6 capable right away, so that vps costs are affordable to people.
+2. Bisque code has to be set up.
+3. Electrum server and wallet
+4. Insight and its web wallet.
+5. Functioning gitian build system and release system
+
+-I don't not want the first git commit to be a renaming excercise in PIVX
+-web wallet and multisig are requirements
+-Crypto bridge, will be delisted, we can't affort them.
+
+
+
+
+
+
+We need web wallet instead of android and ios.
+PI Wallet
+masternode builder with autoupdater
+wallet to have a new version signal.
+
+- Android
+- IOS wallet
+- Tor or Ip2 functionality
+
+I have to talk to coinomi to see what costs they have.
+
+-Coinomy
+-vivocoin.net
+-blocknet
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+How will funds be dispersed.
+Then I will have to handle people that come in far later and complain. A fund to handle those.
+
+How to pay it anonymously.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+#Syncing databases with the blockchain
+#sync.js (located in scripts/) is used for updating the local databases. This script must be called from the explorers root directory.
+
+#Usage: node scripts/sync.js [database] [mode]
+
+#database: (required)
+#index [mode] Main index: coin info/stats, transactions & addresses
+#market       Market data: summaries, orderbooks, trade history & chartdata
+
+#mode: (required for index database only)
+#update       Updates index from last sync to current block
+#check        checks index for (and adds) any missing transactions/addresses
+#reindex      Clears index then resyncs from genesis to current block
+
+#notes:
+# 'current block' is the latest created block when script is executed.
+# The market database only supports (& defaults to) reindex mode.
+# If check mode finds missing data(ignoring new data since last sync),
+#  index_timeout in settings.json is set too low.
