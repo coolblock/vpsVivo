@@ -190,6 +190,8 @@ function remove_sentinel_setup_for_coin() {
 #
 function create_sentinel_setup() {
 
+figlet sentinel setup
+
 	# if code directory does not exists, we create it clone the src
 	#if [ ! -d /usr/share/sentinel ]; then
 
@@ -272,8 +274,8 @@ rm -f rm sentinel.conf                                      &>> ${SCRIPT_LOGFILE
 	chmod +x /root/runmultipleSentinel.sh
 	
     chown -R masternode:masternode /home/masternode/
-    chown -R masternode:masternode /usr/share/sentinel
-    chown -R masternode:masternode /usr/share/sentinelvenv
+    chown -R masternode:masternode /usr/share/sentinel*
+    chown -R masternode:masternode /usr/share/sentinelvenv*
 	if ! crontab -l | grep "/root/runmultipleSentinel.sh"; then
 		(crontab -l 2>/dev/null; echo "* * * * * /root/runmultipleSentinel.sh") | crontab -
 	fi
@@ -686,7 +688,8 @@ function source_config() {
 				create_sentinel_setup  	 
 			fi	
 				
-		fi		
+		fi
+		
 		configure_firewall      
 		create_mn_configuration
 		create_control_configuration
@@ -736,14 +739,26 @@ function source_config() {
 		echo "required file ${SETUP_CONF_FILE} does not exist, abort!"
 		exit 1   
 	fi
-		toilet -f bigmono9 -F gay Finishing
+	
 }
 
 #instead of building from source just installing binary - for ubuntu 16 only
 function build_mn_with_binary() {
 	figlet Binaries
-	apt-get install libzmq3-dev -y
-	
+apt-get install -y libzmq3-dev
+apt-get install -y libboost-system-dev libboost-filesystem-dev libboost-chrono-dev
+apt-get install -y libboost-program-options-dev libboost-test-dev libboost-thread-dev
+apt-get install -y unzip libminiupnpc-dev python-virtualenv libboost-all-dev
+apt-get install -y build-essential libtool autotools-dev automake pkg-config libssl-dev libevent-dev bsdmainutils
+apt-get install -y libevent-pthreads-2.0-5
+apt-get install -y software-properties-common && add-apt-repository -y ppa:bitcoin/bitcoin
+apt-get update -y
+apt-get install -y libdb4.8-dev libdb4.8++-dev
+apt-get install -y git virtualenv
+ 
+	/root/mnTroubleshoot/vivo/vivo1_stopService.sh
+	killall vivod
+ 
 	cd
 	rm -rf vtemp	
 	mkdir vtemp
@@ -760,6 +775,7 @@ function build_mn_with_binary() {
 	chown masternode:masternode /usr/local/bin
 	cd
 	rm -rf vtemp
+	
 }
 
 
@@ -810,17 +826,11 @@ function build_mn_from_source() {
 # /* no parameters, print some (hopefully) helpful advice  */
 # 
 function final_call() {
-	# note outstanding tasks that need manual work
-    echo "************! ALMOST DONE !******************************"	
-	echo "There is still work to do in the configuration templates."
-	echo "These are located at ${MNODE_CONF_BASE}, one per masternode."
-	echo "Add your masternode private keys now."
-	echo "eg in /etc/masternodes/${CODENAME}_n1.conf"
-	echo ""
     echo "=> All configuration files are in: ${MNODE_CONF_BASE}"
     echo "=> All Data directories are in: ${MNODE_DATA_BASE}"
 	echo ""
-
+    	
+	toilet -f bigmono9 -F gay Finishing
 	
     # place future helper script accordingly
     cp ${SCRIPTPATH}/scripts/activate_masternodes.sh ${MNODE_HELPER}_${CODENAME}
@@ -924,14 +934,16 @@ function prepare_mn_interfaces1() {
 ##################------------Menu()---------#####################################
 
 # Declare vars. Flags initalizing to 0.
+
 wipe=0;
 debug=0;
 update=0;
 sentinel=0;
 binary=0;
 
+
 # Execute getopt
-ARGS=$(getopt -o "hp:n:c:r:wsud" -l "help,project:,net:,count:,release:,wipe,sentinel,update,debug" -n "install.sh" -- "$@");
+ARGS=$(getopt -o "hp:n:c:r:wsudb" -l "help,project:,net:,count:,release:,wipe,sentinel,update,debug,binary" -n "installNG.sh" -- "$@");
  
 #Bad arguments
 if [ $? -ne 0 ];
@@ -983,10 +995,6 @@ while true; do
             shift;
                     wipe="1";
             ;;
-        -b|--binary)
-            shift;
-                    binary="1";
-            ;;            
         -s|--sentinel)
             shift;
                     sentinel="1";
@@ -999,8 +1007,11 @@ while true; do
             shift;
                     debug="1";
             ;;            
- 
-        --)
+       -b|--binary)
+            shift;
+                    binary="1";
+            ;;            
+         --)
             shift;
             break;
             ;;
@@ -1012,13 +1023,14 @@ if [ -z "$project" ]
 then
     show_help;
 fi
-
+ 
 # Check required arguments
 if [ "$wipe" -eq 1 ]; then
 	get_confirmation "Would you really like to WIPE ALL DATA!? YES/NO y/n" && wipe_all
 	exit 0
 fi		
-
+ 
+ 
 #################################################
 # source default config before everything else
 source ${SCRIPTPATH}/config/default.env
