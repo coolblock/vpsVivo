@@ -1,16 +1,4 @@
 #!/bin/bash
-#  ███╗   ██╗ ██████╗ ██████╗ ███████╗███╗   ███╗ █████╗ ███████╗████████╗███████╗██████╗ 
-#  ████╗  ██║██╔═══██╗██╔══██╗██╔════╝████╗ ████║██╔══██╗██╔════╝╚══██╔══╝██╔════╝██╔══██╗
-#  ██╔██╗ ██║██║   ██║██║  ██║█████╗  ██╔████╔██║███████║███████╗   ██║   █████╗  ██████╔╝
-#  ██║╚██╗██║██║   ██║██║  ██║██╔══╝  ██║╚██╔╝██║██╔══██║╚════██║   ██║   ██╔══╝  ██╔══██╗
-#  ██║ ╚████║╚██████╔╝██████╔╝███████╗██║ ╚═╝ ██║██║  ██║███████║   ██║   ███████╗██║  ██║
-#  ╚═╝  ╚═══╝ ╚═════╝ ╚═════╝ ╚══════╝╚═╝     ╚═╝╚═╝  ╚═╝╚══════╝   ╚═╝   ╚══════╝╚═╝  ╚═╝
-#                                                              ╚╗ @marsmensch 2016-2017 ╔╝                   				
-#                   
-# version 	v0.9.1
-# date    	2018-02-02
-#
-# function:	part of the masternode scripts, source the proper config file
 #                                                                      
 # 	Instructions:
 #               Run this script w/ the desired parameters. Leave blank or use -h for help.
@@ -104,7 +92,7 @@ function install_packages() {
 	toilet -f bigmono9 -F gay Starting
 	# development and build packages
 	# these are common on all cryptos
-	echo "* Package installation!"
+	echo "* Package installation!  Takes several minutes, please wait"
 	apt-get -qq -o=Dpkg::Use-Pty=0 -o=Acquire::ForceIPv4=true update
 	apt-get -qqy -o=Dpkg::Use-Pty=0 -o=Acquire::ForceIPv4=true install build-essential g++ \
 	protobuf-compiler libboost-all-dev autotools-dev \

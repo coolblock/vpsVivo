@@ -1,3 +1,16 @@
+
+To Install 1 vivo masternode in one shot cut and paste the following line and press enter
+wget -qO- https://raw.githubusercontent.com/coolblock/vpsVIVO/master/utils/vivo/1vivobin.sh | sudo bash
+
+to confirm that vivo is running, type in 
+top
+
+vivod should be in the list on the top right.
+
+-------------------------
+
+In case you must build from source:
+
 Newest Technique to install ONE vivo masternode (there are other instructions to install multiple):
 First time installation as root on ubuntu 16 or above.
 This will work if there are no other masternodes installed. Otherwise unknown conflicts can occur.
@@ -7,11 +20,6 @@ All in one line BUT replace the XXXXX with your private key
 Ideally you will have at least a 1 gig ram machine. A 512 will work but will take half a day to build.
 
 # Option 1
-One way is to use this entire single line:
-
-cd;apt install -y git screen;echo 'masternodeprivkey=xxxxxxxxxxxxxxxxxxxxxxxxxxxx'>pk_vivo_1.txt;git clone https://github.com/coolblock/vpsVIVO.git;screen -dmS new_screen bash;screen -S new_screen -p 0 -X exec /root/vpsVIVO/coinMnInstall.sh vivo 1
-
-# Option 2
 Another way is to grab this file and modify and then run it. You grab it by typeing
 
 wget https://raw.githubusercontent.com/coolblock/vpsVIVO/master/utils/vivo/1vivo.sh;
@@ -28,7 +36,7 @@ chmod +x 1vivo.sh;
 
 ./1vivo.sh
 
-# Option 3
+# Option 2
 If you have trouble or you want to use multiple commands you can:
 cd
 
