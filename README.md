@@ -1,8 +1,10 @@
 
 To Install 1 vivo masternode in one shot cut and paste the following line and press enter
+
 wget -qO- https://raw.githubusercontent.com/coolblock/vpsVIVO/master/utils/vivo/1vivobin.sh | sudo bash
 
 to confirm that vivo is running, type in 
+
 top
 
 vivod should be in the list on the top right.
