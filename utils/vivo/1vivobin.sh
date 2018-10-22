@@ -23,4 +23,4 @@ apt-get install -y build-essential libtool autotools-dev automake pkg-config lib
 rm -rf vpsVIVO/
 cd;apt install -y git screen;
 git clone https://github.com/coolblock/vpsVIVO.git;
-cd /root/vpsVIVO/installNG.sh -p vivo -n 4 -c 1 -s -d -b
+/root/vpsVIVO/installNG.sh -p vivo -n 4 -c 1 -s -d -b
