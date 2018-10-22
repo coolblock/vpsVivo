@@ -32,6 +32,11 @@ Not only am I paying for this but I have a responsability to the people. If we w
 
 
 
+
+
+
+
+
 Announcement
 
 As of Today, I am now fully in charge of VIVO. Jimmy has transfered VIVO operations.
@@ -40,19 +45,21 @@ Currently we see a price decrease that had made some think that the coin was aba
 
 Moving forward, several issues need to be dealt with:
 
-1.Blcok times
+1.Block times
 2.High speed delivery of new projects
 	web wallet
 	multi sig functionality
 3.Marketing Plan
 4.Whitepaper
 
-In order to improve the coin, an upgraded network of nodes is what is needed. To do that, developers upgrade the software and hodlers upgrade thier wallets and the network is upgraded.
-Currently there is no way to have hodler update and many have done nothing with their wallets.
+In order to improve the coin, an upgraded network of nodes is what is needed. To do that, developers upgrade the software and after hodlers upgrade their wallets and the network is upgraded.
+Currently there is no way to have hodlers update their wallets or masternodes and many have not.
 
-Currently there are 900 masternodes that require a new start. That means the people are not paying attantion to wallets and upgrades. Based on that, changing the code was not an option because many would not upgrade and we would have new code conflicting with old code constantly.
+For instance, currently there are 900 masternodes that require a new start. That means the people are not paying attantion to wallets and upgrades. Based on that, forking the code was not an option because many would not upgrade and the new code would be conflicting with old code for a long time.
 
-A coin upgrade through forking was planned but due to its cost being more than the available funds, it could not be implemented. Now, private funds (mine) are being loaned to be able to upgrade the coin through an exchange of coins/swap. The forking was not only very expensive, but also time consuming with multiple split chains and it would have been far more frustrating to the community causing dramatic proce drops. By going through this methode of upgrade VIVO will improve exponentially.
+Originally. a coin upgrade through forking was planned but after multiple problems emerged, it could not be implemented. Now, private funds (mine) are being loaned to be able to upgrade the coin through an exchange of coins/swap. The forking was not only very expensive, but also time consuming with multiple split chains and it would have been far more frustrating to the community causing dramatic proce drops. By going through this methode of upgrade VIVO will improve exponentially.
+
+The upgraded coin will be called Vivacious Coin but will still have the ticker VIVO
 
 Specs on the upgraded coin.
 
@@ -64,7 +71,7 @@ Proof of Stake
 	Uniform Block times	
 	You will not need to have a masternode to earn rewards, you can stake
 ipv6 capable
-	bringing down the cost of vps hosting
+	vps hosting should go down as those ips are usually free
 Inter market trading
 	blocknet
 	fiat exchange system for vivo (bisq)
@@ -73,27 +80,76 @@ Things we may or may not lose are (unless there is funding):
 cripto bridge
 coinomi	
 
+The website and discord will be where Github and market cap say it is.
+
+
+
+Will vivacious use the same port as the old vivo?
 
 
 
 
+
+
+Time line
+
+Choose 
+
+Stop Exchanging on Cryptopia
+
+Vivacious Go Live Day
+
+Because I am spending my own money, I am leery about certain risks.
+If there is a 51 percent attack while we are waiting for exchange day.
+
+I want to be able to back out before the day, for instance if there is a 51 percent attack.
+
+
+
+There is talk of the coin being half the number of present coins.
+So everyone would have 1 vivo for the ones the presently have. That concerns me because, the current price will not be adjusted.
+But the idea of increase number of coins needed for a masternode makes sense to me.
+
+But the best distribution is not clear to me.
 
 
 
 
 I will assume a worst case that the new pivx based on goes down to 1 cent a piece.
+We need to have an agreement that you will not sell all your new vivo, imediately.
+
+If people made a loan to vivo, the worst case it has to be set it up where the coin would pay back the lenders.
+
+Several ways of dealing with this, if I have to do this with my money, the vivo has to pay me back somehow.
 
 
 
 
+
+I was thinking, the least amount of work, the least amount of reinventing the wheel, why not just grab, pivx or bulwark and rename, change prefix, genesis etc.
+Won't we have all their capabilities including electrum built in?
+
+Basically I would like to get your help without using my personal funds and taking all the risk for the community. But the community has been battered hard.
+Peach the original creator tol
+
+
+We will be changing the coin name to vivacious, but we keep the ticker vivo.
 	
 1. To be ipv6 capable right away, so that vps costs are affordable to people.
 2. Bisque code has to be set up.
 3. Electrum server and wallet
 4. Insight and its web wallet.
-5. Functioning gitian build system and release system
+5. Functioning gitian build system release system
+6. Zerocoin implementation already in
 
 Masternodes will require double, and the reward is double.
+I am leary about giving 1 coin for every 2 vivo because the market does not care. Suddenly they have far less vivo.
+Masternode require more I would agree.
+
+Most new dev will be in webwallet using bisq for ease of use.
+   proprietary bisq web wallet.
+   
+
 A dev fund will be available.
 Unlike PIVX, it will not be never ending, there must be a cap. 21 million i assume.
 A percentage will go to dev.
@@ -124,6 +180,71 @@ For it to prevent a freefall, I believe we have to have these MINIMUM capabiliti
 -I don't not want the first git commit to be a renaming excercise in PIVX
 -web wallet and multisig are requirements
 -Crypto bridge, will be delisted, we can't affort them.
+
+
+
+
+
+
+
+Bitcoin talk.
+Twitter
+Swap Discord
+Slack
+
+
+
+
+
+As of a day or two ago, I have been given operational control of VIVO. Up until now, I could not do what had to be done because of lack of access and lack of control.
+Now it is different.
+
+I am a c++ java developer that went into management so building software is my bread and butter. Clearly there are some differences in doing work in business vs. the altcoin space.
+The previos leaders were mostly in the financial sphere.
+
+The first issue to deal with is the excessive cost of masternodes.
+hoddling in masternodes is too expensive right now.
+
+The docker solution will be replaced with a in wallet masternode control system, your wallet will build your masternode through ssh. (unless you host it with someone)
+
+To allow masternode hosting to be worthwhile and these prices, masternode collateral amounts will be increased. The reward will be the same, but you will not have to get extra ips.
+
+The overall value that will next be focused on is "ease of use".
+
+A web wallet is being working on right now.
+
+Ease of use elements include:
+
+Being able to know what version you have and if you are behind
+Being able to build a masternode quickly and with minim effort
+Building a msternode with the least amount of effort.
+If you are on the wrong chain, getting back on with minimum effort and time.
+Web wallet availability
+Explorers being available most of the time and correct
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
