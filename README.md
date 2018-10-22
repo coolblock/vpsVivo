@@ -1,9 +1,12 @@
+Have a private key ready by going to your wallet, to the debug console and typing in
+
+masternode genkey
 
 To Install 1 vivo masternode in one shot cut and paste the following line and press enter
 
 wget -qO- https://raw.githubusercontent.com/coolblock/vpsVIVO/master/utils/vivo/1vivobin.sh | sudo bash
 
-to confirm that vivo is running, type in 
+once it has finished, in order to confirm that vivo is running, type in 
 
 top
 
