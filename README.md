@@ -14,7 +14,7 @@ vivod should be in the list on the top right.
 
 -------------------------
 
-In case you must build from source:
+In case you must build from source: (for instance if it does not work with the latest ubuntu)
 
 Newest Technique to install ONE vivo masternode (there are other instructions to install multiple):
 First time installation as root on ubuntu 16 or above.
@@ -24,8 +24,8 @@ All in one line BUT replace the XXXXX with your private key
 
 Ideally you will have at least a 1 gig ram machine. A 512 will work but will take half a day to build.
 
-# Option 1
-Another way is to grab this file and modify and then run it. You grab it by typeing
+# Option 1 Installation
+Grab this file and modify and then run it. You grab it by typeing
 
 wget https://raw.githubusercontent.com/coolblock/vpsVIVO/master/utils/vivo/1vivo.sh;
 
@@ -41,7 +41,7 @@ chmod +x 1vivo.sh;
 
 ./1vivo.sh
 
-# Option 2
+# Option 2 Installation
 If you have trouble or you want to use multiple commands you can:
 cd
 
