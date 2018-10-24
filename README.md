@@ -1,3 +1,5 @@
+# Quick Install of Binaries on Ubuntu 16
+
 Have a private key ready by going to your wallet, to the debug console and typing in
 
 masternode genkey
