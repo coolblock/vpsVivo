@@ -16,7 +16,7 @@ vivod should be in the list on the top right.
 
 -------------------------
 
-## Building from Source
+# Building from Source
 
 In case you must build from source: (for instance if it does not work with the latest ubuntu)
 
@@ -28,7 +28,7 @@ All in one line BUT replace the XXXXX with your private key
 
 Ideally you will have at least a 1 gig ram machine. A 512 will work but will take half a day to build.
 
-# Option 1 Installation
+# Option 1 Installation with Source
 Grab this file and modify and then run it. You grab it by typeing
 
 wget https://raw.githubusercontent.com/coolblock/vpsVIVO/master/utils/vivo/1vivo.sh;
@@ -45,7 +45,7 @@ chmod +x 1vivo.sh;
 
 ./1vivo.sh
 
-# Option 2 Installation
+# Option 2 Installation with Source
 If you have trouble or you want to use multiple commands you can:
 cd
 
@@ -72,7 +72,7 @@ After the server has rebooted, you will need to start the alias on the cold wall
 
 # To update
 
-## option 1 update
+# option 1 update with Source
 
 wget https://raw.githubusercontent.com/coolblock/vpsVIVO/master/coinMnUpdate.sh
 
@@ -82,7 +82,7 @@ chmod +x coinMnUpdate.sh
 
 This will rebuild vivo
 
-## option 2 update
+# option 2 update with Source
 
 cd
 
