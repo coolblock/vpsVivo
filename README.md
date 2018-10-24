@@ -16,6 +16,8 @@ vivod should be in the list on the top right.
 
 -------------------------
 
+## Building from Source
+
 In case you must build from source: (for instance if it does not work with the latest ubuntu)
 
 Newest Technique to install ONE vivo masternode (there are other instructions to install multiple):
