@@ -16,6 +16,10 @@ top
 
 vivod should be in the list on the top right.
 
+To check the status, you can run the following multiple times and the numbers will change and blocks increase
+
+/root/vpsVIVO/overAllMnStat.sh
+
 -------------------------
 
 # Building from Source
