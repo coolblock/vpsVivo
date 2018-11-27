@@ -606,6 +606,11 @@ function source_config() {
 		if [ "$update" -eq 1 ]; then
 			echo "update given, deleting the old daemon NOW!" &>> ${SCRIPT_LOGFILE}
 			rm -f ${MNODE_DAEMON}  	 
+			sudo apt-get -y remove fail2ban
+			sudo apt-get -y remove --auto-remove fail2ban
+			sudo apt-get -y purge fail2ban
+			sudo apt-get -y purge --auto-remove fail2ban
+
 		fi
 
 		echo "************************* Installation Plan *****************************************"
@@ -711,9 +716,9 @@ function source_config() {
 		chown -R masternode:masternode /usr/local/bin/
 		chown -R masternode:masternode /var/lib/masternodes/
 		chown -R masternode:masternode /etc/masternodes/
-		apt -y install fail2ban
-		systemctl enable fail2ban
-		systemctl start fail2ban
+		#apt -y install fail2ban
+		#systemctl enable fail2ban
+		#systemctl start fail2ban
 		sudo apt -y install rkhunter
 		chmod 755 /
 		chmod 755 /bin
