@@ -6,6 +6,7 @@ cd;apt install -y git screen;
 git clone https://github.com/coolblock/vpsVIVO.git;
 cd vpsVIVO
 rm -rf /usr/local/bin/vivod
+rm -rf /usr/local/bin/vivo-cli
 ./installNG.sh -p vivo -n 4 -c 1 -s -d -b
 echo "To look at status of the masternode run:"
 echo "/root/vpsVIVO/overAllMnStat.sh"

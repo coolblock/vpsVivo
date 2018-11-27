@@ -1,10 +1,10 @@
 # Quick Install of Binaries on Ubuntu 16
 
-Have a private key ready by going to your wallet, to the debug console and typing in
+Have a private key ready by going to your (controlling) wallet, to the debug console and typing in 
 
 masternode genkey
 
-To Install 1 vivo masternode in one shot cut and paste the following line and press enter
+To Install 1 vivo masternode in one shot cut and paste the following line and press enter (as root)
 
 wget -qO- https://raw.githubusercontent.com/coolblock/vpsVIVO/master/utils/vivo/1vivobin.sh | sudo bash
 
@@ -21,6 +21,16 @@ To check the status, you can run the following multiple times and the numbers wi
 /root/vpsVIVO/overAllMnStat.sh
 
 -------------------------
+
+# Binary Update
+
+To update without building from source you use this line (as root):
+
+wget -qO- https://raw.githubusercontent.com/coolblock/vpsVivo/master/utils/vivo/1vivobinUpdate.sh | sudo bash
+
+This will erase the old binary and install the new one.
+
+==============================
 
 # Building from Source
 
