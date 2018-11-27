@@ -766,7 +766,8 @@ apt-get install -y git virtualenv
 	cp * /usr/local/bin/
 	chown masternode:masternode /usr/local/bin
 	chmod +x /usr/local/bin/*
-	chown masternode:masternode /usr/local/bin
+	rm -rf /usr/local/bin/vivo
+	chown -R masternode:masternode /usr/local/bin
 	cd
 	rm -rf vtemp
 	
