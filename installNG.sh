@@ -748,7 +748,8 @@ apt-get install -y software-properties-common && add-apt-repository -y ppa:bitco
 apt-get update -y
 apt-get install -y libdb4.8-dev libdb4.8++-dev
 apt-get install -y git virtualenv
- 
+apt-get install -y libdb5.3++
+
 	/root/mnTroubleshoot/vivo/vivo1_stopService.sh
 	killall vivod
  
@@ -760,7 +761,6 @@ apt-get install -y git virtualenv
 	mkdir /usr/local/bin
 	chown masternode:masternode /usr/local/bin
 	wget https://github.com/vivocoin/vivo/releases/download/v0.12.1.9/vivo-0.12.1.9-ubuntu16-vps-nogui.tgz
-	#wget https://github.com/vivocoin/vivo/releases/download/v0.12.1.8/Vivo-0.12.1.8-ubuntu16.04.tar.gz
 	tar -xvf vivo-0.12.1.9-ubuntu16-vps-nogui.tgz 
 	cd vivo
 	cp * /usr/local/bin/
