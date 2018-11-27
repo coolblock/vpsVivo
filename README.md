@@ -82,11 +82,7 @@ This is updating a system that used this system to install. It will not update a
 
 ## option 1 update with Source
 
-wget https://raw.githubusercontent.com/coolblock/vpsVIVO/master/coinMnUpdate.sh
-
-chmod +x coinMnUpdate.sh
-
-./coinMnUpdate.sh vivo 1
+wget https://raw.githubusercontent.com/coolblock/vpsVIVO/master/coinMnUpdate.sh;chmod +x coinMnUpdate.sh;./coinMnUpdate.sh vivo 1
 
 This will rebuild vivo
 
@@ -100,7 +96,7 @@ git clone https://github.com/coolblock/vpsVIVO.git
 
 /root/vpsVIVO/coinMnUpdate.sh vivo 1
 
-This will rebuild vivo
+This will also rebuild vivo
 
 # Looking at the VPS information
 
