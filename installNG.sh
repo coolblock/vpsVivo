@@ -759,7 +759,8 @@ apt-get install -y git virtualenv
 	mkdir /usr/local
 	mkdir /usr/local/bin
 	chown masternode:masternode /usr/local/bin
-	wget https://github.com/vivocoin/vivo/releases/download/v0.12.1.8/Vivo-0.12.1.8-ubuntu16.04.tar.gz
+	wget https://github.com/vivocoin/vivo/releases/download/v0.12.1.9/vivo-0.12.1.9-ubuntu16-vps-nogui.tgz
+	#wget https://github.com/vivocoin/vivo/releases/download/v0.12.1.8/Vivo-0.12.1.8-ubuntu16.04.tar.gz
 	tar -xvf Vivo-0.12.1.8-ubuntu16.04.tar.gz 
 	cd vivo
 	cp * /usr/local/bin/
