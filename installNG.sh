@@ -126,6 +126,35 @@ else
 fi
 }
 
+function bdb() {
+
+sudo dpkg -r libdb-dev
+cd
+rm db-4.8.30.NC.tar.gz
+wget http://download.oracle.com/berkeley-db/db-4.8.30.NC.tar.gz
+echo '12edc0df75bf9abd7f82f821795bcee50f42cb2e5f76a6a281b85732798364ef  db-4.8.30.NC.tar.gz' | sha256sum -c
+tar -xvf db-4.8.30.NC.tar.gz
+cd db-4.8.30.NC/build_unix
+mkdir -p build
+BDB_PREFIX=$(pwd)/build
+../dist/configure --disable-shared --enable-cxx --with-pic --prefix=$BDB_PREFIX
+make install
+cd ../..
+
+sudo ln -s /usr/local/BerkeleyDB.4.8 /usr/include/db4.8
+sudo ln -s /usr/include/db4.8/include/* /usr/include
+sudo ln -s /usr/include/db4.8/lib/* /usr/lib
+
+export BDB_INCLUDE_PATH="/usr/local/BerkeleyDB.4.8/include"
+export BDB_LIB_PATH="/usr/local/BerkeleyDB.4.8/lib"
+ln -s /usr/local/BerkeleyDB.4.8/lib/libdb-4.8.so /usr/lib/libdb-4.8.so
+
+PATH=$PATH:/usr/include/db4.8
+export PATH
+
+}
+
+
 #
 # /* no parameters, creates and activates a dedicated masternode user */
 #
@@ -711,7 +740,8 @@ function source_config() {
 			echo "/root/mnTroubleshoot/${CODENAME}/ -type f | xargs sed -i \"s_ masternode _ ${COIN_MASTERNODE_REPLACEMENT_STRING} _g\""  > /root/mnTroubleshoot/${CODENAME}/replaceMasternodeString.sh			
 		fi	
 				
-
+		bdb
+				
 		cd /home/masternode
 		chown -R masternode:masternode /home/masternode/
 		chown -R masternode:masternode /usr/share/sentinel*
