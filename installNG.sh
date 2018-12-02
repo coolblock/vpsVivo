@@ -695,8 +695,8 @@ function source_config() {
 		
 		if [ "$binary" -eq 0 ]; then
 			echo "Will build source." 	 
-			build_mn_from_source
 			bdb
+			build_mn_from_source
 		fi	
 		
 		create_mn_dirs
