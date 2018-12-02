@@ -613,6 +613,9 @@ function source_config() {
 
 		fi
 
+		@-------------------------------------------------------------------------------------------
+		@-------------------------------------------------------------------------------------------
+		@-------------------------------------------------------------------------------------------
 		echo "************************* Installation Plan *****************************************"
 		echo ""
 		echo "I am going to install and configure "
@@ -748,7 +751,7 @@ apt-get install -y software-properties-common && add-apt-repository -y ppa:bitco
 apt-get update -y
 apt-get install -y libdb4.8-dev libdb4.8++-dev
 apt-get install -y git virtualenv
-apt-get install -y libdb5.3++
+#apt-get install -y libdb5.3++
 
 	/root/mnTroubleshoot/vivo/vivo1_stopService.sh
 	killall vivod

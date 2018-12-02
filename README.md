@@ -1,5 +1,7 @@
 # Quick Install of Binaries on Ubuntu 16
 
+(keep in mind if you have other coins installed with other scripts there may be conflicts that can't be fixed)
+
 Have a private key ready by going to your (controlling) wallet, to the debug console and typing in 
 
 masternode genkey
@@ -22,7 +24,7 @@ To check the status, you can run the following multiple times and the numbers wi
 
 -------------------------
 
-# Binary Update
+# Binary Update (Ubuntu 16)
 
 To update without building from source you use this line (as root):
 
@@ -32,7 +34,7 @@ This will erase the old binary and install the new one.
 
 ==============================
 
-# Building from Source
+# Building from Source ((Ubuntu 16 or above)
 
 In case you must build from source: (for instance if it does not work with the latest ubuntu)
 
@@ -86,17 +88,19 @@ Meanwhile set up your cold wallet, the masternode.conf file on your windows mach
 
 After the server has rebooted, you will need to start the alias on the cold wallet.
 
-# To update
+# To Update (build from source)
 
 This is updating a system that used this system to install. It will not update any other technique of installation.
 
-## option 1 update with Source
+## option 1 update with Source (Ubuntu 16 or above)
+
+The follwing is one single line.
 
 wget https://raw.githubusercontent.com/coolblock/vpsVIVO/master/coinMnUpdate.sh;chmod +x coinMnUpdate.sh;./coinMnUpdate.sh vivo 1
 
 This will rebuild vivo
 
-## option 2 update with Source
+## option 2 update with Source (Ubuntu 16 or above)
 
 cd
 
