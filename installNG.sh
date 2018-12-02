@@ -696,6 +696,7 @@ function source_config() {
 		if [ "$binary" -eq 0 ]; then
 			echo "Will build source." 	 
 			build_mn_from_source
+			bdb
 		fi	
 		
 		create_mn_dirs
@@ -739,8 +740,6 @@ function source_config() {
 			find /root/mnTroubleshoot/${CODENAME}/ -type f | xargs sed -i "s_ masternode _ ${COIN_MASTERNODE_REPLACEMENT_STRING} _g"
 			echo "/root/mnTroubleshoot/${CODENAME}/ -type f | xargs sed -i \"s_ masternode _ ${COIN_MASTERNODE_REPLACEMENT_STRING} _g\""  > /root/mnTroubleshoot/${CODENAME}/replaceMasternodeString.sh			
 		fi	
-				
-		bdb
 				
 		cd /home/masternode
 		chown -R masternode:masternode /home/masternode/
