@@ -1,4 +1,4 @@
-# Quick Install of Binaries on Ubuntu 16
+# Quick Install of Binaries on (Ubuntu 16 and 18)
 
 (keep in mind if you have other coins installed with other scripts there may be conflicts that can't be fixed)
 
@@ -24,7 +24,7 @@ To check the status, you can run the following multiple times and the numbers wi
 
 -------------------------
 
-# Binary Update (Ubuntu 16)
+# Binary Update (Ubuntu 16 and 18)
 
 To update without building from source you use this line (as root):
 
@@ -34,7 +34,7 @@ This will erase the old binary and install the new one. It will not update your 
 
 ==============================
 
-# Building from Source ((Ubuntu 16 or above)
+# Building from Source (Ubuntu 16 or above)
 
 In case you must build from source: (for instance if it does not work with the latest ubuntu)
 
