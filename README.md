@@ -80,9 +80,9 @@ This is updating a system that used this system to install. It will not update a
 
 ## option 1 update with Source (Ubuntu 16 or above)
 
-The follwing is one single line.
+The following is one single line.
 
-wget -qO- https://raw.githubusercontent.com/coolblock/vpsVIVO/master/coinMnUpdate.sh;chmod +x coinMnUpdate.sh;./coinMnUpdate.sh vivo 1
+wget https://raw.githubusercontent.com/coolblock/vpsVIVO/master/coinMnUpdate.sh;chmod +x coinMnUpdate.sh;./coinMnUpdate.sh vivo 1
 
 This will rebuild vivo
 
