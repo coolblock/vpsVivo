@@ -49,7 +49,7 @@ Ideally you will have at least a 1 gig ram machine. A 512 might (and might NOT) 
 ## Option 1 Installation with Source
 Grab this file and modify and then run it. You grab it by typeing
 
-wget https://raw.githubusercontent.com/coolblock/vpsVIVO/master/utils/vivo/1vivo.sh | sudo bash
+wget -qO- https://raw.githubusercontent.com/coolblock/vpsVIVO/master/utils/vivo/1vivo.sh | sudo bash
 
 ## Option 2 Installation with Source
 If you have trouble or you want to use multiple commands you can:
@@ -82,7 +82,7 @@ This is updating a system that used this system to install. It will not update a
 
 The follwing is one single line.
 
-wget https://raw.githubusercontent.com/coolblock/vpsVIVO/master/coinMnUpdate.sh;chmod +x coinMnUpdate.sh;./coinMnUpdate.sh vivo 1
+wget -qO- https://raw.githubusercontent.com/coolblock/vpsVIVO/master/coinMnUpdate.sh;chmod +x coinMnUpdate.sh;./coinMnUpdate.sh vivo 1
 
 This will rebuild vivo
 

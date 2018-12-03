@@ -1,4 +1,4 @@
-Echo "Will build from Source"
+echo "Will build from Source"
 
 MNPK=
 echo "Please enter masternode private key and copy it here:"
