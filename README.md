@@ -30,7 +30,7 @@ To update without building from source you use this line (as root):
 
 wget -qO- https://raw.githubusercontent.com/coolblock/vpsVivo/master/utils/vivo/1vivobinUpdate.sh | sudo bash
 
-This will erase the old binary and install the new one.
+This will erase the old binary and install the new one. It will not update your conf files.
 
 ==============================
 
@@ -44,32 +44,18 @@ This will work if there are no other masternodes installed. Otherwise unknown co
 
 All in one line BUT replace the XXXXX with your private key
 
-Ideally you will have at least a 1 gig ram machine. A 512 will work but will take half a day to build.
+Ideally you will have at least a 1 gig ram machine. A 512 might (and might NOT) work but will take half a day to build.
 
 ## Option 1 Installation with Source
 Grab this file and modify and then run it. You grab it by typeing
 
-wget https://raw.githubusercontent.com/coolblock/vpsVIVO/master/utils/vivo/1vivo.sh;
-
-#edit the file
-
-apt-get install -y nano
-
-nano 1vivo.sh;
-
-#controlx to exit nano
-
-chmod +x 1vivo.sh; 
-
-./1vivo.sh
+wget https://raw.githubusercontent.com/coolblock/vpsVIVO/master/utils/vivo/1vivo.sh | sudo bash
 
 ## Option 2 Installation with Source
 If you have trouble or you want to use multiple commands you can:
 cd
 
 apt install -y git screen
-
-echo 'masternodeprivkey=xxxxxxxxxxxxxxxxxxxxxxxxxxxx'>pk_vivo_1.txt
 
 git clone https://github.com/coolblock/vpsVIVO.git
 
