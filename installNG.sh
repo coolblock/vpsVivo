@@ -415,13 +415,22 @@ function create_mn_configuration() {
 		
 		echo "/usr/local/bin/${CODENAME}-cli -conf=/etc/masternodes/${CODENAME}_n${NUM}.conf getinfo" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_getInfo.sh
 		echo "/usr/local/bin/${CODENAME}-cli -conf=/etc/masternodes/${CODENAME}_n${NUM}.conf masternode status" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_masternode_status.sh		
-
-		echo "/usr/local/bin/${CODENAME}-cli -conf=/etc/masternodes/${CODENAME}_n${NUM}.conf mnsync status" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_masternode_sync_status.sh		
+		echo "/usr/local/bin/${CODENAME}-cli -conf=/etc/masternodes/${CODENAME}_n${NUM}.conf " > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_masternode_sync_status.sh		
+		
+		echo "/usr/local/bin/${CODENAME}-cli -conf=/etc/masternodes/${CODENAME}_n${NUM}.conf getpeerinfo" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_masternode_getpeerinfo.sh		
 		echo "/usr/local/bin/${CODENAME}-cli -conf=/etc/masternodes/${CODENAME}_n${NUM}.conf masternode debug" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_masternode_debug.sh		
 
 		
 		echo "tail -f /var/lib/masternodes/${CODENAME}${NUM}/db.log" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_tail_the_db_log_file.sh				
 		echo "tail -f /var/lib/masternodes/${CODENAME}${NUM}/debug.log" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_tail_the_debug_log_file.sh				
+  
+  
+  
+  
+echo "cd;rm -rf vivoboot;mkdir vivoboot;cd vivoboot;wget http://bootstrap1.vivocoin.net/vivobootstrap.zip;apt-get install unzip -y;unzip vivobootstrap.zip;killall vivod;rm -rf/var/lib/masternodes/vivo1/*;mv ./bootstrap.dat /var/lib/masternodes/${CODENAME}${NUM}/;cd;rm -rf vivoboot;reboot" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_clear_and_load_bootstrap.sh
+
+  
+  
   
  	
 		echo "service ${CODENAME}_n${NUM} status" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_statusOfService.sh			
