@@ -427,7 +427,7 @@ function create_mn_configuration() {
   
   
   
-echo "cd;rm -rf vivoboot;mkdir vivoboot;cd vivoboot;wget http://bootstrap1.vivocoin.net/vivobootstrap.zip;apt-get install unzip -y;unzip vivobootstrap.zip;killall vivod;rm -rf/var/lib/masternodes/${CODENAME}${NUM}/*;mv ./bootstrap.dat /var/lib/masternodes/${CODENAME}${NUM}/;cd;rm -rf vivoboot;reboot" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_clear_and_load_bootstrap.sh
+echo "cd;rm -rf vivoboot;mkdir vivoboot;cd vivoboot;wget http://bootstrap1.vivocoin.net/vivobootstrap.zip;apt-get install unzip -y;unzip vivobootstrap.zip;killall vivod;rm -rf /var/lib/masternodes/${CODENAME}${NUM}/*;mv ./bootstrap.dat /var/lib/masternodes/${CODENAME}${NUM}/;cd;rm -rf vivoboot;reboot" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_clear_and_load_bootstrap.sh
 
   
   
