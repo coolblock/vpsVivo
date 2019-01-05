@@ -415,7 +415,7 @@ function create_mn_configuration() {
 		
 		echo "/usr/local/bin/${CODENAME}-cli -conf=/etc/masternodes/${CODENAME}_n${NUM}.conf getinfo" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_getInfo.sh
 		echo "/usr/local/bin/${CODENAME}-cli -conf=/etc/masternodes/${CODENAME}_n${NUM}.conf masternode status" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_masternode_status.sh		
-		echo "/usr/local/bin/${CODENAME}-cli -conf=/etc/masternodes/${CODENAME}_n${NUM}.conf " > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_masternode_sync_status.sh		
+		echo "/usr/local/bin/${CODENAME}-cli -conf=/etc/masternodes/${CODENAME}_n${NUM}.conf mnsync status" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_masternode_sync_status.sh		
 		
 		echo "/usr/local/bin/${CODENAME}-cli -conf=/etc/masternodes/${CODENAME}_n${NUM}.conf getpeerinfo" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_masternode_getpeerinfo.sh		
 		echo "/usr/local/bin/${CODENAME}-cli -conf=/etc/masternodes/${CODENAME}_n${NUM}.conf masternode debug" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_masternode_debug.sh		
