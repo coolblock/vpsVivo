@@ -62,7 +62,7 @@ git clone https://github.com/coolblock/vpsVivo.git
 
 -- then type in sreen and hit enter twice and enter
 
-/root/vpsVIVO/coinMnInstall.sh vivo 1
+/root/vpsVivo/coinMnInstall.sh vivo 1
 
 Any option will install a vivo masternode using an ip4. It will build the masternode from source. It will run as a service and will be restarted if the vps is restarted.
 With a 1 gig machine the process will take around 20 minutes.
