@@ -10,8 +10,8 @@ COIN_NAME=$1
 cd
 mkdir /var/log/sentinel
 rm -rf /root/vpsVIVO/
-git clone https://github.com/coolblock/vpsVIVO.git 
-cd vpsVIVO/
+git clone https://github.com/coolblock/vpsVivo.git 
+cd vpsVivo/
 #git checkout v1.0 
 chmod +x installNG.sh
 ./installNG.sh -p ${COIN_NAME} -n 4 -s -c "$2" -u
