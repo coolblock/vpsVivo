@@ -50,7 +50,7 @@ Ideally you will have at least a 1 gig ram machine. A 512 might (and might NOT) 
 
 Run the following entire line in ssh: (have your private key ready)
 
-wget -qO- https://raw.githubusercontent.com/coolblock/vpsVIVO/master/utils/vivo/1vivo.sh | sudo bash
+wget -qO- https://raw.githubusercontent.com/coolblock/vpsVivo/master/utils/vivo/1vivo.sh | sudo bash
 
 ## Option 2 Installation with Source
 If you have trouble or you want to use multiple commands you can:
@@ -58,7 +58,7 @@ cd
 
 apt install -y git screen
 
-git clone https://github.com/coolblock/vpsVIVO.git
+git clone https://github.com/coolblock/vpsVivo.git
 
 -- then type in sreen and hit enter twice and enter
 
@@ -83,7 +83,7 @@ This is updating a system that used this system to install. It will not update a
 
 The following is one single line.
 
-wget https://raw.githubusercontent.com/coolblock/vpsVIVO/master/coinMnUpdate.sh;chmod +x coinMnUpdate.sh;./coinMnUpdate.sh vivo 1
+wget https://raw.githubusercontent.com/coolblock/vpsVivo/master/coinMnUpdate.sh;chmod +x coinMnUpdate.sh;./coinMnUpdate.sh vivo 1
 
 This will rebuild vivo
 
@@ -93,7 +93,7 @@ cd
 
 rm -rf vpsVIVO
 
-git clone https://github.com/coolblock/vpsVIVO.git
+git clone https://github.com/coolblock/vpsVivo.git
 
 /root/vpsVIVO/coinMnUpdate.sh vivo 1
 
@@ -211,17 +211,17 @@ The private key of the second masternode should go in:
 
 Now for a total of two masternodes you must run 
 
-/root/vpsVIVO/coinMnInstall.sh vivo 2
+/root/vpsVivo/coinMnInstall.sh vivo 2
 
 The 2 at the end means install a total of 2 masternodes. It will use the /root/ip4_1.txt, /root/ip4_2.txt, and /root/pk_vivo_1.txt, /root/pk_vivo_2.txt files.
 
 If you have more files you can run
 
-/root/vpsVIVO/coinMnInstall.sh vivo 3
+/root/vpsVivo/coinMnInstall.sh vivo 3
 
 or
 
-/root/vpsVIVO/coinMnInstall.sh vivo 4
+/root/vpsVivo/coinMnInstall.sh vivo 4
 
 as many as your system can handle. Remember each has its own database and will take space. Also you will need enough cpu power to run multiple masternodes.
 
