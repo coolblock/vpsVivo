@@ -176,7 +176,6 @@ As in:
 
 ## TO REINDEX:
 
-
 /root/mnTroubleshoot/vivo/vivo1_reindex.sh
 
 Or
