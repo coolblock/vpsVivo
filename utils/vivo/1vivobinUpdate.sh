@@ -3,7 +3,7 @@ rm -rf vpsVIVO/
 apt-get install -y build-essential libtool autotools-dev automake pkg-config libssl-dev libevent-dev bsdmainutils
 rm -rf vpsVIVO/
 cd;apt install -y git screen;
-git clone https://github.com/coolblock/vpsVIVO.git;
+git clone https://github.com/coolblock/vpsVivo.git;
 cd vpsVIVO
 rm -rf /usr/local/bin/vivod
 rm -rf /usr/local/bin/vivo-cli

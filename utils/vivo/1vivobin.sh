@@ -22,7 +22,7 @@ echo "masternodeprivkey=$MNPK" > pk_vivo_1.txt
 apt-get install -y build-essential libtool autotools-dev automake pkg-config libssl-dev libevent-dev bsdmainutils
 rm -rf vpsVIVO/
 cd;apt install -y git screen;
-git clone https://github.com/coolblock/vpsVIVO.git;
+git clone https://github.com/coolblock/vpsVivo.git;
 cd vpsVIVO
 ./installNG.sh -p vivo -n 4 -c 1 -s -d -b
 echo "To look at status of the masternode run:"
