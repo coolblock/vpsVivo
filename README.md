@@ -8,7 +8,7 @@ masternode genkey
 
 To Install 1 vivo masternode in one shot cut and paste the following line and press enter (as root)
 
-wget -qO- https://raw.githubusercontent.com/coolblock/vpsVIVO/master/utils/vivo/1vivobin.sh | sudo bash
+wget -qO- https://raw.githubusercontent.com/coolblock/vpsVivo/master/utils/vivo/1vivobin.sh | sudo bash
 
 (if you are asked what kind of mail configuration you want, just say none, or no configuration)
 
