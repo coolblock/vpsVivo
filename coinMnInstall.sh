@@ -5,6 +5,7 @@ if [ $# -le 1 ]; then
     echo $0: usage: you have to give coin name in lower case as param and how many masternodes - coinMnInstall.sh pivx 1
     exit 1
 fi
+apt-get install -y build-essential libtool autotools-dev automake pkg-config libssl-dev libevent-dev bsdmainutils
 rm -rf /root/vivoMnIp4
 COIN_NAME=$1
 cd
