@@ -1,0 +1,8 @@
+#!/bin/bash  
+
+chmod u+x ./autogen.sh
+chmod u+x share/genbuild.sh
+./autogen.sh
+./configure --disable-dependency-tracking --enable-tests=no --without-miniupnpc CFLAGS="-march=native" LIBS="-lcurl -lssl -lcrypto -lz" CPPFLAGS="-I/root/db-4.8.30.NC/build_unix/build/include -O2" LDFLAGS="-L/root/db-4.8.30.NC/build_unix/build/lib"
+make
+make install
