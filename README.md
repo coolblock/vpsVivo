@@ -42,8 +42,6 @@ Newest Technique to install ONE vivo masternode (there are other instructions to
 First time installation as root on ubuntu 16 or above.
 This will work if there are no other masternodes installed. Otherwise unknown conflicts can occur.
 
-All in one line BUT replace the XXXXX with your private key
-
 Ideally you will have at least a 1 gig ram machine. A 512 might (and might NOT) work but will take half a day to build.
 
 ## Option 1 Installation with Source
