@@ -20,7 +20,7 @@ vivod should be in the list on the top right.
 
 To check the status, you can run the following multiple times and the numbers will change and blocks increase
 
-/root/vpsVIVO/overAllMnStat.sh
+/root/vpsVivo/overAllMnStat.sh
 
 -------------------------
 
@@ -89,11 +89,11 @@ This will rebuild vivo
 
 cd
 
-rm -rf vpsVIVO
+rm -rf vpsVivo
 
 git clone https://github.com/coolblock/vpsVivo.git
 
-/root/vpsVIVO/coinMnUpdate.sh vivo 1
+/root/vpsVivo/coinMnUpdate.sh vivo 1
 
 This will also rebuild vivo
 
@@ -140,7 +140,7 @@ to restart the system.
 
 The first troubleshooting script to run is
 
-/root/vpsVIVO/overAllMnStat.sh
+/root/vpsVivo/overAllMnStat.sh
 
 It will tell you what it ran and what the result was.
 
