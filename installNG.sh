@@ -693,7 +693,7 @@ function source_config() {
 		
 		# main routine
         prepare_mn_interfaces
-        swaphack
+        #swaphack
 		create_mn_user
         install_packages	
 
@@ -705,6 +705,7 @@ function source_config() {
 		
 		if [ "$binary" -eq 0 ]; then
 			echo "Will build source." 	 
+			swaphack
 			bdb
 			build_mn_from_source
 		fi	
