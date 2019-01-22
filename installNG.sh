@@ -409,7 +409,7 @@ function create_mn_configuration() {
 			echo -n "/usr/local/bin/innova-cli -conf=/etc/masternodes/innova_n1.conf masternodelist full " > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_masternode_status_node.sh 
 			cut -d'=' -f2 /root/ip4_1.txt |tr -d "\n" >> /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_masternode_status_node.sh 
 		
-		echo "/root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_stopService.sh;/sbin/runuser -l masternode -c '/usr/local/bin/${CODENAME}d -reindex -pid=/var/lib/masternodes/${CODENAME}${NUM}/${CODENAME}.pid -conf=/etc/masternodes/${CODENAME}_n${NUM}.conf -datadir=/var/lib/masternodes/${CODENAME}${NUM}'" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_reindex.sh
+		echo "/root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_stopService.sh; killall vivod;/sbin/runuser -l masternode -c '/usr/local/bin/${CODENAME}d -reindex -pid=/var/lib/masternodes/${CODENAME}${NUM}/${CODENAME}.pid -conf=/etc/masternodes/${CODENAME}_n${NUM}.conf -datadir=/var/lib/masternodes/${CODENAME}${NUM}'" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_reindex.sh
 
 		echo "/root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_stopService.sh;/sbin/runuser -l masternode -c '/usr/local/bin/${CODENAME}d -deamon -pid=/var/lib/masternodes/${CODENAME}${NUM}/${CODENAME}.pid -conf=/etc/masternodes/${CODENAME}_n${NUM}.conf -datadir=/var/lib/masternodes/${CODENAME}${NUM}'" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_restartWithoutService.sh
 		
@@ -427,7 +427,7 @@ function create_mn_configuration() {
   
   
   
-echo "cd;rm -rf vivoboot;mkdir vivoboot;cd vivoboot;wget http://bootstrap1.vivocoin.net/vivobootstrap.zip;apt-get install unzip -y;unzip vivobootstrap.zip;chown masternode:masternode bootstrap.dat;killall vivod;rm -rf /var/lib/masternodes/${CODENAME}${NUM}/*;mv ./bootstrap.dat /var/lib/masternodes/${CODENAME}${NUM}/;cd;rm -rf vivoboot;reboot" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_clear_and_load_bootstrap.sh
+echo "cd;rm -rf vivoboot;mkdir vivoboot;cd vivoboot;wget http://bootstrap1.vivocoin.net/vivobootstrap.zip;apt-get install unzip -y;unzip vivobootstrap.zip;chown masternode:masternode bootstrap.dat;killall vivod;rm -rf /var/lib/masternodes/${CODENAME}${NUM}/*;mv ./bootstrap.dat /var/lib/masternodes/${CODENAME}${NUM}/;cd;rm -rf vivoboot;killall vivod" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_clear_and_load_bootstrap.sh
 
   
   
@@ -805,9 +805,13 @@ apt-get install -y git virtualenv
 	chown masternode:masternode /usr/local/bin
 
 	rm Vivo-0.12.1.8-ubuntu16.04.tar.gz
-	wget https://github.com/vivocoin/vivo/releases/download/v0.12.1.8/Vivo-0.12.1.8-ubuntu16.04.tar.gz
+	rm Vivo-0.12.1.12-ubuntu16.tar.gz
+	rm vivo-0.12.1.9-ubuntu16-vps-nogui.tgz
+	
+	wget https://github.com/vivocoin/vivo/releases/download/v0.12.1.12/Vivo-0.12.1.12-ubuntu16.tar.gz
+	//wget https://github.com/vivocoin/vivo/releases/download/v0.12.1.8/Vivo-0.12.1.8-ubuntu16.04.tar.gz
 	//wget https://github.com/vivocoin/vivo/releases/download/v0.12.1.9/vivo-0.12.1.9-ubuntu16-vps-nogui.tgz
-	tar -xvf Vivo-0.12.1.8-ubuntu16.04.tar.gz
+	tar -xvf Vivo-0.12.1.12-ubuntu16.tar.gz
 	
 	if [[ -r /etc/os-release ]]; then
 		. /etc/os-release
@@ -815,7 +819,7 @@ apt-get install -y git virtualenv
 				rm Vivo-0.12.1.8-ubuntu17.10.tar.gz
 				wget https://github.com/vivocoin/vivo/releases/download/v0.12.1.8/Vivo-0.12.1.8-ubuntu17.10.tar.gz
 				//wget https://github.com/vivocoin/vivo/releases/download/v0.12.1.9/vivo-01219-ubuntu18.tar.gz
-				tar -xvf Vivo-0.12.1.8-ubuntu17.10.tar.gz
+				//tar -xvf Vivo-0.12.1.8-ubuntu17.10.tar.gz
 		fi
 	fi
 	
