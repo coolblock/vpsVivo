@@ -809,17 +809,20 @@ apt-get install -y git virtualenv
 	rm vivo-0.12.1.9-ubuntu16-vps-nogui.tgz
 	
 	wget https://github.com/vivocoin/vivo/releases/download/v0.12.1.12/Vivo-0.12.1.12-ubuntu16.tar.gz
-	//wget https://github.com/vivocoin/vivo/releases/download/v0.12.1.8/Vivo-0.12.1.8-ubuntu16.04.tar.gz
-	//wget https://github.com/vivocoin/vivo/releases/download/v0.12.1.9/vivo-0.12.1.9-ubuntu16-vps-nogui.tgz
+	#//wget https://github.com/vivocoin/vivo/releases/download/v0.12.1.8/Vivo-0.12.1.8-ubuntu16.04.tar.gz
+	#//wget https://github.com/vivocoin/vivo/releases/download/v0.12.1.9/vivo-0.12.1.9-ubuntu16-vps-nogui.tgz
 	tar -xvf Vivo-0.12.1.12-ubuntu16.tar.gz
 	
 	if [[ -r /etc/os-release ]]; then
 		. /etc/os-release
 		if [[ "${VERSION_ID}" > "16.04" ]]; then
 				rm Vivo-0.12.1.8-ubuntu17.10.tar.gz
-				wget https://github.com/vivocoin/vivo/releases/download/v0.12.1.8/Vivo-0.12.1.8-ubuntu17.10.tar.gz
-				//wget https://github.com/vivocoin/vivo/releases/download/v0.12.1.9/vivo-01219-ubuntu18.tar.gz
-				//tar -xvf Vivo-0.12.1.8-ubuntu17.10.tar.gz
+				rm Vivo-0.12.1.12-ubuntu18.tar.gz
+				
+				wget https://github.com/vivocoin/vivo/releases/download/v0.12.1.12/Vivo-0.12.1.12-ubuntu18.tar.gz
+				#//wget https://github.com/vivocoin/vivo/releases/download/v0.12.1.8/Vivo-0.12.1.8-ubuntu17.10.tar.gz
+				#//wget https://github.com/vivocoin/vivo/releases/download/v0.12.1.9/vivo-01219-ubuntu18.tar.gz
+				tar -xvf Vivo-0.12.1.12-ubuntu18.tar.gz
 		fi
 	fi
 	
