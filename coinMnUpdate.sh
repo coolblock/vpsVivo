@@ -15,9 +15,8 @@ cd vpsVivo/
 #git checkout v1.0 
 chmod +x installNG.sh
 ./installNG.sh -p ${COIN_NAME} -n 4 -s -c "$2" -u
-
-if [ "$3" = "noreboot" ]; then  
-	echo "===== DONE ====== ${COIN_NAME} === "
-else
-	reboot
-fi
+echo "Will try to restart vivod if it exists"
+killall vivod
+echo "otherwise, will start on its own"
+echo "to get status run the following line"
+echo "/root/vpsVivo/overAllMnStat.sh"
