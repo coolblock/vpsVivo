@@ -88,21 +88,18 @@ function check_distro() {
 # /* no parameters, installs the base set of packages that are required for all projects */
 #
 function install_packages() {
-
-	toilet -f bigmono9 -F gay Starting
 	# development and build packages
 	# these are common on all cryptos
-	echo "* Package installation!  Takes several minutes, please wait"
-	apt-get -qq -o=Dpkg::Use-Pty=0 -o=Acquire::ForceIPv4=true update
-	apt-get -qqy -o=Dpkg::Use-Pty=0 -o=Acquire::ForceIPv4=true install build-essential g++ \
+	echo "Package installation!"
+	apt-get -qq update
+	apt-get -qqy -o=Dpkg::Use-Pty=0 install build-essential g++ \
 	protobuf-compiler libboost-all-dev autotools-dev \
-    automake libcurl4-openssl-dev libboost-all-dev libssl-dev libdb4.8-dev libdb4.8++-dev \
+    automake libcurl4-openssl-dev libboost-all-dev libssl-dev libdb++-dev \
     make autoconf automake libtool git apt-utils libprotobuf-dev pkg-config \
     libcurl3-dev libudev-dev libqrencode-dev bsdmainutils pkg-config libssl-dev \
-    libgmp3-dev libevent-dev jp2a pv virtualenv	&>> ${SCRIPT_LOGFILE}
+    libgmp3-dev libevent-dev jp2a
 	
 	sudo apt install speedtest-cli -y
-
 }
 
 #
