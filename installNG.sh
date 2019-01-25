@@ -406,7 +406,7 @@ function create_mn_configuration() {
 			echo -n "/usr/local/bin/innova-cli -conf=/etc/masternodes/innova_n1.conf masternodelist full " > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_masternode_status_node.sh 
 			cut -d'=' -f2 /root/ip4_1.txt |tr -d "\n" >> /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_masternode_status_node.sh 
 		
-		echo "/root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_stopService.sh;echo"Will try to remove vivod if found"; killall vivod;/sbin/runuser -l masternode -c '/usr/local/bin/${CODENAME}d -reindex -pid=/var/lib/masternodes/${CODENAME}${NUM}/${CODENAME}.pid -conf=/etc/masternodes/${CODENAME}_n${NUM}.conf -datadir=/var/lib/masternodes/${CODENAME}${NUM}'" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_reindex.sh
+		echo "/root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_stopService.sh;echo \"Will try to remove vivod if found\"; killall vivod;/sbin/runuser -l masternode -c '/usr/local/bin/${CODENAME}d -reindex -pid=/var/lib/masternodes/${CODENAME}${NUM}/${CODENAME}.pid -conf=/etc/masternodes/${CODENAME}_n${NUM}.conf -datadir=/var/lib/masternodes/${CODENAME}${NUM}'" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_reindex.sh
 
 		echo "/root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_stopService.sh;/sbin/runuser -l masternode -c '/usr/local/bin/${CODENAME}d -deamon -pid=/var/lib/masternodes/${CODENAME}${NUM}/${CODENAME}.pid -conf=/etc/masternodes/${CODENAME}_n${NUM}.conf -datadir=/var/lib/masternodes/${CODENAME}${NUM}'" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_restartWithoutService.sh
 		
@@ -424,7 +424,7 @@ function create_mn_configuration() {
   
   
   
-echo "cd;rm -rf vivoboot;mkdir vivoboot;cd vivoboot;wget http://bootstrap1.vivocoin.net/vivobootstrap.zip;apt-get install unzip -y;unzip vivobootstrap.zip;chown masternode:masternode bootstrap.dat;killall vivod;rm -rf /var/lib/masternodes/${CODENAME}${NUM}/*;mv ./bootstrap.dat /var/lib/masternodes/${CODENAME}${NUM}/;cd;rm -rf vivoboot;echo "Will remove vivod if found (to restart)";killall vivod" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_clear_and_load_bootstrap.sh
+echo "cd;rm -rf vivoboot;mkdir vivoboot;cd vivoboot;wget http://bootstrap1.vivocoin.net/vivobootstrap.zip;apt-get install unzip -y;unzip vivobootstrap.zip;chown masternode:masternode bootstrap.dat;killall vivod;rm -rf /var/lib/masternodes/${CODENAME}${NUM}/*;mv ./bootstrap.dat /var/lib/masternodes/${CODENAME}${NUM}/;cd;rm -rf vivoboot;echo \"Will remove vivod if found (to restart)\";killall vivod" > /root/mnTroubleshoot/${CODENAME}/${CODENAME}${NUM}_clear_and_load_bootstrap.sh
 
   
   
