@@ -1,6 +1,6 @@
 rm -rf vpsVIVO/
 
-if [ $# -le 1 ]; then
+if [ $# < 1 ]; then
     echo $0: usage: you have to give how many masternodes after
     exit 1
 fi
