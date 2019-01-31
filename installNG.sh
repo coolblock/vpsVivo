@@ -812,7 +812,7 @@ apt-get install -y git virtualenv
 	#//wget https://github.com/vivocoin/vivo/releases/download/v0.12.1.12/Vivo-0.12.1.12-ubuntu16.tar.gz
 	#//wget https://github.com/vivocoin/vivo/releases/download/v0.12.1.8/Vivo-0.12.1.8-ubuntu16.04.tar.gz
 	#//wget https://github.com/vivocoin/vivo/releases/download/v0.12.1.9/vivo-0.12.1.9-ubuntu16-vps-nogui.tgz
-	tar vivo-0.12.1.14-ubuntu16-vps-nogui.tgz
+	tar -xvf vivo-0.12.1.14-ubuntu16-vps-nogui.tgz
 	
 	if [[ -r /etc/os-release ]]; then
 		. /etc/os-release
