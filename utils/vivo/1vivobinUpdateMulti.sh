@@ -1,6 +1,6 @@
 rm -rf vpsVIVO/
 
-if [ $# < 1 ]; then
+if [ $1 -lq 1 ]; then
     echo $0: usage: you have to give how many masternodes after
     exit 1
 fi
@@ -14,7 +14,3 @@ rm -rf /usr/local/bin/vivo-cli
 ./installNG.sh -p vivo -n 4 -c $1 -s -d -b
 echo "To look at status of the masternode run:"
 echo "/root/vpsVivo/overAllMnStat.sh"
-echo "in fact, I will run it in 20 seconds ..."
-sleep 20
-/root/vpsVivo/overAllMnStat.sh
-echo "The masternode will start and stop on its own, it is a service."
