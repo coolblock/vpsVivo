@@ -53,22 +53,35 @@ getMasternodePrivKey() {
         fi
     done
 }
+ 
 
 getMasternodePort() {
+    declare -i port_num
     echo "Please enter masternode port for masternode $index:"
     while :
         do
-        echo -n "\port: "
+        echo -n "port: "
         read mnport < /proc/self/fd/2
 
-		local -i port_num=$(to_int "${mnport}" 2>/dev/null)
+	if [ $mnport -eq $mnport 2>/dev/null ]
+
+	then
+		port_num=$((10#$mnport + 0))
+
+                echo "portnum is:${port_num}"
 
 		if (( $port_num < 1 || $port_num > 65535 )) ; then
 			echo "*** ${mnport} is not a valid port try again"
 		else
 			echo "$mnport" > mnport_vivo_$index.txt
-            break
-        fi
+                break
+		fi
+
+
+
+	else
+		echo " not an integer"
+	fi
     done
 }
 
