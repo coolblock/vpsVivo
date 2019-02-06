@@ -60,14 +60,15 @@ getMasternodePort() {
         do
         echo -n "\port: "
         read mnport < /proc/self/fd/2
-        #if [ ## Check validty of port ## ]
-        #then
-        #    echo "Invalid masternode port, try again"
-        #else
-	echo "$mnport" > mnport_vivo_$index.txt
 
+		local -i port_num=$(to_int "${mnport}" 2>/dev/null)
+
+		if (( $port_num < 1 || $port_num > 65535 )) ; then
+			echo "*** ${mnport} is not a valid port try again"
+		else
+			echo "$mnport" > mnport_vivo_$index.txt
             break
-        #fi
+        fi
     done
 }
 
