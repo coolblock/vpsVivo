@@ -389,10 +389,20 @@ function create_mn_configuration() {
 				RPC_PORT=$RPC_PORT+1
 				echo $RPC_PORT > /root/lastRpcPort
 				echo -e "rpcport=${RPC_PORT}\n"  >> ${MNODE_CONF_BASE}/${CODENAME}_n${NUM}.conf
-				
-                cat /root/ip4_${NUM}.txt|tr -d "\n" >> ${MNODE_CONF_BASE}/${CODENAME}_n${NUM}.conf
-				echo ":${MNODE_INBOUND_PORT}"  >> ${MNODE_CONF_BASE}/${CODENAME}_n${NUM}.conf
 
+				if [ ! -f /root/ip4_${NUM}.txt ]; then
+					cat /root/ip4_1.txt|tr -d "\n" >> ${MNODE_CONF_BASE}/${CODENAME}_n${NUM}.conf
+				else
+					cat /root/ip4_${NUM}.txt|tr -d "\n" >> ${MNODE_CONF_BASE}/${CODENAME}_n${NUM}.conf				
+				fi
+				
+				if [ -e /root/mnport_${CODENAME}_n${NUM}.txt ]; then
+					echo -e ":"  >> ${MNODE_CONF_BASE}/${CODENAME}_n${NUM}.conf
+					cat /root/mnport_${CODENAME}_n${NUM}.txt >> ${MNODE_CONF_BASE}/${CODENAME}_n${NUM}.conf
+				else
+					echo ":${MNODE_INBOUND_PORT}"  >> ${MNODE_CONF_BASE}/${CODENAME}_n${NUM}.conf
+				fi
+				
 				if [[ -z ${COIN_MASTERNODE_REPLACEMENT_STRING} ]]; then
 					echo "masternode will be used as masternode"
 				else

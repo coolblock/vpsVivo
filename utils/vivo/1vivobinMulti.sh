@@ -8,6 +8,8 @@ vpsVIVODefinitionFile=vpsVIVoDefs.txt
 # - Port
 # - IP Address (Singular to begin)
 
+mncount=0
+index=0
 initialise() {
     echo "Cleaning up existing vpsVIVO deployment"
     rm -rf vpsVIVO/
@@ -27,39 +29,45 @@ getMasternodeCount() {
         if [ $mncount -eq $mncount 2>/dev/null ] && [ "$mncount" -ge "1" ]
         then
             echo "$mncount Vivo Masternodes will be deployed."
+		((mncount++))
              break
         else
             echo "$mncount is not valid"
+		index=0
         fi
     done
 }
 
 getMasternodePrivKey() {
-    echo "Please enter masternode private key and copy it here:"
+    #echo "Please enter masternode private key and copy it here:"
     while :
         do
-        echo -n "Private Key: "
+        echo -n "Private Key for masternode $index: "
         read mnprivkey < /proc/self/fd/2
         if [ ! "$(echo -n $mnprivkey | wc -c)" = "51" ]
         then
             echo "Invalid masternode private key given, try again"
         else
+	echo "masternodeprivkey=$mnprivkey" > pk_vivo_$index.txt
             break
         fi
     done
 }
+
 getMasternodePort() {
-    echo "Please enter masternode port:"
+    echo "Please enter masternode port for masternode $index:"
     while :
         do
         echo -n "\port: "
         read mnport < /proc/self/fd/2
-        if [ ## Check validty of port ## ]
-        then
-            echo "Invalid masternode port, try again"
-        else
+        #if [ ## Check validty of port ## ]
+        #then
+        #    echo "Invalid masternode port, try again"
+        #else
+	echo "$mnport" > mnport_vivo_$index.txt
+
             break
-        fi
+        #fi
     done
 }
 
@@ -69,7 +77,9 @@ deployMasternodes() {
 
     git clone https://github.com/coolblock/vpsVivo.git
     cd vpsVivo
-    ./installNG.sh -p vivo -n 4 -c 1 -s -d -b
+    ((mncount--))
+    echo "masternodecount to deploy $mncount" > ~/masternodecount.txt
+    ./installNG.sh -p vivo -n 4 -c $mncount -s -d -b
     echo "To look at status of the masternode run:"
     echo "/root/vpsVIVO/overAllMnStat.sh"
     echo "The masternode will start and stop on its own, it is a service."
@@ -80,9 +90,14 @@ main() {
     deployPrereqs
     getMasternodeCount
     # For number of masternodes do: # AND store in array with Index
+
+
+for (( index=1; $index < $mncount; ++index)); do
     getMasternodePrivKey
-    getMasternodeIP
+    #getMasternodeIP
     getMasternodePort
+done
+    deployMasternodes
     # Done
 }
 
