@@ -396,9 +396,9 @@ function create_mn_configuration() {
 					cat /root/ip4_${NUM}.txt|tr -d "\n" >> ${MNODE_CONF_BASE}/${CODENAME}_n${NUM}.conf				
 				fi
 				
-				if [ -e /root/mnport_${CODENAME}_n${NUM}.txt ]; then
+				if [ -e /root/mnport_${CODENAME}_${NUM}.txt ]; then
 					echo -e ":"  >> ${MNODE_CONF_BASE}/${CODENAME}_n${NUM}.conf
-					cat /root/mnport_${CODENAME}_n${NUM}.txt >> ${MNODE_CONF_BASE}/${CODENAME}_n${NUM}.conf
+					cat /root/mnport_${CODENAME}_${NUM}.txt >> ${MNODE_CONF_BASE}/${CODENAME}_n${NUM}.conf
 				else
 					echo ":${MNODE_INBOUND_PORT}"  >> ${MNODE_CONF_BASE}/${CODENAME}_n${NUM}.conf
 				fi
