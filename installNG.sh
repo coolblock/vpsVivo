@@ -708,7 +708,7 @@ function source_config() {
 			echo "Will grab binaries."
 #zzzzzzzzz			
 
-		if [${count} -gt 1 ]
+		if [ $count -gt 1 ]
 		then
 			echo "creating swap for binaries !!!!!!" >>  ${SCRIPT_LOGFILE}
 			swaphack
