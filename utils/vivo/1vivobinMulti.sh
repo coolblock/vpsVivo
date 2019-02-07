@@ -13,10 +13,11 @@ index=0
 initialise() {
     echo "Cleaning up existing vpsVIVO deployment"
     rm -rf vpsVIVO/
+	rm allowport.sh
     # This should be changed to ensure we are in a specific directory first.
 	echo -n "This will install multiple masternodes. Press any key to continue..."
 	MNPK=
-	read MNPK < /proc/self/fd/2
+	read MNPK
 	
 }
 
@@ -78,6 +79,7 @@ getMasternodePort() {
 			echo "*** ${mnport} is not a valid port try again"
 		else
 			echo "$mnport" > mnport_vivo_$index.txt
+			echo "ufw allow $mnport" >> allowport.sh
                 break
 		fi
 
@@ -115,6 +117,9 @@ for (( index=1; $index < $mncount; ++index)); do
     #getMasternodeIP
     getMasternodePort
 done
+	chmod +x allowport.sh
+	./allowport.sh
+	rm allowport.sh
     deployMasternodes
     # Done
 }
