@@ -705,7 +705,14 @@ function source_config() {
         install_packages	
 
 		if [ "$binary" -eq 1 ]; then
-			echo "Will grab binaries." 	 
+			echo "Will grab binaries."
+#zzzzzzzzz			
+
+		if [${count} -gt 1 ]
+		then
+			echo "creating swap for binaries !!!!!!" >>  ${SCRIPT_LOGFILE}
+			swaphack
+		fi
 			bdb			
 			build_mn_with_binary
 		fi	
@@ -1012,7 +1019,7 @@ binary=0;
 
 
 # Execute getopt
-ARGS=$(getopt -o "hp:n:c:r:wsudb" -l "help,project:,net:,count:,release:,wipe,sentinel,update,debug,binary" -n "installNG.sh" -- "$@");
+ARGS=$(getopt -o "hp:n:c:r:wsudbg" -l "help,project:,net:,count:,release:,wipe,sentinel,update,debug,binary,greatswap" -n "installNG.sh" -- "$@");
  
 #Bad arguments
 if [ $? -ne 0 ];
@@ -1079,6 +1086,10 @@ while true; do
        -b|--binary)
             shift;
                     binary="1";
+            ;;            
+       -b|--greatswap)
+            shift;
+                    greatswap="1";
             ;;            
          --)
             shift;
