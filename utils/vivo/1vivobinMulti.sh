@@ -14,6 +14,10 @@ initialise() {
     echo "Cleaning up existing vpsVIVO deployment"
     rm -rf vpsVIVO/
     # This should be changed to ensure we are in a specific directory first.
+	echo -n "This will install multiple masternodes. Press any key to continue..."
+	MNPK=
+	read MNPK < /proc/self/fd/2
+	
 }
 
 deployPrereqs() {
