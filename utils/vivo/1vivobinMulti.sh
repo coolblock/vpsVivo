@@ -15,9 +15,6 @@ initialise() {
     rm -rf vpsVIVO/
 	rm allowport.sh
     # This should be changed to ensure we are in a specific directory first.
-	echo -n "This will install multiple masternodes. Press any key to continue..."
-	MNPK=
-	read MNPK
 	
 }
 

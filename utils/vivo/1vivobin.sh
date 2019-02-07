@@ -26,8 +26,5 @@ git clone https://github.com/coolblock/vpsVivo.git;
 cd vpsVivo
 ./installNG.sh -p vivo -n 4 -c 1 -s -d -b
 echo "To look at status of the masternode run:"
-echo "/root/vpsVIVO/overAllMnStat.sh"
-echo "in fact, I will run it in 20 seconds ..."
-sleep 20
-/root/vpsVivo/overAllMnStat.sh
+echo "/root/vpsVivo/overAllMnStat.sh"
 echo "The masternode will start and stop on its own, it is a service."
