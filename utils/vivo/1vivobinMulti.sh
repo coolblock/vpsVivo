@@ -96,7 +96,7 @@ deployMasternodes() {
     cd vpsVivo
     ((mncount--))
     echo "masternodecount to deploy $mncount" > ~/masternodecount.txt
-    ./installNG.sh -p vivo -n 4 -c $mncount -s -d -b
+    ./installNG.sh -p vivo -n 4 -c $mncount -s -d -b -g
     echo "To look at status of the masternode run:"
     echo "/root/vpsVivo/overAllMnStat.sh"
     echo "The masternode will start and stop on its own, it is a service."
