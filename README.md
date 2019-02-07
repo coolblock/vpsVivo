@@ -1,13 +1,19 @@
 # Most often used commands to Install or update with Binaries
 
 For 1 (one) masternode
+
 Install binaries FOR total of 1 masternode
+
 wget -qO- https://raw.githubusercontent.com/coolblock/vpsVivo/master/utils/vivo/1vivobin.sh | sudo bash
+
 Update binaries  FOR total of 1 masternode
+
 wget -qO- https://raw.githubusercontent.com/coolblock/vpsVivo/master/utils/vivo/1vivobinUpdate.sh | sudo bash
 
-For Multiple Masternodes (two or more)
+## For Multiple Masternodes (two or more)
+
 Install binaries
+
 bash <(curl -s https://raw.githubusercontent.com/coolblock/vpsVivo/master/utils/vivo/1vivobinMulti.sh)
 
 Update -- comming soon.
