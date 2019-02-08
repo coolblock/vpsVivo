@@ -12,9 +12,28 @@ wget -qO- https://raw.githubusercontent.com/coolblock/vpsVivo/master/utils/vivo/
 
 ## For Multiple Masternodes (two or more)
 
-Install binaries
+Install binaries by using the following line and respond to the prompts. You will need private keys and a choice of ports.
 
 bash <(curl -s https://raw.githubusercontent.com/coolblock/vpsVivo/master/utils/vivo/1vivobinMulti.sh)
+
+### Recommended sequence of actions to create multiple Masternodes
+
+The command to use on the VPS is (all one line):
+bash <(curl -s https://raw.githubusercontent.com/coolblock/vpsVivo/master/utils/vivo/1vivobinMulti.sh)
+
+Let us assume you are setting up 4 Masternodes on one Vultr 1 gig machine. 
+
+1.	Have your private keys and your four ports ready. (You can chose whatever port you want as long as it is approximately above 1500 and less that 65000 - each masternode will have to have a different one) 
+2.	Then run the script. 
+3.	Let the VPS masternodes sync, they will take half a day to sync.
+4.	Then send 1000 to an address
+5.	Wait for at least 20 confirmations and insert the proper line in the masternode.conf file or the controlling wallet. 
+6.	Once set up in the controlling wallet, start alias. 
+7.	You can now safely go to step 4 for the next masternode.
+
+If you don't do it in this sequence, when you send the 1000 coins you may send from or to an address that is not locked.
+
+It is a time consuming process as waiting for the sync takes time and waiting for confirmations takes time.
 
 Update -- comming soon.
 
