@@ -19,6 +19,7 @@ bash <(curl -s https://raw.githubusercontent.com/coolblock/vpsVivo/master/utils/
 ### Recommended sequence of actions to create multiple Masternodes
 
 The command to use on the VPS is (all one line):
+
 bash <(curl -s https://raw.githubusercontent.com/coolblock/vpsVivo/master/utils/vivo/1vivobinMulti.sh)
 
 Let us assume you are setting up 4 Masternodes on one Vultr 1 gig machine. 
