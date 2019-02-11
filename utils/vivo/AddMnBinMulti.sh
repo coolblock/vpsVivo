@@ -132,8 +132,8 @@ deployMasternodes() {
 }
 
 main() {
-    initialise
     deployPrereqs
+    initialise
     getMasternodeCount
     # For number of masternodes do: # AND store in array with Index
 
