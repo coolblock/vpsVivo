@@ -23,7 +23,7 @@ deployPrereqs() {
 }
 
 getMasternodeCount() {
-    echo "How many Vivo masternodes are you deploying? :"
+    echo "This will add the next masternode you have. Example: If you have 1 masternode already, to add another one, enter 2 for the following question. How many (total) Vivo masternodes are you deploying? :"
     while :
         do
         echo -n "Masternode Count: "
@@ -41,6 +41,14 @@ getMasternodeCount() {
 }
 
 getMasternodePrivKey() {
+
+	if [ -f /root/pk_vivo_$index.txt ]; then
+		echo -n "Private key being used is: "
+		cat /root/pk_vivo_$index.txt
+		echo "Not changing key"	
+		return 0
+	fi
+
     #echo "Please enter masternode private key and copy it here:"
     while :
         do
@@ -50,7 +58,7 @@ getMasternodePrivKey() {
         then
             echo "Invalid masternode private key given, try again"
         else
-	echo "masternodeprivkey=$mnprivkey" > pk_vivo_$index.txt
+	echo "masternodeprivkey=$mnprivkey" > /root/pk_vivo_$index.txt
             break
         fi
     done
@@ -58,6 +66,27 @@ getMasternodePrivKey() {
  
 
 getMasternodePort() {
+	if [ -f /root/pk_vivo_$index.txt ]; then
+
+		if [ -f /root/ip4_$index.txt ]; then
+			echo -n "Port being used: "
+			cat /root/ip4_$index.txt|tr -d "\n" 
+		else
+			echo "Probably using default port"
+		fi		
+
+		echo "Not changing port"	
+		return 0
+	fi
+
+	
+	if [ -f /root/ip4_$index.txt ]; then
+		echo -n "Port being used: "
+		cat /root/ip4_$index.txt|tr -d "\n" 
+	else
+		echo "Probably using default port"
+	fi		
+	
     declare -i port_num
     echo "Please enter masternode port for masternode $index:"
     while :
