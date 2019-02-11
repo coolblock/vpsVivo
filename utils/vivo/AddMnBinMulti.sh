@@ -23,6 +23,7 @@ deployPrereqs() {
 }
 
 getMasternodeCount() {
+	echo "++++++++++++++++"
     echo "This will add the next masternode you have. Example: If you have 1 masternode already, to add another one, enter 2 for the following question. How many (total) Vivo masternodes are you deploying? :"
     while :
         do
@@ -77,7 +78,7 @@ getMasternodePort() {
 			echo "Probably using default port"
 		fi		
 
-		echo "Not changing port"	
+		echo "    --- Not changing port"	
 		return 0
 	fi
 
