@@ -68,19 +68,15 @@ getMasternodePrivKey() {
  
 
 getMasternodePort() {
-	if [ -f /root/pk_vivo_$index.txt ]; then
 
-		if [ -f /root/ip4_$index.txt ]; then
-			echo -n "Port being used: "
-			cat /root/ip4_$index.txt|tr -d "\n" 
-			echo " "
-		else
-			echo "Probably using default port"
-		fi		
-
-		echo "    --- Not changing port"	
-		return 0
-	fi
+	if [ -f /root/ip4_$index.txt ]; then
+		echo -n "Port being used: "
+		cat /root/ip4_$index.txt|tr -d "\n" 
+		echo " "
+		return 0;
+	else
+		echo "Probably using default port"
+	fi		
 
 	
 	if [ -f /root/ip4_$index.txt ]; then
