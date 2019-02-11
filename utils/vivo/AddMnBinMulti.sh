@@ -69,9 +69,9 @@ getMasternodePrivKey() {
 
 getMasternodePort() {
 
-	if [ -f /root/ip4_$index.txt ]; then
+	if [ -f mnport_vivo_$index.txt ]; then
 		echo -n "Port being used: "
-		cat /root/ip4_$index.txt|tr -d "\n" 
+		cat mnport_vivo_$index.txt 
 		echo " "
 		return 0;
 	else
