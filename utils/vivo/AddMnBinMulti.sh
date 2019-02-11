@@ -110,7 +110,7 @@ getMasternodePort() {
 deployMasternodes() {
     # Some additional directory structure and management will be needed here
     # The RPC port will also need to be unique for each daemon
-
+	rm -rf vpsVivo 
     git clone https://github.com/coolblock/vpsVivo.git
     cd vpsVivo
     ((mncount--))
