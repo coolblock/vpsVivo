@@ -45,11 +45,12 @@ getMasternodePrivKey() {
 	if [ -f /root/pk_vivo_$index.txt ]; then
 		echo -n "Private key being used is: "
 		cat /root/pk_vivo_$index.txt
-		echo "Not changing key"	
+		echo " "
+		echo "Not changing pivate key"	
 		return 0
 	fi
 
-    #echo "Please enter masternode private key and copy it here:"
+    echo "=================================="
     while :
         do
         echo -n "Private Key for masternode $index: "
@@ -71,6 +72,7 @@ getMasternodePort() {
 		if [ -f /root/ip4_$index.txt ]; then
 			echo -n "Port being used: "
 			cat /root/ip4_$index.txt|tr -d "\n" 
+			echo " "
 		else
 			echo "Probably using default port"
 		fi		
@@ -83,6 +85,7 @@ getMasternodePort() {
 	if [ -f /root/ip4_$index.txt ]; then
 		echo -n "Port being used: "
 		cat /root/ip4_$index.txt|tr -d "\n" 
+		echo " "
 	else
 		echo "Probably using default port"
 	fi		
@@ -133,6 +136,7 @@ deployMasternodes() {
 
 main() {
     deployPrereqs
+	echo "-------------------------------"
     initialise
     getMasternodeCount
     # For number of masternodes do: # AND store in array with Index
