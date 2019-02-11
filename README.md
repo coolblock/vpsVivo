@@ -16,6 +16,12 @@ Install binaries by using the following line and respond to the prompts. You wil
 
 bash <(curl -s https://raw.githubusercontent.com/coolblock/vpsVivo/master/utils/vivo/1vivobinMulti.sh)
 
+If you have installed using any of the scripts already, to add more masternodes (you will tell how many by saying how many in TOTAL you will have on the machine)
+
+bash <(curl -s https://raw.githubusercontent.com/coolblock/vpsVivo/master/utils/vivo/AddMnBinMulti.sh)
+
+(it is recomended to add one at a time. When you have 1 masternode already, say total of 2. Then when you have started the second one, run the script again but say total of 3. and on and on.)
+
 ### Recommended sequence of actions to create multiple Masternodes
 
 The command to use on the VPS is (all one line):
