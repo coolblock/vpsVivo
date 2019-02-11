@@ -77,15 +77,6 @@ getMasternodePort() {
 	else
 		echo "Probably using default port"
 	fi		
-
-	
-	if [ -f /root/ip4_$index.txt ]; then
-		echo -n "Port being used: "
-		cat /root/ip4_$index.txt|tr -d "\n" 
-		echo " "
-	else
-		echo "Probably using default port"
-	fi		
 	
     declare -i port_num
     echo "Please enter masternode port for masternode $index:"
