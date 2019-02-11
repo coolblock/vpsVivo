@@ -44,7 +44,7 @@ getMasternodeCount() {
 getMasternodePrivKey() {
 
 	if [ -f /root/pk_vivo_$index.txt ]; then
-		echo -n "Private key being used is: "
+		echo -n "Private key for Mn $index being used is: "
 		cat /root/pk_vivo_$index.txt
 		echo " "
 		echo "Not changing pivate key"	
