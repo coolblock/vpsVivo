@@ -98,7 +98,7 @@ getMasternodePort() {
 			echo "$mnport" > mnport_vivo_$index.txt
 			echo "ufw allow $mnport" >> allowport.sh
 		    cp /root/ip4_1.txt /root/ip4_$index.txt			
-                break
+            break
 		fi
 
 	else
