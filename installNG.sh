@@ -1021,7 +1021,7 @@ debug=0;
 update=0;
 sentinel=0;
 binary=0;
-
+greatswap=0;
 
 # Execute getopt
 ARGS=$(getopt -o "hp:n:c:r:wsudbg" -l "help,project:,net:,count:,release:,wipe,sentinel,update,debug,binary,greatswap" -n "installNG.sh" -- "$@");

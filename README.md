@@ -152,16 +152,28 @@ The conf file is located at:
 /etc/masternodes/vivo_n1.conf
 
 Executables like vivod are in:
+
 /usr/local/bin
 
 Data directory is in:
+
 /var/lib/masternodes/vivo1
 
 To do an individual run of sentinel:
+
 /root/runsentinelnolog1.sh
 
 To do a getinfo:
+
 /usr/local/bin/vivo-cli -conf=/etc/masternodes/vivo_n1.conf getinfo
+
+# To grab the bootstrap
+
+/root/mnTroubleshoot/vivo/vivo1_clear_and_load_bootstrap.sh
+
+Otherwise you can download it from
+
+http://bootstrap1.vivocoin.net/vivobootstrap.zip
 
 # Troubleshooting
 

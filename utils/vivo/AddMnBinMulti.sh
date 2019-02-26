@@ -75,7 +75,7 @@ getMasternodePort() {
 		echo " "
 		return 0;
 	else
-		echo "Probably using default port 12845"
+		echo "default port is 12845, each masternode should have a different one"
 	fi		
 	
     declare -i port_num
