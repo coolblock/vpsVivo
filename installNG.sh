@@ -21,7 +21,7 @@ declare -r DO_NET_CONF="/etc/network/interfaces.d/50-cloud-init.cfg"
 
 function showbanner() {
 
-sudo apt-get install toilet figlet -y
+apt-get install toilet figlet -y
 figlet Coolblock
 }
 
@@ -99,7 +99,7 @@ function install_packages() {
     libcurl3-dev libudev-dev libqrencode-dev bsdmainutils pkg-config libssl-dev \
     libgmp3-dev libevent-dev jp2a
 	
-	sudo apt install speedtest-cli -y
+	apt install speedtest-cli -y
 }
 
 #
@@ -125,7 +125,7 @@ fi
 
 function bdb() {
 
-sudo dpkg -r libdb-dev
+dpkg -r libdb-dev
 cd
 rm db-4.8.30.NC.tar.gz
 wget http://download.oracle.com/berkeley-db/db-4.8.30.NC.tar.gz
@@ -138,9 +138,9 @@ BDB_PREFIX=$(pwd)/build
 make install
 cd ../..
 
-sudo ln -s /usr/local/BerkeleyDB.4.8 /usr/include/db4.8
-sudo ln -s /usr/include/db4.8/include/* /usr/include
-sudo ln -s /usr/include/db4.8/lib/* /usr/lib
+ln -s /usr/local/BerkeleyDB.4.8 /usr/include/db4.8
+ln -s /usr/include/db4.8/include/* /usr/include
+ln -s /usr/include/db4.8/lib/* /usr/lib
 
 export BDB_INCLUDE_PATH="/usr/local/BerkeleyDB.4.8/include"
 export BDB_LIB_PATH="/usr/local/BerkeleyDB.4.8/lib"
@@ -651,10 +651,10 @@ function source_config() {
 		if [ "$update" -eq 1 ]; then
 			echo "update given, deleting the old daemon NOW!" &>> ${SCRIPT_LOGFILE}
 			rm -f ${MNODE_DAEMON}  	 
-			sudo apt-get -y remove fail2ban
-			sudo apt-get -y remove --auto-remove fail2ban
-			sudo apt-get -y purge fail2ban
-			sudo apt-get -y purge --auto-remove fail2ban
+			apt-get -y remove fail2ban
+			apt-get -y remove --auto-remove fail2ban
+			apt-get -y purge fail2ban
+			apt-get -y purge --auto-remove fail2ban
 
 		fi
 
@@ -781,7 +781,7 @@ function source_config() {
 		#apt -y install fail2ban
 		#systemctl enable fail2ban
 		#systemctl start fail2ban
-		sudo apt -y install rkhunter
+		apt -y install rkhunter
 		chmod 755 /
 		chmod 755 /bin
 		chmod 755 /lib
