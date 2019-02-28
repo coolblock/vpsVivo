@@ -12,6 +12,7 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 cd
+apt-get update
 apt-get install toilet figlet -y
 apt-get install psmisc -y
 
