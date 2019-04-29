@@ -7,7 +7,7 @@
 #               - Linux Ubuntu 16.04 LTS ONLY on a Vultr, Hetzner or DigitalOcean VPS
 #               - Generic Ubuntu support will be added at a later point in time
 #
-# Twitter 	@marsmensch
+# vivocoin.net
 
 # Useful variables
 declare -r CRYPTOS=`ls -l config/ | egrep '^d' | awk '{print $9}' | xargs echo -n; echo`
@@ -797,7 +797,7 @@ function source_config() {
 	
 }
 
-#instead of building from source just installing binary - for ubuntu 16 only
+#instead of building from source just installing binary - for ubuntu 16 and 18 only
 function build_mn_with_binary() {
 	figlet Binaries
 apt-get install -y libzmq3-dev
@@ -827,14 +827,11 @@ apt-get install -y git virtualenv
 	rm Vivo-0.12.1.12-ubuntu16.tar.gz
 	rm vivo-0.12.1.9-ubuntu16-vps-nogui.tgz
 	rm vivo-0.12.1.12-ubuntu16-vps-nogui.tgz
-	//wget https://github.com/vivocoin/vivo/releases/download/v0.12.1.12/vivo-0.12.1.12-ubuntu16-vps-nogui.tgz
 	rm vivo-0.12.1.14-ubuntu16-vps-nogui.tgz
-	wget https://github.com/vivocoin/vivo/releases/download/v0.12.1.14/vivo-0.12.1.14-ubuntu16-vps-nogui.tgz
+	rm vivo-0.12.1.15-ubuntu16.tar.gz
+	wget https://github.com/vivocoin/vivo/releases/download/v0.12.1.15/vivo-0.12.1.15-ubuntu16.tar.gz
 	
-	#//wget https://github.com/vivocoin/vivo/releases/download/v0.12.1.12/Vivo-0.12.1.12-ubuntu16.tar.gz
-	#//wget https://github.com/vivocoin/vivo/releases/download/v0.12.1.8/Vivo-0.12.1.8-ubuntu16.04.tar.gz
-	#//wget https://github.com/vivocoin/vivo/releases/download/v0.12.1.9/vivo-0.12.1.9-ubuntu16-vps-nogui.tgz
-	tar -xvf vivo-0.12.1.14-ubuntu16-vps-nogui.tgz
+	tar -xvf vivo-0.12.1.15-ubuntu16.tar.gz
 	
 	if [[ -r /etc/os-release ]]; then
 		. /etc/os-release
@@ -842,8 +839,10 @@ apt-get install -y git virtualenv
 				rm Vivo-0.12.1.8-ubuntu17.10.tar.gz
 				rm Vivo-0.12.1.12-ubuntu18.tar.gz
 				rm vivo-0.12.1.14-ubuntu18.tar.gz
-				wget https://github.com/vivocoin/vivo/releases/download/v0.12.1.14/vivo-0.12.1.14-ubuntu18.tar.gz
-				tar -xvf vivo-0.12.1.14-ubuntu18.tar.gz
+				rm vivo-0.12.1.15-ubuntu18.tar.gz	
+				
+				wget https://github.com/vivocoin/vivo/releases/download/v0.12.1.15/vivo-0.12.1.15-ubuntu18.tar.gz
+				tar -xvf vivo-0.12.1.15-ubuntu18.tar.gz
 		fi
 	fi
 	
