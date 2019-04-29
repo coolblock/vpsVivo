@@ -74,10 +74,8 @@ getMasternodePort() {
 		cat mnport_vivo_$index.txt 
 		echo " "
 		return 0;
-	else
-		echo "default port is 12845, each masternode should have a different one"
 	fi		
-	
+	echo "default port historically has been 12845, each masternode on the same IP should have a different one"
     declare -i port_num
     echo "Please enter masternode port for masternode $index:"
     while :
