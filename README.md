@@ -20,9 +20,13 @@ If you have installed using any of the scripts already, to add more masternodes 
 
 bash <(curl -s https://raw.githubusercontent.com/coolblock/vpsVivo/master/utils/vivo/AddMnBinMulti.sh)
 
-(it is recomended to add one at a time. When you have 1 masternode already, say total of 2. Then when you have started the second one, run the script again but say total of 3. and on and on.)
+To update multi masternodes binaries and sentinel
+
+bash <(curl -s https://raw.githubusercontent.com/coolblock/vpsVivo/master/utils/vivo/UpdateMnBinMulti.sh)
 
 ### Recommended sequence of actions to create multiple Masternodes
+
+(it is recomended to add one at a time. When you have 1 masternode already, say total of 2. Then when you have started the second one, run the script again but say total of 3. and on and on.)
 
 The command to use on the VPS is (all one line):
 
