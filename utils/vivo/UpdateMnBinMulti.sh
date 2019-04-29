@@ -114,8 +114,7 @@ deployMasternodes() {
     git clone https://github.com/coolblock/vpsVivo.git
     cd vpsVivo
     ((mncount--))
-    echo "masternodecount to update binaries and sentinel for total of: $mncount" > ~/masternodecount.txt
-	rm /usr/local/bin/vivod
+    echo "masternodecount to deploy $mncount" > ~/masternodecount.txt
     ./installNG.sh -p vivo -n 4 -c $mncount -s -d -b
     echo "To look at status of the masternode run:"
     echo "/root/vpsVivo/overAllMnStat.sh"
