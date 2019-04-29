@@ -24,7 +24,9 @@ deployPrereqs() {
 
 getMasternodeCount() {
 	echo "++++++++++++++++"
-    echo "This will add the next masternode you have. Example: If you have 1 masternode already, to add another one, enter 2 for the following question. How many (total) Vivo masternodes are you deploying? :"
+	echo "There seems to be a total masternodes of:"
+	ls /root/masternode_conf_files/vivo_* | wc -l
+    echo "This will add the next masternode you have if you increase that number. Example: If you have 1 masternode already, to add another one, enter 2 for the following question. How many (total) Vivo masternodes are you deploying? :"
     while :
         do
         echo -n "Masternode Count: "
