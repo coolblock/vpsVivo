@@ -116,12 +116,13 @@ getMasternodePort() {
 deployMasternodes() {
     # Some additional directory structure and management will be needed here
     # The RPC port will also need to be unique for each daemon
+	cd
 	rm -rf vpsVivo 
     git clone https://github.com/coolblock/vpsVivo.git
     cd vpsVivo
     ((mncount--))
     echo "masternodecount to deploy $mncount" > ~/masternodecount.txt
-	rm /usr/local/bin/vivod
+	rm -f /usr/local/bin/vivod
     ./installNG.sh -p vivo -n 4 -c $mncount -s -d -b
     echo "To look at status of the masternode run:"
     echo "/root/vpsVivo/overAllMnStat.sh"
