@@ -26,7 +26,7 @@ getMasternodeCount() {
 	echo "++++++++++++++++"
 	echo "There seems to be a total masternodes of:"
 	ls /root/masternode_conf_files/vivo_* | wc -l
-    echo "This will add the next masternode you have if you increase that number. Example: If you have 1 masternode already, to add another one, enter 2 for the following question. How many (total) Vivo masternodes are you deploying? :"
+    echo "If you want to add a next masternode you have if you increase that number. Example: If you have 1 masternode already, to add another one, enter 2 for the following question. How many (total) Vivo masternodes are you deploying? :"
     while :
         do
         echo -n "Masternode Count: "
@@ -52,7 +52,9 @@ getMasternodePrivKey() {
 		echo "Not changing pivate key"	
 		return 0
 	fi
-
+	echo "conf file says:"
+	cat /root/masternode_conf_files/vivo_n$index.conf | grep masternodeprivkey
+	
     echo "=================================="
     while :
         do
@@ -77,6 +79,10 @@ getMasternodePort() {
 		echo " "
 		return 0;
 	fi		
+	echo "conf file says:"
+	cat /root/masternode_conf_files/vivo_n$index.conf | grep bind=
+	cat /root/masternode_conf_files/vivo_n$index.conf | grep externalip=	
+	
 	echo "default port historically has been 12845, each masternode on the same IP should have a different one"
     declare -i port_num
     echo "Please enter masternode port for masternode $index:"
