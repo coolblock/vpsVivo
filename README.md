@@ -1,6 +1,6 @@
 # Most often used commands to Install or update with Binaries
 
-For 1 (one) masternode
+## For 1 (one) masternode
 
 Install binaries FOR total of 1 masternode
 
