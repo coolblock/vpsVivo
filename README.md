@@ -20,7 +20,7 @@ If you have installed using any of the scripts already, to add more masternodes 
 
 bash <(curl -s https://raw.githubusercontent.com/coolblock/vpsVivo/master/utils/vivo/AddMnBinMulti.sh)
 
-To update multi masternodes binaries and sentinel
+### To update multi masternodes binaries and sentinel
 
 bash <(curl -s https://raw.githubusercontent.com/coolblock/vpsVivo/master/utils/vivo/UpdateMnBinMulti.sh)
 
