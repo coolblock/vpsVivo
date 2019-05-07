@@ -10,7 +10,7 @@ Update binaries  FOR total of 1 masternode
 
 wget -qO- https://raw.githubusercontent.com/coolblock/vpsVivo/master/utils/vivo/1vivobinUpdate.sh | sudo bash
 
-## For Multiple Masternodes (two or more)
+## For Multiple Masternodes (two or more) (On the Same IP)
 
 Install binaries by using the following line and respond to the prompts. You will need private keys and a choice of ports.
 

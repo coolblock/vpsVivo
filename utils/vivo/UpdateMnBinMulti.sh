@@ -103,7 +103,12 @@ getMasternodePort() {
 		else
 			echo "$mnport" > mnport_vivo_$index.txt
 			echo "ufw allow $mnport" >> allowport.sh
-		    cp /root/ip4_1.txt /root/ip4_$index.txt			
+			
+			if [ -f /root/ip4_$index.txt ]; then
+				echo "/root/ip4_$index.txt exists, won't overwrite"
+			fi
+			
+		    cp -n /root/ip4_1.txt /root/ip4_$index.txt			
             break
 		fi
 
