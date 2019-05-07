@@ -106,6 +106,7 @@ getMasternodePort() {
 			
 			if [ -f /root/ip4_$index.txt ]; then
 				echo "/root/ip4_$index.txt exists, won't overwrite"
+				cat /root/ip4_$index.txt
 			fi
 			
 		    cp -n /root/ip4_1.txt /root/ip4_$index.txt			
