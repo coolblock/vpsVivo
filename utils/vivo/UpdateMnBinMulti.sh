@@ -73,6 +73,10 @@ getMasternodePrivKey() {
 
 getMasternodePort() {
 
+	echo "conf file says:"
+	cat /root/masternode_conf_files/vivo_n$index.conf | grep bind=
+	cat /root/masternode_conf_files/vivo_n$index.conf | grep externalip=	
+
 	if [ -f mnport_vivo_$index.txt ]; then
 		echo -n "Port being used: "
 		cat mnport_vivo_$index.txt 
