@@ -829,9 +829,10 @@ apt-get install -y git virtualenv
 	rm vivo-0.12.1.12-ubuntu16-vps-nogui.tgz
 	rm vivo-0.12.1.14-ubuntu16-vps-nogui.tgz
 	rm vivo-0.12.1.15-ubuntu16.tar.gz
-	wget https://github.com/vivocoin/vivo/releases/download/v0.12.1.15/vivo-0.12.1.15-ubuntu16.tar.gz
+	rm vivo-0.12.1.16-ubuntu16.tar.gz	
+	wget https://github.com/vivocoin/vivo/releases/download/v0.12.1.16/vivo-0.12.1.16-ubuntu16.tar.gz
 	
-	tar -xvf vivo-0.12.1.15-ubuntu16.tar.gz
+	tar -xvf vivo-0.12.1.16-ubuntu16.tar.gz
 	
 	if [[ -r /etc/os-release ]]; then
 		. /etc/os-release
@@ -840,9 +841,10 @@ apt-get install -y git virtualenv
 				rm Vivo-0.12.1.12-ubuntu18.tar.gz
 				rm vivo-0.12.1.14-ubuntu18.tar.gz
 				rm vivo-0.12.1.15-ubuntu18.tar.gz	
+				rm vivo-0.12.1.16-ubuntu18.tar.gz	
 				
-				wget https://github.com/vivocoin/vivo/releases/download/v0.12.1.15/vivo-0.12.1.15-ubuntu18.tar.gz
-				tar -xvf vivo-0.12.1.15-ubuntu18.tar.gz
+				wget https://github.com/vivocoin/vivo/releases/download/v0.12.1.16/vivo-0.12.1.16-ubuntu18.tar.gz
+				tar -xvf vivo-0.12.1.16-ubuntu18.tar.gz
 		fi
 	fi
 	
