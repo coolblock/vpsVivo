@@ -21,8 +21,8 @@ fi
 cd
 
 	if ! crontab -l | grep "/root/vpsVivo/utils/vivo/vAutoUpdate.sh"; then
-		(crontab -l 2>/dev/null; echo "0 2 * * * /root/vpsVivo/utils/vivo/vAutoUpdate.sh") | crontab -
+		(crontab -l 2>/dev/null; echo "0 2 * * * /sbin/runuser -l root -c '/root/vpsVivo/utils/vivo/vAutoUpdate.sh'") | crontab -
 	fi
-
+`
 
 
