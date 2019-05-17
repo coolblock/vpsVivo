@@ -28,7 +28,7 @@ getMasternodeCount() {
 	rm -f totalmasternodes*
 	ls /root/masternode_conf_files/vivo_* | wc -l > totalmasternodes
 	typeset -i totalNumberOfMasternodes=$(cat totalmasternodes)
-	mncount=$totalNumberOfMasternodes
+	mncount="$totalNumberOfMasternodes"
 	echo "total masternodes to be updated  $mncount"
 }
 
