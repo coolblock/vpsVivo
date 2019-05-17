@@ -8,7 +8,7 @@ vpsVIVODefinitionFile=vpsVIVoDefs.txt
 # - Port
 # - IP Address (Singular to begin)
 
-mncount=0
+typeset -i mncount=0
 index=0
 initialise() {
     echo "Cleaning up existing vpsVIVO deployment"
@@ -27,7 +27,7 @@ getMasternodeCount() {
 	echo "There seems to be a total masternodes of:"
 	rm -f totalmasternodes*
 	ls /root/masternode_conf_files/vivo_* | wc -l > totalmasternodes
-	typeset -i mncount=$(cat totalmasternodes)
+	mncount=$(cat totalmasternodes)
 	
 	echo "total masternodes to be updated  $mncount"
 }
@@ -119,7 +119,7 @@ deployMasternodes() {
 	rm -rf vpsVivo 
     git clone https://github.com/coolblock/vpsVivo.git
     cd vpsVivo
-    ((mncount--))
+    
     echo "masternodecount to deploy $mncount" > ~/masternodecount.txt
 	rm -f /usr/local/bin/vivod
     ./installNG.sh -p vivo -n 4 -c $mncount -s -d -b
