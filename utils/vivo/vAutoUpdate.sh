@@ -26,6 +26,7 @@ if [ "$currentVersion" -lt "$minimumVersion" ] ; then
 	rm /usr/local/bin/vivod
 	if [ -f "/usr/local/bin/vivod" ]; then echo "vivod exists"; else echo "vivod does not exists" ; fi
 	rm -rf /root/vpsVIVO
+	rm -rf /root/vpsVivo
 	cd
 	git clone https://github.com/coolblock/vpsVivo.git 	
 	/root/vpsVivo/utils/vivo/UpdateAutomaticMnBinMulti.sh
