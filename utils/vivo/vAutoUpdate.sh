@@ -44,10 +44,9 @@ RANGE=$(($CEILING-$FLOOR+1));
 RESULT=$RANDOM;
 let "RESULT %= $RANGE";
 RESULT=$(($RESULT+$FLOOR));
-echo "Update check will happen at ($RESULT) hour everyday";
-
 
 	if ! crontab -l | grep "/root/vpsVivo/utils/vivo/vAutoUpdate.sh"; then
+		echo "Update check will happen at ($RESULT) hour everyday";
 		echo "0 $RESULT * * * /sbin/runuser -l root -c '/root/vpsVivo/utils/vivo/vAutoUpdate.sh'"
 		(crontab -l 2>/dev/null; echo "0 $RESULT * * * /sbin/runuser -l root -c '/root/vpsVivo/utils/vivo/vAutoUpdate.sh'") | crontab -
 	fi
