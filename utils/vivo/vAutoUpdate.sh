@@ -19,13 +19,13 @@ typeset -i currentVersion=$(cat curver)
 typeset -i minimumVersion=$(cat minver)
 
 echo "current:$currentVersion" min: "$minimumVersion" >>  /root/cronup.txt
-
+cd
 echo "$( date +%T )" >> /root/cronup.txt
 if [ "$currentVersion" -lt "$minimumVersion" ] ; then
 	echo "needs updating" >> /root/cronup.txt
 	rm /usr/local/bin/vivod
 	if [ -f "/usr/local/bin/vivod" ]; then echo "vivod exists"; else echo "vivod does not exists" ; fi
-	rm -rf /root/vpsVIVO/
+	rm -rf /root/vpsVIVO
 	git clone https://github.com/coolblock/vpsVivo.git 	
 	/root/vpsVivo/utils/vivo/UpdateAutomaticMnBinMulti.sh
 	echo "done updating $( date +%T )" >> /root/cronup.txt
