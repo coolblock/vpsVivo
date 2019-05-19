@@ -20,9 +20,10 @@ typeset -i minimumVersion=$(cat minver)
 
 echo "current:$currentVersion" min: "$minimumVersion" >>  /root/cronup.txt
 cd
-echo "$( date +%T )" >> /root/cronup.txt
+echo " start -- $(date +%T )" >> /root/cronup.txt
 if [ "$currentVersion" -lt "$minimumVersion" ] ; then
 	echo "needs updating" >> /root/cronup.txt
+	echo "needs updating"	
 	rm /usr/local/bin/vivod
 	if [ -f "/usr/local/bin/vivod" ]; then echo "vivod exists"; else echo "vivod does not exists" ; fi
 	rm -rf /root/vpsVIVO
@@ -36,6 +37,7 @@ if [ "$currentVersion" -lt "$minimumVersion" ] ; then
 
 else
 	echo "is updated -no change is necessary">> /root/cronup.txt
+	echo "is updated -no change is necessary"	
 fi
 
 cd

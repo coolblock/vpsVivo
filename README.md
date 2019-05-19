@@ -1,6 +1,14 @@
 # Most often used commands to Install or update with Binaries
 
-## For 1 (one) masternode
+## Auto Update implementation
+
+The system allows you to set it up so that it will autoupdate. After you have installed you can run the auto update script which is one line:
+
+bash <(curl -s https://raw.githubusercontent.com/coolblock/vpsVivo/master/utils/vivo/vAutoUpdate.sh?$(date +%s))
+
+This will set up your machine to update automatically. It will check once a day and if a new version is ready, it will update.
+
+## Installation For 1 (one) masternode
 
 Install binaries FOR total of 1 masternode
 
@@ -10,7 +18,7 @@ Update binaries  FOR total of 1 masternode
 
 wget -qO- https://raw.githubusercontent.com/coolblock/vpsVivo/master/utils/vivo/1vivobinUpdate.sh | sudo bash
 
-## For Multiple Masternodes (two or more) (On the Same IP)
+## Installation For Multiple Masternodes (two or more) (On the Same IP)
 
 Install binaries by using the following line and respond to the prompts. You will need private keys and a choice of ports.
 
