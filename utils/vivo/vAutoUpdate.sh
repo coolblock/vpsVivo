@@ -38,6 +38,15 @@ if [ "$currentVersion" -lt "$minimumVersion" ] ; then
 else
 	echo "is updated -no change is necessary">> /root/cronup.txt
 	echo "is updated -no change is necessary"	
+	if [ -f "/root/vpsVivo/utils/vivo/vAutoUpdate.sh" ]; then echo "Latest Update Script exists"; 
+	else 
+	echo "Update Script Will be updated" ; 
+	rm -rf /root/vpsVIVO
+	rm -rf /root/vpsVivo
+	cd
+	git clone https://github.com/coolblock/vpsVivo.git 	
+	fi
+	
 fi
 
 cd
@@ -55,5 +64,5 @@ RESULT=$(($RESULT+$FLOOR));
 		(crontab -l 2>/dev/null; echo "0 $RESULT * * * /sbin/runuser -l root -c '/root/vpsVivo/utils/vivo/vAutoUpdate.sh'") | crontab -
 	fi
 
-echo "End  $( date +%T )" >> /root/cronup.txt
+echo "Ended at  $( date +%T )" >> /root/cronup.txt
 
