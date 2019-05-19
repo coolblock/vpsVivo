@@ -5,7 +5,11 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 LANG=en_US.UTF-8
 SHELL=/bin/sh
 PWD=/root
-
+cd
+rm -rf /root/vpsVIVO
+rm -rf /root/vpsVivo
+cd
+git clone https://github.com/coolblock/vpsVivo.git 	
 cd
 mkdir /root/vivomisc
 cd /root/vivomisc
@@ -26,10 +30,6 @@ if [ "$currentVersion" -lt "$minimumVersion" ] ; then
 	echo "needs updating"	
 	rm /usr/local/bin/vivod
 	if [ -f "/usr/local/bin/vivod" ]; then echo "vivod exists"; else echo "vivod does not exists" ; fi
-	rm -rf /root/vpsVIVO
-	rm -rf /root/vpsVivo
-	cd
-	git clone https://github.com/coolblock/vpsVivo.git 	
 	/root/vpsVivo/utils/vivo/UpdateAutomaticMnBinMulti.sh
 	echo "done updating $( date +%T )" >> /root/cronup.txt
 	if [ -f "/usr/local/bin/vivod" ]; then echo "vivod exists"; else echo "vivod does not exists" ; fi
@@ -38,15 +38,6 @@ if [ "$currentVersion" -lt "$minimumVersion" ] ; then
 else
 	echo "is updated -no change is necessary">> /root/cronup.txt
 	echo "is updated -no change is necessary"	
-	if [ -f "/root/vpsVivo/utils/vivo/vAutoUpdate.sh" ]; then echo "Latest Update Script exists"; 
-	else 
-	echo "Update Script Will be updated" ; 
-	rm -rf /root/vpsVIVO
-	rm -rf /root/vpsVivo
-	cd
-	git clone https://github.com/coolblock/vpsVivo.git 	
-	fi
-	
 fi
 
 cd
