@@ -12,6 +12,7 @@ mncount=0
 index=0
 initialise() {
     echo "Cleaning up existing vpsVIVO deployment"
+	apt-get install git -y
     rm -rf vpsVIVO/
 	rm allowport.sh
     # This should be changed to ensure we are in a specific directory first.
