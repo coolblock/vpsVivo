@@ -101,7 +101,7 @@ getMasternodePort() {
 				echo "/root/ip4_$index.txt exists, won't overwrite"
 				cat /root/ip4_$index.txt
 			fi
-			f [ ! -f /root/ip4_1.txt ]; then
+			if [ ! -f /root/ip4_1.txt ]; then
                 ipvariable=$(wget http://ipecho.net/plain -O - -q);
                 echo "bind=$ipvariable" > /root/ip4_1.txt
                 echo "Will be using {$ipvariable} as your IP. If you want to change them you will have to go to etc/masternodes and change the conf file."
