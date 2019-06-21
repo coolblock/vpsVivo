@@ -6,11 +6,11 @@ LANG=en_US.UTF-8
 SHELL=/bin/sh
 PWD=/root
 cd
-rm -rf /root/vpsVIVO
-rm -rf /root/vpsVivo
-cd
 git clone https://github.com/coolblock/vpsVivo.git 	
+cd vpsVivo
+git pull
 cd
+
 mkdir /root/vivomisc
 cd /root/vivomisc
 rm -f minver*
@@ -56,4 +56,4 @@ RESULT=$(($RESULT+$FLOOR));
 	fi
 
 echo "Ended at  $( date +%T )" >> /root/cronup.txt
-
+echo "Version 2.0" >> /root/cronup.txt
