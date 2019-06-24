@@ -1,14 +1,8 @@
 # Most often used commands to Install or update with Binaries
 
-## Auto Update implementation
+Auto update is available, read below.
 
-The system allows you to set it up so that it will autoupdate. After you have installed you can run the auto update script which is one line:
-
-bash <(curl -s https://raw.githubusercontent.com/coolblock/vpsVivo/master/utils/vivo/vAutoUpdate.sh?$(date +%s))
-
-This will set up your machine to update automatically. It will check once a day and if a new version is ready, it will update.
-
-## Installation For 1 (one) masternode
+## Installation For 1 (one (the first one)) masternode
 
 Install binaries FOR total of 1 masternode
 
@@ -54,10 +48,13 @@ If you don't do it in this sequence, when you send the 1000 coins you may send f
 
 It is a time consuming process as waiting for the sync takes time and waiting for confirmations takes time.
 
-Update -- comming soon.
+## Auto Update implementation
 
-More detailed info below:
+The system allows you to set it up so that it will autoupdate. After you have installed you can run the auto update script which is one line:
 
+bash <(curl -s https://raw.githubusercontent.com/coolblock/vpsVivo/master/utils/vivo/vAutoUpdate.sh?$(date +%s))
+
+This will set up your machine to update automatically. It will check once a day and if a new version is ready, it will update.
 
 # Quick Install of Binaries on (Ubuntu 16 and 18)
 
