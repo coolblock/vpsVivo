@@ -14,17 +14,13 @@ getMasternodeCount() {
 	ls /root/masternode_conf_files/vivo_* | wc -l > totalmasternodes
 	mncount=$(cat totalmasternodes)
 	echo "total masternodes to consider $mncount"
+	mncount=mncount+1
 }
 
 insertLine() {
         echo "echo \"vivo${index}\"" >> /root/clearAllMasternodes.sh
         echo "/root/mnTroubleshoot/vivo/vivo${index}_clear_out_data_restart_with_blank_data.sh" >> /root/clearAllMasternodes.sh
         echo "included vivo${index}"
-}
-
-deployMasternodes() {
-    
-    echo "masternodecount to deploy $mncount" > ~/masternodecount.txt
 }
 
 main() {
