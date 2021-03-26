@@ -94,6 +94,8 @@ This will erase the old binary and install the new one. It will not update your 
 
 # Building from Source (Ubuntu 16 or above)
 
+(All of this has to be done as root)
+
 In case you must build from source: (for instance if it does not work with the latest ubuntu)
 
 Newest Technique to install ONE vivo masternode (there are other instructions to install multiple):
@@ -104,12 +106,16 @@ Ideally you will have at least a 1 gig ram machine. A 512 might (and might NOT) 
 
 ## Option 1 Installation with Source
 
-Run the following entire line in ssh: (have your private key ready)
+Run the following (All of this has to be done as root) entire line in ssh: (have your private key ready)
 
 wget -qO- https://raw.githubusercontent.com/coolblock/vpsVivo/master/utils/vivo/1vivo.sh | sudo bash
 
 ## Option 2 Installation with Source
 If you have trouble or you want to use multiple commands you can:
+
+(All of this has to be done as root)
+
+
 cd
 
 apt install -y git screen
@@ -120,7 +126,7 @@ git clone https://github.com/coolblock/vpsVivo.git
 
 /root/vpsVivo/coinMnInstall.sh vivo 1
 
-Any option will install a vivo masternode using an ip4. It will build the masternode from source. It will run as a service and will be restarted if the vps is restarted.
+Any option will install by building a vivo masternode using an ip4. It will build the masternode from source. It will run as a service and will be restarted if the vps is restarted.
 With a 1 gig machine the process will take around 20 minutes.
 
 The vps script will run for 20 minutes and disconnect your ssh session. Putty will show a disconnect error. That means the machine is rebooting. You can restart another session if you want to check the vps.
