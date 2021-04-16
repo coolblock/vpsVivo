@@ -111,8 +111,9 @@ if [ $(free | awk '/^Swap:/ {exit !$2}') ] || [ ! -f "/var/mnode_swap.img" ];the
 	echo "* No proper swap, creating it" 
 	# needed because ant servers are ants
 	rm -f /var/mnode_swap.img
-	dd if=/dev/zero of=/var/mnode_swap.img bs=2048k count=${MNODE_SWAPSIZE} &>> ${SCRIPT_LOGFILE}
-	chmod 0600 /var/mnode_swap.img 
+	#dd if=/dev/zero of=/var/mnode_swap.img bs=2048k count=${MNODE_SWAPSIZE} &>> ${SCRIPT_LOGFILE}
+	fallocate -l 6G /var/mnode_swap.img
+	chmod 0600 /var/mnode_swap.img
 	mkswap /var/mnode_swap.img &>> ${SCRIPT_LOGFILE}
 	swapon /var/mnode_swap.img &>> ${SCRIPT_LOGFILE} 
 	echo '/var/mnode_swap.img none swap sw 0 0' | tee -a /etc/fstab &>> ${SCRIPT_LOGFILE}
