@@ -719,7 +719,7 @@ function source_config() {
 				echo "creating swap for binaries !!!!!!" >>  ${SCRIPT_LOGFILE}
 				swaphack
 			else 
-				if [ $(awk '/^MemAvailable:/ { print $2; }' /proc/meminfo) -lt 600000 ]; then
+				if [ $(awk '/^MemAvailable:/ { print $2; }' /proc/meminfo) -lt 750000 ]; then
 					swaphack
 				fi
 			fi
