@@ -112,7 +112,7 @@ if [ $(free | awk '/^Swap:/ {exit !$2}') ] || [ ! -f "/var/mnode_swap.img" ];the
 	# needed because ant servers are ants
 	rm -f /var/mnode_swap.img
 	#dd if=/dev/zero of=/var/mnode_swap.img bs=2048k count=${MNODE_SWAPSIZE} &>> ${SCRIPT_LOGFILE}
-	fallocate -l 6G /var/mnode_swap.img
+	fallocate -l 3G /var/mnode_swap.img
 	chmod 0600 /var/mnode_swap.img
 	mkswap /var/mnode_swap.img &>> ${SCRIPT_LOGFILE}
 	swapon /var/mnode_swap.img &>> ${SCRIPT_LOGFILE} 
