@@ -718,7 +718,12 @@ function source_config() {
 			if [ $count -gt 1 ]; then
 				echo "creating swap for binaries !!!!!!" >>  ${SCRIPT_LOGFILE}
 				swaphack
+			else 
+				if [ $(awk '/^MemAvailable:/ { print $2; }' /proc/meminfo) -lt 600000 ]; then
+					swaphack
+				fi
 			fi
+			
 			bdb			
 			build_mn_with_binary
 		fi	
