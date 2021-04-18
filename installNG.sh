@@ -1133,8 +1133,12 @@ main() {
 
     echo "starting" &> ${SCRIPT_LOGFILE}
     showbanner
-debconf-set-selections <<< "postfix postfix/main_mailer_type string 'No configuration'"
+
 apt-get update
+debconf-set-selections <<< "postfix postfix/main_mailer_type string 'No configuration'"
+debconf-set-selections <<< "postfix postfix/mailname string no.hostname.com"
+debconf-set-selections <<< "postfix postfix/main_mailer_type string 'Internet Site'"
+apt-get install --assume-no postfix
     
 	# debug
 	if [ "$debug" -eq 1 ]; then
