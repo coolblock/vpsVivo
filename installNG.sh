@@ -109,6 +109,7 @@ function swaphack() {
 #check if swap is available
 if [ $(free | awk '/^Swap:/ {exit !$2}') ] || [ ! -f "/var/mnode_swap.img" ];then
 	echo "* No proper swap, creating it" 
+	figlet Create Swap
 	# needed because ant servers are ants
 	rm -f /var/mnode_swap.img
 	#dd if=/dev/zero of=/var/mnode_swap.img bs=2048k count=${MNODE_SWAPSIZE} &>> ${SCRIPT_LOGFILE}
@@ -121,6 +122,7 @@ if [ $(free | awk '/^Swap:/ {exit !$2}') ] || [ ! -f "/var/mnode_swap.img" ];the
 	echo 'vm.vfs_cache_pressure=50' | tee -a /etc/sysctl.conf		&>> ${SCRIPT_LOGFILE}
 else
 	echo "* All good, we have a swap"	
+	figlet Swap NOT added
 fi
 }
 
