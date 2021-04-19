@@ -6,6 +6,7 @@ figlet Configuring
 
 if [[ $(lsb_release -rs) == "20.04" ]]; then 
 
+	export BDB_PREFIX='/opt/buildberk/build/db4'
 	export BDB_INCLUDE_PATH="/opt/buildberk/build/db4/include"
 	export BDB_LIB_PATH="/opt/buildberk/build/db4/lib"
 	PATH=$PATH:/opt/buildberk/build/db4
@@ -15,13 +16,17 @@ if [[ $(lsb_release -rs) == "20.04" ]]; then
 	BDB_LIBS="-L${BDB_PREFIX}/lib -ldb_cxx-4.8" 
 	BDB_CFLAGS="-I/opt/buildberk/build/db4/lib"
 
-	BDB_CPPFLAGS= "-I/opt/buildberk/build/db4/include"
+	BDB_CPPFLAGS= "/opt/buildberk/build/db4/include"
 
+	echo "configuring now"
+	chmod u+x ./autogen.sh
+	chmod u+x share/genbuild.sh
+	./autogen.sh
 	./configure --disable-dependency-tracking --enable-tests=no --without-miniupnpc CFLAGS="-march=native" LIBS="-lcurl -lssl -lcrypto -lz" CPPFLAGS="-I/opt/buildberk/build/db4/include" LDFLAGS="-L/opt/buildberk/build/db4/lib"
-
 
 	make
 	make install
+	echo "/opt/buildberk/build/db4/lib" | sudo tee -a /etc/ld.so.conf.d/mylibs.conf; sudo ldconfig
   
 else
 
