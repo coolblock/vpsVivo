@@ -1,8 +1,35 @@
 #!/bin/bash  
 
-chmod u+x ./autogen.sh
-chmod u+x share/genbuild.sh
-./autogen.sh
-./configure --disable-dependency-tracking --enable-tests=no --without-miniupnpc CFLAGS="-march=native" LIBS="-lcurl -lssl -lcrypto -lz" CPPFLAGS="-I/root/db-4.8.30.NC/build_unix/build/include -O2" LDFLAGS="-L/root/db-4.8.30.NC/build_unix/build/lib"
-make
-make install
+
+figlet Configuring
+
+
+if [[ $(lsb_release -rs) == "20.04" ]]; then 
+
+	export BDB_INCLUDE_PATH="/opt/buildberk/build/db4/include"
+	export BDB_LIB_PATH="/opt/buildberk/build/db4/lib"
+	PATH=$PATH:/opt/buildberk/build/db4
+	export PATH
+
+
+	BDB_LIBS="-L${BDB_PREFIX}/lib -ldb_cxx-4.8" 
+	BDB_CFLAGS="-I/opt/buildberk/build/db4/lib"
+
+	BDB_CPPFLAGS= "-I/opt/buildberk/build/db4/include"
+
+	./configure --disable-dependency-tracking --enable-tests=no --without-miniupnpc CFLAGS="-march=native" LIBS="-lcurl -lssl -lcrypto -lz" CPPFLAGS="-I/opt/buildberk/build/db4/include" LDFLAGS="-L/opt/buildberk/build/db4/lib"
+
+
+	make
+	make install
+  
+else
+
+	chmod u+x ./autogen.sh
+	chmod u+x share/genbuild.sh
+	./autogen.sh
+	./configure --disable-dependency-tracking --enable-tests=no --without-miniupnpc CFLAGS="-march=native" LIBS="-lcurl -lssl -lcrypto -lz" CPPFLAGS="-I/root/db-4.8.30.NC/build_unix/build/include -O2" LDFLAGS="-L/root/db-4.8.30.NC/build_unix/build/lib"
+	make
+	make install
+
+fi 
